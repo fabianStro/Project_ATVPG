@@ -2,53 +2,56 @@ import 'package:flutter/material.dart';
 //import 'package:flutter_application_one/test.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
   //Test();
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
-  //List<String> title = ['Highschool DxD', 'Dragonball'];
+  final List<String> title = ['Highschool DxD\t', 'Dragonball\t', 'The Eminence in Shadow\t'];
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData.dark(),
       home: Scaffold(
-        backgroundColor: Colors.black,
         appBar: AppBar(
           toolbarHeight: 100.0,
           shape: Border(bottom: BorderSide(color: Colors.white, width: 2.0)),
           backgroundColor: Colors.black,
           centerTitle: true,
-          title: Text('TVPG', style: TextStyle(fontSize: 50.0, letterSpacing: 4.0, color: Colors.white)),
+          title: Text('TVPG', style: TextStyle(fontSize: 50.0, letterSpacing: 4.0)),
         ), // AppBar
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Hello Welt !!!',
-                style: TextStyle(
-                  //fontFamily: 'Arial',
-                  fontSize: 24.0,
-                  backgroundColor: Colors.black,
-                  color: Colors.white,
-                ), // TextStyle
-              ), // Text
-              Text(
-                'Hello Ihr !!!',
-                style: TextStyle(
-                  //fontFamily: 'Arial',
-                  fontSize: 24.0,
-                  backgroundColor: Colors.black,
-                  color: Colors.white,
-                ), // TextStyle
-              ), // Text
-            ], // Children
-          ), // Column
-        ), // Center
+        body: SafeArea(
+          child: SizedBox(
+            width: double.infinity,
+            height: double.infinity,
+            child: Column(
+              //mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                BroadcastTitle(text: title[0], style: 'size'),
+                BroadcastTitle(text: title[1], style: 'size'),
+                BroadcastTitle(text: title[2], style: 'size'),
+              ], // Children
+            ), // Column
+          ), // SizedBox
+        ), // SafeArea
       ), // Scaffold
     ); // MaterialApp
+  }
+}
+
+class BroadcastTitle extends StatelessWidget {
+  const BroadcastTitle({super.key, this.text, this.style});
+
+  final String? text;
+  final String? style;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(text ?? 'None', style: TextStyle(fontSize: 20.0));
   }
 }
