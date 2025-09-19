@@ -17,8 +17,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
 
-fonts:
+  fonts:
   - family: Audiowide
     fonts:
       - asset: lib/project_fonts/Audiowide-Regular.ttf
