@@ -8,19 +8,28 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final ButtonStyle _buttonStyle = ElevatedButton.styleFrom(backgroundColor: Colors.grey);
-  final TextStyle _titleTextStyle = TextStyle(fontSize: 50.0, letterSpacing: 4.0 /* fontFamily: Audiowide */);
+  final TextStyle _titleTextStyle = TextStyle(fontSize: 50.0, letterSpacing: 4.0, fontFamily: 'Audiowide');
   final TextStyle _buttonTextStyle = TextStyle(color: Colors.white);
+  final Color _whiteColor = Colors.white;
+  final String _username = 'Username';
+  final String _password = 'Password';
+  final String _login = 'Login';
+  final double _sendBoxWidth = 150.0;
+  final double _borderRadius = 25.0;
+  final double _toolbarHeight = 100.0;
+
   // fontFamily: Audiowide; !!!!!!!!! Package im Dowmnöoad Ordner
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
       home: Scaffold(
+        extendBodyBehindAppBar: true,
         appBar: AppBar(
-          toolbarHeight: 100.0,
+          toolbarHeight: _toolbarHeight,
           shape: Border(
-            bottom: BorderSide(color: Colors.white, width: 2.0),
-            top: BorderSide(color: Colors.white, width: 2.0),
+            bottom: BorderSide(color: _whiteColor, width: 2.0),
+            top: BorderSide(color: _whiteColor, width: 2.0),
           ), // Border
           backgroundColor: Colors.black,
           centerTitle: true,
@@ -34,23 +43,29 @@ class MyApp extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                //  Text(_username),
                 TextField(
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
-                    labelText: 'Username',
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(_borderRadius)),
+                    labelText: _username,
                   ), // InputDecoration
                 ), // TextField
+                //  Text(_password),
                 TextField(
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
-                    labelText: 'Pasword',
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(_borderRadius)),
+                    labelText: _password,
                   ), // InputDeecoration
                 ), // TextField
-                ElevatedButton(
-                  style: _buttonStyle,
-                  onPressed: () {},
-                  child: Text('Login', style: _buttonTextStyle), // Text
-                ), // ElevatedButton
+                SizedBox(
+                  width: _sendBoxWidth,
+                  child: ElevatedButton(
+                    style: _buttonStyle,
+                    onPressed: () {},
+                    child: Text(_login, style: _buttonTextStyle), // Text
+                  ), // ElevatedButton
+                ), // SizedBox
+                Text('Registration'),
               ], // Children
             ), // Column
           ), // Padding
