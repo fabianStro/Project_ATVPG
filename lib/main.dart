@@ -9,8 +9,6 @@ void main() {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
-  final List<String> title = ['Highschool DxD\t', 'Dragonball\t', 'The Eminence in Shadow\t'];
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,40 +16,40 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           toolbarHeight: 100.0,
-          shape: Border(bottom: BorderSide(color: Colors.white, width: 2.0)),
+          shape: Border(
+            bottom: BorderSide(color: Colors.white, width: 2.0),
+            top: BorderSide(color: Colors.white, width: 2.0),
+          ),
           backgroundColor: Colors.black,
           centerTitle: true,
           title: Text('TVPG', style: TextStyle(fontSize: 50.0, letterSpacing: 4.0)),
         ), // AppBar
         body: SafeArea(
-          child: SizedBox(
-            width: double.infinity,
-            height: double.infinity,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 50.0, right: 50.0),
             child: Column(
-              //mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.end,
+              spacing: 50.0,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                BroadcastTitle(text: title[0], style: 'size'),
-                BroadcastTitle(text: title[1], style: 'size'),
-                BroadcastTitle(text: title[2], style: 'size'),
+                TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
+                    labelText: 'Username',
+                  ), // InputDecoration
+                ), // TextField
+                TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
+                    labelText: 'Pasword',
+                  ), // InputDeecoration
+                ), // TextField
+                ElevatedButton(onPressed: () {}, child: Text('Login')),
               ], // Children
             ), // Column
-          ), // SizedBox
+          ), // Padding
         ), // SafeArea
       ), // Scaffold
     ); // MaterialApp
-  }
-}
-
-class BroadcastTitle extends StatelessWidget {
-  const BroadcastTitle({super.key, this.text, this.style});
-
-  final String? text;
-  final String? style;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(text ?? 'None', style: TextStyle(fontSize: 20.0));
   }
 }
