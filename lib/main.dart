@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_application_one/test.dart';
 
 void main() {
   runApp(MyApp());
-  //Test();
 }
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
+  final ButtonStyle _buttonStyle = ElevatedButton.styleFrom(backgroundColor: Colors.grey);
+  final TextStyle _titleTextStyle = TextStyle(fontSize: 50.0, letterSpacing: 4.0 /* fontFamily: Audiowide */);
+  final TextStyle _buttonTextStyle = TextStyle(color: Colors.white);
+  // fontFamily: Audiowide; !!!!!!!!! Package im Dowmnöoad Ordner
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,10 +21,10 @@ class MyApp extends StatelessWidget {
           shape: Border(
             bottom: BorderSide(color: Colors.white, width: 2.0),
             top: BorderSide(color: Colors.white, width: 2.0),
-          ),
+          ), // Border
           backgroundColor: Colors.black,
           centerTitle: true,
-          title: Text('TVPG', style: TextStyle(fontSize: 50.0, letterSpacing: 4.0)),
+          title: Text('TVPG', style: _titleTextStyle),
         ), // AppBar
         body: SafeArea(
           child: Padding(
@@ -44,7 +46,11 @@ class MyApp extends StatelessWidget {
                     labelText: 'Pasword',
                   ), // InputDeecoration
                 ), // TextField
-                ElevatedButton(onPressed: () {}, child: Text('Login')),
+                ElevatedButton(
+                  style: _buttonStyle,
+                  onPressed: () {},
+                  child: Text('Login', style: _buttonTextStyle), // Text
+                ), // ElevatedButton
               ], // Children
             ), // Column
           ), // Padding
