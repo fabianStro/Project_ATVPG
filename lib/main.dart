@@ -4,9 +4,16 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  MyApp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() {
+    return _MyAppState();
+  }
+}
+
+class _MyAppState extends State<MyApp> {
   final ButtonStyle _buttonStyle = ElevatedButton.styleFrom(backgroundColor: Colors.grey);
   final TextStyle _titleTextStyle = TextStyle(fontSize: 50.0, letterSpacing: 4.0, fontFamily: 'Audiowide');
   final TextStyle _buttonTextStyle = TextStyle(color: Colors.white);
@@ -21,7 +28,13 @@ class MyApp extends StatelessWidget {
   final double _toolbarHeight = 100.0;
   final bool _isTrue = true;
 
-  // fontFamily: Audiowide; !!!!!!!!! Package im Dowmnöoad Ordner
+  /*  int _currentPageIndex = 0;
+
+  final List<Widget> _pages = const [
+    Center(child: Text('Home', style: TextStyle(fontSize: 30))),
+    Center(child: Text('Profile', style: TextStyle(fontSize: 30))),
+  ]; */
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -39,14 +52,27 @@ class MyApp extends StatelessWidget {
             centerTitle: _isTrue,
             title: Text(_title, style: _titleTextStyle),
           ), // AppBar
+          // ######################################################################################
+          /* bottomNavigationBar: NavigationBar(
+            onDestinationSelected: (int index) {
+              setState(() {
+                _currentPageIndex = index;
+              });
+            },
+            destinations: const [
+              NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+              NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
+            ],
+          ), // NavigationBar */
+          // ######################################################################################
           body: Padding(
             padding: const EdgeInsets.only(left: 60.0, right: 60.0),
             child: Column(
-              spacing: 35.0,
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text('LOGIN', style: TextStyle(fontSize: 28.0, letterSpacing: 2.0)),
+                SizedBox(height: 20.0),
                 TextField(
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.only(top: 16.0),
@@ -54,7 +80,7 @@ class MyApp extends StatelessWidget {
                     labelText: _username,
                   ), // InputDecoration
                 ), // TextField
-                //  Text(_password),
+                SizedBox(height: 20.0),
                 TextField(
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.only(top: 16.0),
@@ -62,6 +88,7 @@ class MyApp extends StatelessWidget {
                     labelText: _password,
                   ), // InputDeecoration
                 ), // TextField
+                SizedBox(height: 25.0),
                 SizedBox(
                   width: _sendBoxWidth,
                   child: ElevatedButton(
@@ -70,7 +97,8 @@ class MyApp extends StatelessWidget {
                     child: Text(_login, style: _buttonTextStyle), // Text
                   ), // ElevatedButton
                 ), // SizedBox
-                Text('Registration'),
+                SizedBox(height: 15.0),
+                Text('Registration', style: TextStyle(color: Colors.grey[400])),
               ], // Children
             ), // Column
           ), // Padding
