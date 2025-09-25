@@ -27,8 +27,11 @@ class _MyAppState extends State<MyApp> {
   final double _borderRadius = 25.0;
   final double _toolbarHeight = 100.0;
   final bool _isTrue = true;
+                         
+  /*  
+   Fuer die NavigationBar
 
-  /*  int _currentPageIndex = 0;
+  int _currentPageIndex = 0;
 
   final List<Widget> _pages = const [
     Center(child: Text('Home', style: TextStyle(fontSize: 30))),
