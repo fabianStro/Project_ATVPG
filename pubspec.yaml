@@ -23,3 +23,15 @@ flutter:
   - family: Audiowide
     fonts:
       - asset: assets/fonts/Audiowide-Regular.ttf
+  - family: Arial
+    fonts:
+      - asset: assets/fonts/ArialCE.ttf
+      - asset: assets/fonts/arialceb.ttf
+      - asset: assets/fonts/ArialCEBoldItalic.ttf
+      - asset: assets/fonts/ArialCEItalic.ttf
+      - asset: assets/fonts/ArialCEMTBlack.ttf
+  
+  # assets:
+  #  - assets/images/
+    
+  
