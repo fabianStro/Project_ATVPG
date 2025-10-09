@@ -22,4 +22,4 @@ flutter:
   fonts:
   - family: Audiowide
     fonts:
-      - asset: lib/project_fonts/Audiowide-Regular.ttf
+      - asset: assets/fonts/Audiowide-Regular.ttf
