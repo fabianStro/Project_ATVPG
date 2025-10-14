@@ -17,21 +17,11 @@ class _LoginWidgetState extends State<LoginWidget> {
   final String _title = 'TVPG';
   final String _username = 'Username';
   final String _password = 'Password';
-  final String _login = 'Login';
+  final String _loginLabel = 'Login';
   final double _sendBoxWidth = 150.0;
   final double _borderRadius = 25.0;
   final double _toolbarHeight = 100.0;
   final bool _isTrue = true;
-
-  /*  
-   Fuer die NavigationBar
-
-  int _currentPageIndex = 0;
-
-  final List<Widget> _pages = const [
-    Center(child: Text('Home', style: TextStyle(fontSize: 30))),
-    Center(child: Text('Profile', style: TextStyle(fontSize: 30))),
-  ]; */
 
   @override
   Widget build(BuildContext context) {
@@ -47,19 +37,6 @@ class _LoginWidgetState extends State<LoginWidget> {
           centerTitle: _isTrue,
           title: Text(_title, style: _titleTextStyle),
         ), // AppBar
-        // ######################################################################################
-        /* bottomNavigationBar: NavigationBar(
-            onDestinationSelected: (int index) {
-              setState(() {
-                _currentPageIndex = index;
-              });
-            },
-            destinations: const [
-              NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-              NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
-            ],
-          ), // NavigationBar */
-        // ######################################################################################
         body: Padding(
           padding: const EdgeInsets.only(left: 60.0, right: 60.0),
           child: Column(
@@ -88,8 +65,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                 width: _sendBoxWidth,
                 child: ElevatedButton(
                   style: _buttonStyle,
-                  onPressed: () {},
-                  child: Text(_login, style: _buttonTextStyle), // Text
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/start');
+                  },
+                  child: Text(_loginLabel, style: _buttonTextStyle), // Text
                 ), // ElevatedButton
               ), // SizedBox
               SizedBox(height: 15.0),

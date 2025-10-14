@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_one/login.dart';
 import 'package:flutter_application_one/registry.dart';
-// import 'package:flutter_application_one/startApp.dart';
+import 'package:flutter_application_one/startScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/home': (context) => LoginWidget(),
         '/registry': (context) => RegistryWidget(),
-        // '/start': (context) => StartScreenWidget(),
+        '/start': (context) => StartScreenWidget(),
       }, // routes
     ); // MaterialApp
   }
