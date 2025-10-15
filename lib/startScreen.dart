@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_one/allChannels.dart';
 
 class StartScreenWidget extends StatefulWidget {
   const StartScreenWidget({super.key});
@@ -9,6 +10,12 @@ class StartScreenWidget extends StatefulWidget {
 
 class _StartScreenWidgetState extends State<StartScreenWidget> {
   int currentPageIndex = 0;
+  // ######################################################################################
+  // Instanzen der Screens
+  // ######################################################################################
+  final AllChannels channels = AllChannels();
+  //final MyChannels myChannels = MyChannels();
+  //final Favorites favorites = Favorites();
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -21,7 +28,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
               tabAlignment: TabAlignment.fill,
               labelPadding: EdgeInsets.only(left: 10.0, right: 10.0),
               unselectedLabelColor: Colors.grey,
-              indicatorWeight: 0.0,
+              indicatorWeight: 5.0,
               indicator: ShapeDecoration(
                 shape: Border(
                   left: BorderSide(color: Colors.white),
@@ -41,7 +48,6 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
             children: [
               /* Padding(
                 padding: const EdgeInsets.only(top: 20.0, left: 20.0, right: 80.0, bottom: 30.0),
-                // ######################################################################################
                 child: SearchBar(
                   //controller: controller,
                   padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 16.0)),
@@ -64,17 +70,13 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                   ],
                 ),
               ), */
+              // ######################################################################################
+              // FIRST SCREEN All Channels
+              channels,
+              // ######################################################################################
+              // SECOND SCREEN My Channels
               Container(
-                color: Colors.blueGrey,
-                child: Center(
-                  child: Text(
-                    'Start Screen',
-                    style: TextStyle(fontSize: 40.0, fontFamily: 'Audiowide', letterSpacing: 4.0),
-                  ),
-                ),
-              ),
-              Container(
-                color: Colors.blueGrey,
+                color: Colors.black,
                 child: Center(
                   child: Text(
                     'My Channels',
@@ -82,8 +84,10 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                   ),
                 ),
               ),
+              // ######################################################################################
+              // THIRD SCREEN Favorites
               Container(
-                color: Colors.blueGrey,
+                color: Colors.black,
                 child: Center(
                   child: Text(
                     'Favorites',
@@ -101,7 +105,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                 if (index == 0) {
                   Navigator.pushNamed(context, '/start');
                 } else if (index == 1) {
-                  Navigator.pushNamed(context, '/home');
+                  Navigator.pushNamed(context, '/');
                 } else if (index == 2) {
                   Navigator.pushNamed(context, '/');
                 }

@@ -31,7 +31,15 @@ flutter:
       - asset: assets/fonts/ArialCEItalic.ttf
       - asset: assets/fonts/ArialCEMTBlack.ttf
   
-  # assets:
-  #  - assets/images/
-    
-  
+  assets:
+      - assets/images/broadcastImages/Highschool_dxd_logo.png
+      - assets/images/broadcastImages/Highschool_dxd_born_logo.png
+      - assets/images/broadcastImages/Highschool_dxd_new_logo.png
+      - assets/images/broadcastImages/Highschool_dxd_hero_logo.png
+      - assets/images/broadcastImages/SoloLeveling_logo.jpg
+      - assets/images/broadcastImages/UQHolder_logo.png
+      - assets/images/broadcastImages/TheEminenceInShadow_logo.png
+      - assets/images/broadcastImages/AkameGaKill_logo.png
+      - assets/images/broadcastImages/KonoSuba_logo.png
+      - assets/images/broadcastImages/Call_of_the_Night_logo.png
+      - assets/images/broadcastImages/Shinchou_Yuusha_logo.png

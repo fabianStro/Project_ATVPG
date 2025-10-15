@@ -54,6 +54,7 @@ class _LoginWidgetState extends State<LoginWidget> {
               ), // TextField
               SizedBox(height: 20.0),
               TextField(
+                obscureText: true,
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.only(top: 16.0),
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(_borderRadius)),

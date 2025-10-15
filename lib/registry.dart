@@ -56,7 +56,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(top: 16.0),
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
-                          labelText: 'Email',
+                          labelText: 'First/Last name',
                         ), // InputDecoration
                       ), // TextField
                       SizedBox(height: 20.0),
@@ -64,23 +64,25 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(top: 16.0),
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
-                          labelText: 'Email',
+                          labelText: 'E-mail',
                         ), // InputDecoration
                       ), // TextField
                       SizedBox(height: 20.0),
                       TextField(
+                        obscureText: true,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(top: 16.0),
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
-                          labelText: 'Email',
+                          labelText: 'Password',
                         ), // InputDecoration
                       ), // TextField
                       SizedBox(height: 20.0),
                       TextField(
+                        obscureText: true,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(top: 16.0),
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
-                          labelText: 'Email',
+                          labelText: 'Confirm Password',
                         ), // InputDecoration
                       ), // TextField
                       SizedBox(height: 20.0),
