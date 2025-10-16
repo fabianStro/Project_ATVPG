@@ -29,6 +29,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           toolbarHeight: 100,
           shape: Border(bottom: _appBarBorderStyle, top: _appBarBorderStyle), // Border
@@ -37,89 +38,92 @@ class _RegistryWidgetState extends State<RegistryWidget> {
         ), // AppBar
         body: //Padding(
             //
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 40, left: 60.0, right: 60.0),
-                  child: Column(
-                    children: [
-                      TextField(
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(top: 16.0),
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
-                          labelText: 'Username',
-                        ), // InputDecoration
-                      ), // TextField
-                      SizedBox(height: 20.0),
-                      TextField(
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(top: 16.0),
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
-                          labelText: 'First/Last name',
-                        ), // InputDecoration
-                      ), // TextField
-                      SizedBox(height: 20.0),
-                      TextField(
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(top: 16.0),
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
-                          labelText: 'E-mail',
-                        ), // InputDecoration
-                      ), // TextField
-                      SizedBox(height: 20.0),
-                      TextField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(top: 16.0),
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
-                          labelText: 'Password',
-                        ), // InputDecoration
-                      ), // TextField
-                      SizedBox(height: 20.0),
-                      TextField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(top: 16.0),
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
-                          labelText: 'Confirm Password',
-                        ), // InputDecoration
-                      ), // TextField
-                      SizedBox(height: 20.0),
-                      SizedBox(
-                        width: _sendBoxWidth,
-                        child: ElevatedButton(
-                          style: _buttonStyle,
-                          onPressed: () {
-                            Navigator.pushNamed(context, '');
-                          },
-                          child: Text(_registerLabel, style: _buttonTextStyle), // Text
-                        ), // ElevatedButton
-                      ), // SizedBox
-                    ],
+            SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 40, left: 60.0, right: 60.0),
+                    child: Column(
+                      children: [
+                        TextField(
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(top: 16.0),
+                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
+                            labelText: 'Username',
+                          ), // InputDecoration
+                        ), // TextField
+                        SizedBox(height: 20.0),
+                        TextField(
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(top: 16.0),
+                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
+                            labelText: 'First/Last name',
+                          ), // InputDecoration
+                        ), // TextField
+                        SizedBox(height: 20.0),
+                        TextField(
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(top: 16.0),
+                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
+                            labelText: 'E-mail',
+                          ), // InputDecoration
+                        ), // TextField
+                        SizedBox(height: 20.0),
+                        TextField(
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(top: 16.0),
+                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
+                            labelText: 'Password',
+                          ), // InputDecoration
+                        ), // TextField
+                        SizedBox(height: 20.0),
+                        TextField(
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(top: 16.0),
+                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
+                            labelText: 'Confirm Password',
+                          ), // InputDecoration
+                        ), // TextField
+                        SizedBox(height: 40.0),
+                        SizedBox(
+                          width: _sendBoxWidth,
+                          child: ElevatedButton(
+                            style: _buttonStyle,
+                            onPressed: () {
+                              Navigator.pushNamed(context, '');
+                            },
+                            child: Text(_registerLabel, style: _buttonTextStyle), // Text
+                          ), // ElevatedButton
+                        ), // SizedBox
+                      ],
+                    ),
                   ),
-                ),
-                const Divider(height: 50, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
-                Text(
-                  'Already have an account?',
-                  style: TextStyle(color: Colors.grey[400], fontFamily: 'Arial'),
-                ), // Text
-                Text(
-                  'Login here',
-                  style: TextStyle(color: Colors.grey[400], fontFamily: 'Arial'),
-                ), // Text
-                SizedBox(height: 5.0),
-                SizedBox(
-                  width: _sendBoxWidth,
-                  child: ElevatedButton(
-                    style: _buttonStyle,
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/home');
-                    },
-                    child: Text(_loginLabel, style: _buttonTextStyle), // Text
-                  ), // ElevatedButton
-                ), // SizedBox
-              ], // Children
+                  SizedBox(height: 50.0),
+                  const Divider(height: 30, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
+                  Text(
+                    'Already have an account?',
+                    style: TextStyle(color: Colors.grey[400], fontFamily: 'Arial'),
+                  ), // Text
+                  Text(
+                    'Login here',
+                    style: TextStyle(color: Colors.grey[400], fontFamily: 'Arial'),
+                  ), // Text
+                  SizedBox(height: 20.0),
+                  SizedBox(
+                    width: _sendBoxWidth,
+                    child: ElevatedButton(
+                      style: _buttonStyle,
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/home');
+                      },
+                      child: Text(_loginLabel, style: _buttonTextStyle), // Text
+                    ), // ElevatedButton
+                  ), // SizedBox
+                ], // Children
+              ),
             ), // Column
       ), // Column // Scaffold
     ); // SafeArea

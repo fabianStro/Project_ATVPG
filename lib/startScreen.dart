@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_one/allChannels.dart';
+import 'package:flutter_application_one/myChannels.dart';
+import 'package:flutter_application_one/favorite.dart';
 
 class StartScreenWidget extends StatefulWidget {
   const StartScreenWidget({super.key});
@@ -13,9 +15,10 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
   // ######################################################################################
   // Instanzen der Screens
   // ######################################################################################
-  final AllChannels channels = AllChannels();
-  //final MyChannels myChannels = MyChannels();
-  //final Favorites favorites = Favorites();
+  final AllChannels _allChannels = AllChannels();
+  final MyChannels _myChannels = MyChannels();
+  final FavoriteBroadcast _myFavorites = FavoriteBroadcast();
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -65,40 +68,24 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                         onPressed: () {
                           print('Search button pressed');
                         },
-                      ), // Ic
+                      ),
                     ),
                   ],
                 ),
               ), */
               // ######################################################################################
               // FIRST SCREEN All Channels
-              channels,
+              _allChannels,
               // ######################################################################################
               // SECOND SCREEN My Channels
-              Container(
-                color: Colors.black,
-                child: Center(
-                  child: Text(
-                    'My Channels',
-                    style: TextStyle(fontSize: 40.0, fontFamily: 'Audiowide', letterSpacing: 4.0),
-                  ),
-                ),
-              ),
+              _myChannels,
               // ######################################################################################
               // THIRD SCREEN Favorites
-              Container(
-                color: Colors.black,
-                child: Center(
-                  child: Text(
-                    'Favorites',
-                    style: TextStyle(fontSize: 40.0, fontFamily: 'Audiowide', letterSpacing: 4.0),
-                  ),
-                ),
-              ),
+              _myFavorites,
             ],
           ), // TabBarView
           // ######################################################################################
-          bottomNavigationBar: NavigationBar(
+          /*  bottomNavigationBar: NavigationBar(
             onDestinationSelected: (int index) {
               setState(() {
                 currentPageIndex = index;
@@ -116,7 +103,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
               NavigationDestination(icon: Icon(Icons.tv_off_outlined), label: ''),
               NavigationDestination(icon: Icon(Icons.star_outline_outlined), label: ''),
             ],
-          ), // NavigationBar
+          ), // NavigationBar */
         ), // Scaffold
       ), // SafeArea
     ); // DefaultTabController
