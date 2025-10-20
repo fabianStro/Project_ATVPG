@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_one/allChannels.dart';
+//import 'package:flutter_application_one/allChannels.dart';
 import 'package:flutter_application_one/broadcastAttribute.dart';
 
 class DetailWidget extends StatefulWidget {
