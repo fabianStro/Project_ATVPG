@@ -76,7 +76,7 @@ class AllChannels extends StatelessWidget {
     BroadcastAttribute(
       title: 'Call of the Night',
       subtitle: 'Anime, Romance, Comedy',
-      imagePath: 'assets/images/broadcastImages/Call_of_the_Night_logo.png',
+      imagePath: 'assets/images/broadcastImages/CallOfTheNight_logo.png',
       description:
           'Call of the Night (jap. Yofukashi no Uta) ist eine Manga-Serie und Anime-Serie über den schlaflosen Schüler Kou Yamori, der nachts durch die Stadt streift und die mysteriöse Vampirin Nazuna Nanakusa trifft. Aus Faszination bittet Kou sie, ihn in einen Vampir zu verwandeln, was aber nur möglich ist, wenn er sich in sie verliebt.',
     ),

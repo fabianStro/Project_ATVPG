@@ -13,7 +13,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
 
 flutter:
   uses-material-design: true
@@ -41,5 +41,5 @@ flutter:
       - assets/images/broadcastImages/TheEminenceInShadow_logo.png
       - assets/images/broadcastImages/AkameGaKill_logo.png
       - assets/images/broadcastImages/KonoSuba_logo.png
-      - assets/images/broadcastImages/Call_of_the_Night_logo.png
+      - assets/images/broadcastImages/CallOfTheNight_logo.png
       - assets/images/broadcastImages/Shinchou_Yuusha_logo.png
