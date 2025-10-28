@@ -98,7 +98,7 @@ class FavoriteBroadcast extends StatelessWidget {
           subtitle: Text(broadcastData[index].subtitle),
           shape: Border(
             bottom: BorderSide(color: Colors.white, width: 1.0),
-            top: BorderSide(color: Colors.white, width: 1.0),
+            // top: BorderSide(color: Colors.white, width: 1.0),
           ), // Border
         ); // ListTile
       },

@@ -3,6 +3,7 @@ import 'package:flutter_application_one/login.dart';
 import 'package:flutter_application_one/registry.dart';
 import 'package:flutter_application_one/startScreen.dart';
 import 'package:flutter_application_one/broadcastDetail.dart';
+import 'package:flutter_application_one/profile.dart';
 
 /* import 'package:sqflite/sqflite.dart';
 
@@ -61,6 +62,7 @@ class MyApp extends StatelessWidget {
         '/registry': (context) => RegistryWidget(),
         '/start': (context) => StartScreenWidget(),
         '/detail': (context) => DetailWidget(),
+        '/profile': (context) => ProfileWidget(),
       }, // routes
     ); // MaterialApp
   }

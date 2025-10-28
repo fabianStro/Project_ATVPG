@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_one/allChannels.dart';
-import 'package:flutter_application_one/login.dart';
 import 'package:flutter_application_one/myChannels.dart';
 import 'package:flutter_application_one/favorite.dart';
 
@@ -29,11 +28,20 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
       child: SafeArea(
         child: Scaffold(
           appBar: AppBar(
+            title: Text(''),
+            leading: GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/profile');
+              },
+              child: Icon(Icons.account_circle, size: 40.0),
+            ),
             bottom: const TabBar(
               padding: EdgeInsets.only(left: 80.0),
               tabAlignment: TabAlignment.fill,
               labelPadding: EdgeInsets.only(left: 10.0, right: 10.0),
               unselectedLabelColor: Colors.grey,
+              labelColor: Colors.white,
+              labelStyle: TextStyle(fontSize: 16.0),
               indicatorWeight: 5.0,
               indicator: ShapeDecoration(
                 shape: Border(
@@ -42,7 +50,6 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                   top: BorderSide(color: Colors.white),
                 ), // Border
               ), // ShapeDecoration
-              labelColor: Colors.white,
               tabs: [
                 Tab(text: 'All Channels'),
                 Tab(text: 'My Cahnnels'),
