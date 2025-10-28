@@ -12,12 +12,12 @@ class DetailWidget extends StatefulWidget {
 class _DetailWidgetState extends State<DetailWidget> {
   @override
   Widget build(BuildContext context) {
-    final index = ModalRoute.of(context)!.settings.arguments as BroadcastAttribute;
-    var pictureAdress = Error.safeToString(index.imagePath);
+    final BroadcastAttribute index = ModalRoute.of(context)!.settings.arguments as BroadcastAttribute;
+    String pictureAdress = Error.safeToString(index.imagePath);
     String pictureAdressString = pictureAdress.substring(1, pictureAdress.length - 1);
-    var titleString = Error.safeToString(index.title);
-    var subtitleString = Error.safeToString(index.subtitle);
-    var descriptionString = Error.safeToString(index.description);
+    String titleString = Error.safeToString(index.title);
+    String subtitleString = Error.safeToString(index.subtitle);
+    String descriptionString = Error.safeToString(index.description);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(),

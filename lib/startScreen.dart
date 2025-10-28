@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_one/allChannels.dart';
+import 'package:flutter_application_one/login.dart';
 import 'package:flutter_application_one/myChannels.dart';
 import 'package:flutter_application_one/favorite.dart';
 
@@ -15,6 +16,8 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
   // ######################################################################################
   // Instanzen der Screens
   // ######################################################################################
+  // final LoginWidget _loginWidget = LoginWidget();
+  //late final String _user = ModalRoute.of(context)!.settings.arguments as String;
   final AllChannels _allChannels = AllChannels();
   final MyChannels _myChannels = MyChannels();
   final FavoriteBroadcast _myFavorites = FavoriteBroadcast();

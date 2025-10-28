@@ -12,20 +12,20 @@ class MyChannels extends StatelessWidget {
   List<BroadcastAttribute> broadcastData = [
     /*  BroadcastAttribute(
       title: 'Highschool DxD',
-      subtitle: 'Anime, Comedy, Ecchi, Harem',
+      subtitle: 'Genre: Anime, Comedy, Ecchi, Harem',
       imagePath: 'assets/images/broadcastImages/Highschool_dxd_logo.png',
       description: High School DxD ist eine japanische Light-Novel-Reihe, die als Anime und Manga adaptiert wurde und die Geschichte von Issei Hyoudou erzählt, einem Oberschüler, der nach seinem Tod als Dämon wiederbelebt wird, um einem mächtigen Dämonenclan zu dienen. Er muss an seiner neuen Schule, der einstigen Mädchenschule Kuoh Academy, mit den anderen Mitgliedern des Okkulten Forschungsclubs – die selbst Dämonen sind – klarkommen, während er sich auf Kämpfe zwischen Engeln, Dämonen und gefallenen Engeln einlässt. Die Serie ist bekannt für ihre Mischung aus Comedy, Action und Ecchi-Elementen.',
     ), */
     BroadcastAttribute(
       title: 'Highschool DxD New',
-      subtitle: 'Anime, Comedy, Ecchi, Harem',
+      subtitle: 'Genre: Anime, Comedy, Ecchi, Harem',
       imagePath: 'assets/images/broadcastImages/Highschool_dxd_new_logo.png',
       description:
           'High School DxD ist eine japanische Light-Novel-Reihe, die als Anime und Manga adaptiert wurde und die Geschichte von Issei Hyoudou erzählt, einem Oberschüler, der nach seinem Tod als Dämon wiederbelebt wird, um einem mächtigen Dämonenclan zu dienen. Er muss an seiner neuen Schule, der einstigen Mädchenschule Kuoh Academy, mit den anderen Mitgliedern des Okkulten Forschungsclubs – die selbst Dämonen sind – klarkommen, während er sich auf Kämpfe zwischen Engeln, Dämonen und gefallenen Engeln einlässt. Die Serie ist bekannt für ihre Mischung aus Comedy, Action und Ecchi-Elementen.',
     ),
     BroadcastAttribute(
       title: 'Highschool DxD Born',
-      subtitle: 'Anime, Comedy, Ecchi, Harem',
+      subtitle: 'Genre: Anime, Comedy, Ecchi, Harem',
       imagePath: 'assets/images/broadcastImages/Highschool_dxd_born_logo.png',
       description:
           'High School DxD ist eine japanische Light-Novel-Reihe, die als Anime und Manga adaptiert wurde und die Geschichte von Issei Hyoudou erzählt, einem Oberschüler, der nach seinem Tod als Dämon wiederbelebt wird, um einem mächtigen Dämonenclan zu dienen. Er muss an seiner neuen Schule, der einstigen Mädchenschule Kuoh Academy, mit den anderen Mitgliedern des Okkulten Forschungsclubs – die selbst Dämonen sind – klarkommen, während er sich auf Kämpfe zwischen Engeln, Dämonen und gefallenen Engeln einlässt. Die Serie ist bekannt für ihre Mischung aus Comedy, Action und Ecchi-Elementen.',
@@ -45,14 +45,14 @@ class MyChannels extends StatelessWidget {
     ),
     BroadcastAttribute(
       title: 'UQ Holder',
-      subtitle: 'Anime, Fantasy, Abenteuer, Action, Shōnen',
+      subtitle: 'Genre: Anime, Fantasy, Abenteuer, Action, Shōnen',
       imagePath: 'assets/images/broadcastImages/UQHolder_logo.png',
       description:
           'UQ Holder! ist eine Manga-Serie von Ken Akamatsu, die 63 Jahre nach der Handlung von "Magister Negi Magi" spielt und im selben Universum angesiedelt ist. Die Geschichte handelt von dem Jungen Touta Konoe, der nach einem Angriff auf seine Lehrerin Yukihime zum Vampir wird, woraufhin die beiden in die Hauptstadt aufbrechen, um die geheime Organisation "UQ Holder" zu finden. Diese Organisation besteht aus Unsterblichen und hilft bei Problemen, die die Welt betreffen, und muss auch mit anderen Unsterblichen fertigwerden.',
     ),
     BroadcastAttribute(
       title: 'The Eminence in Shadow',
-      subtitle: 'Anime, Adventure,Isekai',
+      subtitle: 'Genre: Anime, Adventure, Isekai',
       imagePath: 'assets/images/broadcastImages/TheEminenceInShadow_logo.png',
       description:
           'The Eminence in Shadow ist eine Isekai-Geschichte über einen Jungen namens Cid Kagenou, der in einer Fantasy-Welt wiedergeboren wird. Sein Traum ist es, eine "Eminenz im Schatten" zu sein, die im Verborgenen agiert, anstatt der Held zu sein. Als er eine scheinbar rein fiktive Organisation gründet, um gegen einen imaginären Kult zu kämpfen, stellt er fest, dass dieser Kult und seine eigenen Aktionen reale Konsequenzen haben und der Kult tatsächlich existiert.',
@@ -94,16 +94,17 @@ class MyChannels extends StatelessWidget {
               Navigator.pushNamed(context, '/detail', arguments: broadcastData[index]);
             },
             child: Image.asset(broadcastData[index].imagePath, width: 80, height: 80, fit: BoxFit.cover),
-          ),
+          ), // GestureDEtector
           title: Text(broadcastData[index].title),
           subtitle: Text(broadcastData[index].subtitle),
           shape: Border(
             bottom: BorderSide(color: Colors.white, width: 1.0),
             top: BorderSide(color: Colors.white, width: 1.0),
-          ),
-        );
+          ), // Border
+        ); // List Tile
       },
-    );
+    ); // ListView.builder
+
     /* Widget build(BuildContext context) {
     return ListView(
       children: broadcastData
