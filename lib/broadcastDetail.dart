@@ -43,20 +43,20 @@ class _DetailWidgetState extends State<DetailWidget> {
                         IconButton(
                           onPressed: () {},
                           icon: Icon(Icons.share, color: Colors.white, size: 35),
-                        ),
+                        ), // IconButton
                         IconButton(
                           onPressed: () {},
                           icon: Icon(Icons.star_border_outlined, color: Colors.white, size: 35),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
+                        ), // IconButton
+                      ], // children
+                    ), // Row
+                  ), // ListTile
+                ], // children
+              ), // Column
+            ), // Padding
+          ), // Center
+        ), // SingleChildScrollView
+      ), // Scaffold
+    ); // SafeArea
   }
 }

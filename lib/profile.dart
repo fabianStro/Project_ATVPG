@@ -48,9 +48,9 @@ class _LoginWidgetState extends State<ProfileWidget> {
                 ],
               ), // Column
             ), // Padding
-          ],
-        ),
-      ),
-    );
+          ], // Children
+        ), // Column
+      ), // Scaffold
+    ); // SafeArea
   }
 }

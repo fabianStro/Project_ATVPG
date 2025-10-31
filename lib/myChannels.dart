@@ -104,27 +104,5 @@ class MyChannels extends StatelessWidget {
         ); // List Tile
       },
     ); // ListView.builder
-
-    /* Widget build(BuildContext context) {
-    return ListView(
-      children: broadcastData
-          .map(
-            (item) => ListTile(
-              leading: GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, '/detail', arguments: item);
-                },
-                child: Image.asset(item.imagePath, width: 80, height: 80, fit: BoxFit.cover),
-              ),
-              title: Text(item.title),
-              subtitle: Text(item.subtitle),
-              shape: Border(
-                bottom: BorderSide(color: Colors.white, width: 1.0),
-                top: BorderSide(color: Colors.white, width: 1.0),
-              ),
-            ),
-          )
-          .toList(),
-    ); */
   }
 }

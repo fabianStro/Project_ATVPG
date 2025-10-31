@@ -86,8 +86,8 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                   onPressed: () {
                     Navigator.pushNamed(context, '/home');
                   },
-                ),
-              ),
+                ), // IconButton
+              ), // Padding
             ],
           ), // AppBar
           body: TabBarView(
