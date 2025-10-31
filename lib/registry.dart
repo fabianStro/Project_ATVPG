@@ -123,9 +123,9 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                     ), // ElevatedButton
                   ), // SizedBox
                 ], // Children
-              ),
-            ), // Column
-      ), // Column // Scaffold
+              ), // Column
+            ), // SingleChildScrollView
+      ), // Scaffold
     ); // SafeArea
   }
 }

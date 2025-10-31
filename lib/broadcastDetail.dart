@@ -34,10 +34,22 @@ class _DetailWidgetState extends State<DetailWidget> {
                   Text(subtitleString, style: TextStyle(color: Colors.white, fontSize: 16)),
                   const Divider(height: 30, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
                   Text(descriptionString, style: TextStyle(color: Colors.white, fontSize: 16)),
-                  const Divider(height: 30, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
+                  const Divider(height: 15, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
                   ListTile(
-                    leading: Icon(Icons.share, color: Colors.white, size: 30),
-                    trailing: Icon(Icons.star_border_outlined, color: Colors.white, size: 35),
+                    // trailing: Icon(Icons.star_border_outlined, color: Colors.white, size: 35),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.share, color: Colors.white, size: 35),
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.star_border_outlined, color: Colors.white, size: 35),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

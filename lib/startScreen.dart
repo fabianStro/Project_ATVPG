@@ -16,7 +16,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
   // Instanzen der Screens
   // ######################################################################################
   // final LoginWidget _loginWidget = LoginWidget();
-  //late final String _user = ModalRoute.of(context)!.settings.arguments as String;
+  // late final String _user = ModalRoute.of(context)!.settings.arguments as String;
   final AllChannels _allChannels = AllChannels();
   final MyChannels _myChannels = MyChannels();
   final FavoriteBroadcast _myFavorites = FavoriteBroadcast();
@@ -33,12 +33,34 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
               onTap: () {
                 Navigator.pushNamed(context, '/profile');
               },
-              child: Icon(Icons.account_circle, size: 40.0),
-            ),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 16.0, left: 16.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.white, width: 1),
+                    image: const DecorationImage(image: AssetImage('assets/images/profile2.png'), fit: BoxFit.cover),
+                  ), // BoxDecoration
+                ), // Container
+              ), // Padding
+              /* Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ClipOval(
+                  child: Image.asset(
+                    'assets/images/profile.jpg',
+                    width: 20,
+                    height: 20,
+                    fit: BoxFit.cover,
+                    color: Colors.white.withOpacity(0.5),
+                    colorBlendMode: BlendMode.colorBurn,
+                  ),
+                ),
+              ), */
+            ), // GestureDetector
             bottom: const TabBar(
               padding: EdgeInsets.only(left: 80.0),
               tabAlignment: TabAlignment.fill,
-              labelPadding: EdgeInsets.only(left: 10.0, right: 10.0),
+              labelPadding: EdgeInsets.only(),
               unselectedLabelColor: Colors.grey,
               labelColor: Colors.white,
               labelStyle: TextStyle(fontSize: 16.0),
@@ -56,6 +78,17 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                 Tab(text: 'Favorites'),
               ],
             ), // TabBar
+            actions: [
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0, right: 16.0),
+                child: IconButton(
+                  icon: const Icon(Icons.logout_rounded, size: 30),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/home');
+                  },
+                ),
+              ),
+            ],
           ), // AppBar
           body: TabBarView(
             children: [
