@@ -12,8 +12,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
 
   final ButtonStyle _buttonStyle = ElevatedButton.styleFrom(backgroundColor: Colors.grey);
   final TextStyle _buttonTextStyle = TextStyle(color: Colors.white, fontFamily: 'Arial');
-  final String _registerLabel = 'Register';
-  final String _loginLabel = 'Login';
+  final String _registerLabel = 'Register', _loginLabel = 'Login';
   final double _sendBoxWidth = 150.0;
   /* final TextStyle _registryTextStyle = TextStyle(color: Colors.grey[400], fontFamily: 'Arial');
   final TextStyle _loginTextStyle = TextStyle(fontSize: 28.0, letterSpacing: 2.0, fontFamily: 'Arial');

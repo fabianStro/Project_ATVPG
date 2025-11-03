@@ -8,29 +8,21 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController(),
+      _passwordController = TextEditingController();
 
   final ButtonStyle _buttonStyle = ElevatedButton.styleFrom(backgroundColor: Colors.grey);
-  final TextStyle _titleTextStyle = TextStyle(fontSize: 50.0, letterSpacing: 4.0, fontFamily: 'Audiowide');
-  final TextStyle _buttonTextStyle = TextStyle(color: Colors.white, fontFamily: 'Arial');
-  final TextStyle _registryTextStyle = TextStyle(color: Colors.grey[400], fontFamily: 'Arial');
-  final TextStyle _loginTextStyle = TextStyle(fontSize: 28.0, letterSpacing: 2.0, fontFamily: 'Arial');
+  final TextStyle _titleTextStyle = TextStyle(fontSize: 50.0, letterSpacing: 4.0, fontFamily: 'Audiowide'),
+      _buttonTextStyle = TextStyle(color: Colors.white, fontFamily: 'Arial'),
+      _registryTextStyle = TextStyle(color: Colors.grey[400], fontFamily: 'Arial'),
+      _loginTextStyle = TextStyle(fontSize: 28.0, letterSpacing: 2.0, fontFamily: 'Arial');
 
-  final String _title = 'TVPG';
-  final String _username = 'Reaper';
-  final String _password = 'root';
-
-  late String formatString;
-  // final double _sendBoxWidth = 150.0;
-  // final double _borderRadius = 25.0;
-  // final double _toolbarHeight = 100.0;
-  // final bool _isTrue = true;
-  // final Color _whiteColor = Colors.white;
+  final String _title = 'ATVPG', _username = 'Reaper', _password = 'root';
+  late String _formatString;
 
   void _loginCheck(BuildContext context) {
-    formatString = _usernameController.text.replaceAll(' ', '');
-    if (formatString == _username && _passwordController.text == _password) {
+    _formatString = _usernameController.text.replaceAll(' ', '');
+    if (_formatString == _username && _passwordController.text == _password) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           duration: const Duration(seconds: 2),
@@ -38,12 +30,12 @@ class _LoginWidgetState extends State<LoginWidget> {
           showCloseIcon: false,
           closeIconColor: Colors.white,
           content: Text(
-            'Welcome $formatString. Login successful !',
+            'Welcome $_formatString. Login successful !',
             style: const TextStyle(fontSize: 20.0, color: Colors.white),
           ),
         ), // SnackBar
       );
-      Navigator.pushNamed(context, '/start', arguments: formatString);
+      Navigator.pushNamed(context, '/start', arguments: _formatString);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
