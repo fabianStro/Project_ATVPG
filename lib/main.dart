@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_one/login.dart';
+import 'package:flutter_application_one/notification.dart';
 import 'package:flutter_application_one/registry.dart';
 import 'package:flutter_application_one/startScreen.dart';
 import 'package:flutter_application_one/broadcastDetail.dart';
 import 'package:flutter_application_one/profile.dart';
 
-/* import 'package:sqflite/sqflite.dart';
-
+// import 'package:sqflite/sqflite.dart';
+/*
 var db = await openDatabase('my_db.db');
-await db.close();
 
 // Get a location using getDatabasesPath
 var databasesPath = await getDatabasesPath();
@@ -63,6 +63,7 @@ class MyApp extends StatelessWidget {
         '/start': (context) => StartScreenWidget(),
         '/detail': (context) => DetailWidget(),
         '/profile': (context) => ProfileWidget(),
+        '/notification': (context) => NotificationWidget(),
       }, // routes
     ); // MaterialApp
   }

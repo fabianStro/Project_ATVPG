@@ -36,15 +36,19 @@ class _LoginWidgetState extends State<ProfileWidget> {
             const Divider(height: 30, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
             SizedBox(height: 15.0),
             Padding(
-              padding: EdgeInsets.only(left: 0.0),
+              padding: EdgeInsets.only(left: 16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('First name: Fabian', style: TextStyle(fontSize: 20.0)),
-                  SizedBox(height: 20),
+                  SizedBox(height: 15),
                   Text('Last name: Strottmann', style: TextStyle(fontSize: 20.0)),
-                  SizedBox(height: 20),
+                  SizedBox(height: 15),
                   Text('Username: Reaper', style: TextStyle(fontSize: 20.0)),
+                  SizedBox(height: 15),
+                  Text('E-mail: Reaper@hell.com', style: TextStyle(fontSize: 20.0)),
+                  SizedBox(height: 15),
+                  Text('Password: ****', style: TextStyle(fontSize: 20.0)),
                 ],
               ), // Column
             ), // Padding

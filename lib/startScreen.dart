@@ -15,7 +15,9 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
   // Variablen
   // ######################################################################################
   int currentPageIndex = 0;
-  final Icon icon = Icon(Icons.search, size: 35.0), _exitIcon = Icon(Icons.logout_rounded, size: 35.0);
+  final Icon _searchIcon = Icon(Icons.search, size: 30.0),
+      _exitIcon = Icon(Icons.logout_rounded, size: 30.0),
+      _noteIcon = Icon(Icons.notifications_outlined, size: 30.0);
   final OverlayPortalController _overlayController = OverlayPortalController();
   // ######################################################################################
   // Instanzen der Screens
@@ -33,28 +35,28 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
       child: SafeArea(
         child: Scaffold(
           appBar: AppBar(
+            toolbarHeight: 100.0,
             title: Text(''),
             leading: GestureDetector(
               onTap: () {
                 Navigator.pushNamed(context, '/profile');
               },
               child: Padding(
-                padding: EdgeInsets.only(top: 18.0, left: 16.0),
+                padding: EdgeInsets.only(top: 10.0, left: 16.0),
                 child: Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(color: Colors.white, width: 1.0),
-                    image: DecorationImage(image: AssetImage('assets/images/profile2.png'), fit: BoxFit.cover),
+                    image: DecorationImage(image: AssetImage('assets/images/profile2.png'), fit: BoxFit.contain),
                   ), // BoxDecoration
                 ), // Container
               ), // Padding
             ), // GestureDetector
             bottom: TabBar(
-              tabAlignment: TabAlignment.fill,
               unselectedLabelColor: Colors.grey,
               unselectedLabelStyle: TextStyle(fontStyle: FontStyle.italic),
               labelColor: Colors.white,
-              labelStyle: TextStyle(fontSize: 16.0),
+              labelStyle: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
               indicatorPadding: EdgeInsets.only(left: -15.0, right: -15.0),
               indicator: BoxDecoration(
                 borderRadius: BorderRadius.only(topRight: Radius.circular(10), topLeft: Radius.circular(10)),
@@ -62,7 +64,6 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                   left: BorderSide(color: Colors.white),
                   right: BorderSide(color: Colors.white),
                   top: BorderSide(color: Colors.white),
-                  //bottom: BorderSide(color: Colors.white),
                 ), // Border
               ), // BoxDecoration
               tabs: [
@@ -81,24 +82,30 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                       top: 110,
                       width: 390,
                       child: Container(
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: Colors.blue),
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(30.0), color: Colors.white),
                         height: 50,
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: const Text(
-                            'Hier erscheint die SearchBar',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
-                          ), // Text
-                        ), // Padding
+                        child: const Text(
+                          'Hier erscheint die SearchBar',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
+                        ), // Text
                       ), // Container
                     ); // Positioned
                   },
-                  child: Padding(padding: EdgeInsets.only(top: 16.0), child: icon), // Padding
+                  child: Padding(padding: EdgeInsets.only(top: 0.0), child: _searchIcon), // Padding
                 ), // OverlayPortal
               ), // GestureDetector
               Padding(
-                padding: const EdgeInsets.only(top: 10.0, right: 8.0, left: 8.0),
+                padding: const EdgeInsets.only(top: 0.0, right: 0.0, left: 8.0),
+                child: IconButton(
+                  icon: _noteIcon,
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/notification');
+                  },
+                ), // IconButton
+              ), // Padding
+              Padding(
+                padding: const EdgeInsets.only(top: 0.0, right: 8.0, left: 8.0),
                 child: IconButton(
                   icon: _exitIcon,
                   onPressed: () {
@@ -108,6 +115,29 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
               ), // Padding
             ],
           ), // AppBar
+          /*  drawer: Drawer(
+            child: ListView(
+              padding: EdgeInsets.only(left: 30.0),
+              children: [
+                DrawerHeader(
+                  decoration: BoxDecoration(color: Colors.black), // BoxDecoration
+                  child: Text('Menu', style: TextStyle(fontSize: 30.0, color: Colors.white)),
+                ), // DrawerHeader
+                ListTile(
+                  title: Text('Home', style: TextStyle(fontSize: 20.0, color: Colors.white)),
+                  onTap: () {
+                    Navigator.pushNamed(context, '/start');
+                  },
+                ), // ListTile
+                ListTile(
+                  title: Text('Logout', style: TextStyle(fontSize: 20.0, color: Colors.white)),
+                  onTap: () {
+                    Navigator.pushNamed(context, '/home');
+                  },
+                ), // ListTile
+              ],
+            ), // ListView
+          ), // Drawer */
           body: TabBarView(
             children: [
               // ######################################################################################
