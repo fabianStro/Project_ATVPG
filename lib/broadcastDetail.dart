@@ -46,6 +46,10 @@ class _DetailWidgetState extends State<DetailWidget> {
                         ), // IconButton
                         IconButton(
                           onPressed: () {},
+                          icon: Icon(Icons.bookmark_border_outlined, color: Colors.white, size: 35),
+                        ),
+                        IconButton(
+                          onPressed: () {},
                           icon: Icon(Icons.star_border_outlined, color: Colors.white, size: 35),
                         ), // IconButton
                       ], // children

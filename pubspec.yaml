@@ -18,7 +18,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
- # assets:
 
   fonts:
   - family: Audiowide
@@ -45,3 +44,8 @@ flutter:
       - assets/images/broadcastImages/CallOfTheNight_logo.png
       - assets/images/broadcastImages/Shinchou_Yuusha_logo.png
       - assets/images/profile2.png
+      # - assets/sounds/blob.mp3
+      # - assets/sounds/swoosh.mp3
+      # - assets/sounds/crystal.mp3
+      - assets/sounds/bFrog.mp3
+      # - assets/sounds/digital.mp3

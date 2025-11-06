@@ -103,7 +103,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     onPressed: () {
                       _loginCheck(context);
                     },
-                    child: Text('Login', style: _buttonTextStyle), // Text
+                    child: Text('Login', style: _buttonTextStyle),
                   ), // ElevatedButtton
                 ), // SizedBox
                 SizedBox(height: 15.0),

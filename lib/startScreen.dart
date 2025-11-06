@@ -59,6 +59,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
               labelStyle: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
               indicatorPadding: EdgeInsets.only(left: -15.0, right: -15.0),
               indicator: BoxDecoration(
+                color: Colors.black,
                 borderRadius: BorderRadius.only(topRight: Radius.circular(10), topLeft: Radius.circular(10)),
                 border: Border(
                   left: BorderSide(color: Colors.white),
@@ -67,9 +68,14 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                 ), // Border
               ), // BoxDecoration
               tabs: [
+                /*  Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  decoration: BoxDecoration(color: Colors.pink),
+                  child: Tab(text: 'All Anime'),
+                ), */
                 Tab(text: 'All Anime'),
-                Tab(text: 'My Anime'),
-                Tab(text: 'Fav Anime'),
+                Tab(text: 'My Anime', icon: Icon(Icons.bookmark_border_outlined)),
+                Tab(text: 'Fav Anime', icon: Icon(Icons.star_border_outlined)),
               ],
             ), // TabBar
             actions: [

@@ -8,6 +8,8 @@ class NotificationWidget extends StatefulWidget {
 }
 
 class _NotificationWidgetState extends State<NotificationWidget> {
+  //String selectedValue = 'Option 1';
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -21,22 +23,82 @@ class _NotificationWidgetState extends State<NotificationWidget> {
           centerTitle: true,
           title: Text('Notification', style: TextStyle(fontSize: 50.0, letterSpacing: 4.0, fontFamily: 'Arial')),
         ), // AppBar
-        body: Column(
-          //mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('When would you like to be reminded?', style: TextStyle(fontSize: 20.0, fontFamily: 'Arial')),
-            SizedBox(
-              width: 100.0,
-              child: TextField(
-                obscureText: false,
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(10.0),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
-                  labelText: 'Enter time',
-                ), // InputDecoration
-              ), // TextField
-            ), // SizedBox
-          ],
+        body: Padding(
+          padding: const EdgeInsets.only(top: 16.0, left: 16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('When would you like to be reminded', style: TextStyle(fontSize: 20.0, fontFamily: 'Arial')),
+              SizedBox(height: 10.0),
+              SizedBox(
+                height: 50.0,
+                width: 100.0,
+                child: TextField(
+                  obscureText: false,
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.all(10.0),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
+                    labelText: 'Min before',
+                  ), // InputDecoration
+                ), // TextField
+              ), // SizedBox
+              SizedBox(height: 30.0),
+              Text('Choose Reminder Sound', style: TextStyle(fontSize: 20.0, fontFamily: 'Arial')),
+              SizedBox(height: 10.0),
+              DropdownMenu<String>(
+                width: 200,
+                menuStyle: MenuStyle(
+                  backgroundColor: WidgetStatePropertyAll(Colors.black),
+                  shape: WidgetStatePropertyAll(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25), // Dropdown rund
+                    ),
+                  ),
+                ),
+                inputDecorationTheme: InputDecorationTheme(
+                  filled: true,
+                  fillColor: Colors.black,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25), // Feld rund
+                    borderSide: BorderSide(color: Colors.grey),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25),
+                    borderSide: BorderSide(color: Colors.grey),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25),
+                    borderSide: BorderSide(color: Colors.blue, width: 2),
+                  ),
+                ),
+                dropdownMenuEntries: const [
+                  DropdownMenuEntry(value: "blob", label: "Blob"),
+                  DropdownMenuEntry(value: "swoosh", label: "Swoosh"),
+                  DropdownMenuEntry(value: "crystal", label: "Crystal"),
+                  DropdownMenuEntry(value: "bFrog", label: "Bull Frog"),
+                  DropdownMenuEntry(value: "digital", label: "Digital"),
+                ],
+              ),
+
+              /*  DropdownMenu<String>(
+                //menuHeight: 16.0,
+                initialSelection: selectedValue,
+                onSelected: (value) {
+                  setState(() {
+                    selectedValue = value!;
+                  });
+                },
+                dropdownMenuEntries: const [
+                  DropdownMenuEntry(value: "Option 1", label: "Blob"),
+                  DropdownMenuEntry(value: "Option 2", label: "Crystal"),
+                  DropdownMenuEntry(value: "Option 3", label: "Guitar"),
+                  DropdownMenuEntry(value: "Option 4", label: "Bull Frog"),
+                  DropdownMenuEntry(value: "Option 5", label: "Digital"),
+                ],
+              ), */
+            ],
+          ),
         ), // Column
       ), // Scaffold
     ); // SafeArea
