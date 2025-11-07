@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_one/login.dart';
 import 'package:flutter_application_one/notification.dart';
 import 'package:flutter_application_one/registry.dart';
+import 'package:flutter_application_one/share.dart';
 import 'package:flutter_application_one/startScreen.dart';
 import 'package:flutter_application_one/broadcastDetail.dart';
 import 'package:flutter_application_one/profile.dart';
@@ -64,6 +65,7 @@ class MyApp extends StatelessWidget {
         '/detail': (context) => DetailWidget(),
         '/profile': (context) => ProfileWidget(),
         '/notification': (context) => NotificationWidget(),
+        '/share': (context) => ShareWidget(title: '', picture: ''),
       }, // routes
     ); // MaterialApp
   }

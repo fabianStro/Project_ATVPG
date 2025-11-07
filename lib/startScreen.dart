@@ -18,7 +18,8 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
   final Icon _searchIcon = Icon(Icons.search, size: 30.0),
       _exitIcon = Icon(Icons.logout_rounded, size: 30.0),
       _noteIcon = Icon(Icons.notifications_outlined, size: 30.0);
-  final OverlayPortalController _overlayController = OverlayPortalController();
+  final OverlayPortalController _overlaySearchController = OverlayPortalController();
+
   // ######################################################################################
   // Instanzen der Screens
   // ######################################################################################
@@ -80,9 +81,9 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
             ), // TabBar
             actions: [
               GestureDetector(
-                onTap: _overlayController.toggle,
+                onTap: _overlaySearchController.toggle,
                 child: OverlayPortal(
-                  controller: _overlayController,
+                  controller: _overlaySearchController,
                   overlayChildBuilder: (BuildContext context) {
                     return Positioned(
                       top: 110,

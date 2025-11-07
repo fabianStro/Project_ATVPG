@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'package:flutter_application_one/allChannels.dart';
 import 'package:flutter_application_one/broadcastAttribute.dart';
+import 'package:flutter_application_one/share.dart';
 
 class DetailWidget extends StatefulWidget {
   const DetailWidget({super.key});
@@ -10,6 +11,8 @@ class DetailWidget extends StatefulWidget {
 }
 
 class _DetailWidgetState extends State<DetailWidget> {
+  final OverlayPortalController _overlayShareController = OverlayPortalController();
+
   @override
   Widget build(BuildContext context) {
     final BroadcastAttribute index = ModalRoute.of(context)!.settings.arguments as BroadcastAttribute;
@@ -18,6 +21,9 @@ class _DetailWidgetState extends State<DetailWidget> {
         titleString = Error.safeToString(index.title),
         subtitleString = Error.safeToString(index.subtitle),
         descriptionString = Error.safeToString(index.description);
+    String title = titleString;
+    String picture = pictureAdressString;
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(),
@@ -40,10 +46,30 @@ class _DetailWidgetState extends State<DetailWidget> {
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.share, color: Colors.white, size: 35),
-                        ), // IconButton
+                        GestureDetector(
+                          onTap: _overlayShareController.toggle,
+                          child: OverlayPortal(
+                            controller: _overlayShareController,
+                            overlayChildBuilder: (BuildContext context) {
+                              return Positioned(
+                                top: 110,
+                                width: 390,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                    color: Colors.white,
+                                  ),
+                                  height: 400.0,
+                                  child: ShareWidget(title: '', picture: ''),
+                                ), // Container
+                              ); // Positioned
+                            },
+                            child: Padding(
+                              padding: EdgeInsets.only(top: 0.0, right: 10.0),
+                              child: Icon(Icons.share_outlined, color: Colors.white, size: 35.0),
+                            ), // Padding
+                          ), // OverlayPortal
+                        ), // GestureDetector
                         IconButton(
                           onPressed: () {},
                           icon: Icon(Icons.bookmark_border_outlined, color: Colors.white, size: 35),
