@@ -13,6 +13,7 @@ class _LoginWidgetState extends State<ProfileWidget> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           toolbarHeight: 100.0,
           shape: Border(
             bottom: BorderSide(color: Colors.white, width: 2.0),
@@ -52,30 +53,28 @@ class _LoginWidgetState extends State<ProfileWidget> {
                 ],
               ), // Column
             ), // Padding
-            SizedBox(height: 100.0),
+            SizedBox(height: 120.0),
             Center(
               child: Column(
-                /*   crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.end, */
                 children: [
                   SizedBox(
-                    width: 150.0,
+                    width: 200.0,
                     child: Center(
                       child: ElevatedButton(
                         onPressed: () {
                           Navigator.pushNamed(context, '/start');
                         },
-                        style: ElevatedButton.styleFrom(alignment: Alignment.center),
+                        style: ElevatedButton.styleFrom(alignment: Alignment.center, backgroundColor: Colors.grey),
                         child: Text(
-                          'Zurück zum Login',
+                          'Back to Main Screen',
                           style: TextStyle(color: Colors.white, fontFamily: 'Arial'),
-                        ),
-                      ),
-                    ), // ElevatedButtton
+                        ), // Text
+                      ), // ElevatedButton
+                    ), // Center
                   ), // SizedBox
                 ],
-              ),
-            ), // Column
+              ), // Column
+            ), // Center
           ], // children of body Column
         ), // Column
       ), // Scaffold

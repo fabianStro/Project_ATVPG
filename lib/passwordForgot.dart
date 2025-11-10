@@ -22,9 +22,57 @@ class _PasswordForgotWidgetState extends State<PasswordForgotWidget> {
           centerTitle: true,
           title: Text('Pwd Forgot?', style: TextStyle(fontSize: 40.0, letterSpacing: 4.0, fontFamily: 'Audiowide')),
         ), // AppBar
-        body: Center(
-          child: Text('Password Forgot Screen', style: TextStyle(fontSize: 20.0, fontFamily: 'Arial')),
-        ), // Center
+        body: Column(
+          children: [
+            Center(
+              child: Text('Password Forgot Screen', style: TextStyle(fontSize: 20.0, fontFamily: 'Arial')),
+            ), // Center
+            SizedBox(height: 100.0),
+            Center(
+              child: Column(
+                children: [
+                  SizedBox(
+                    width: 200.0,
+                    child: Center(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/start');
+                        },
+                        style: ElevatedButton.styleFrom(alignment: Alignment.center, backgroundColor: Colors.grey),
+                        child: Text(
+                          'Confirm',
+                          style: TextStyle(color: Colors.white, fontFamily: 'Arial'),
+                        ), // Text
+                      ), // ElevatedButton
+                    ), // Center
+                  ), // SizedBox
+                ], // children
+              ), // Column
+            ), // Center
+            SizedBox(height: 20.0),
+            Center(
+              child: Column(
+                children: [
+                  SizedBox(
+                    width: 200.0,
+                    child: Center(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/home');
+                        },
+                        style: ElevatedButton.styleFrom(alignment: Alignment.center, backgroundColor: Colors.grey),
+                        child: Text(
+                          'Cancel',
+                          style: TextStyle(color: Colors.white, fontFamily: 'Arial'),
+                        ), // Text
+                      ), // ElevatedButton
+                    ), // Center
+                  ), // SizedBox
+                ], // children
+              ), // Column
+            ), // Center
+          ], // children
+        ), // Column
       ), // Scaffold
     ); // SafeArea
   }

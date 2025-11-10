@@ -45,6 +45,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                 child: Column(
                   children: [
                     TextField(
+                      autocorrect: false,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(top: 16.0),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
@@ -53,6 +54,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                     ), // TextField
                     SizedBox(height: 20.0),
                     TextField(
+                      autocorrect: false,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(top: 16.0),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
@@ -61,6 +63,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                     ), // TextField
                     SizedBox(height: 20.0),
                     TextField(
+                      autocorrect: false,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(top: 16.0),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
@@ -69,6 +72,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                     ), // TextField
                     SizedBox(height: 20.0),
                     TextField(
+                      autocorrect: false,
                       obscureText: true,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(top: 16.0),
@@ -78,6 +82,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                     ), // TextField
                     SizedBox(height: 20.0),
                     TextField(
+                      autocorrect: false,
                       obscureText: true,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(top: 16.0),

@@ -15,6 +15,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           toolbarHeight: 100.0,
           shape: Border(
             bottom: BorderSide(color: Colors.white, width: 2.0),
@@ -33,13 +34,15 @@ class _NotificationWidgetState extends State<NotificationWidget> {
               SizedBox(height: 10.0),
               SizedBox(
                 height: 50.0,
-                width: 100.0,
+                width: 200.0,
                 child: TextField(
                   obscureText: false,
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.all(10.0),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
                     labelText: 'Min before',
+                    filled: true,
+                    fillColor: Colors.black,
                   ), // InputDecoration
                 ), // TextField
               ), // SizedBox
@@ -47,6 +50,10 @@ class _NotificationWidgetState extends State<NotificationWidget> {
               Text('Choose Reminder Sound', style: TextStyle(fontSize: 20.0, fontFamily: 'Arial')),
               SizedBox(height: 10.0),
               DropdownMenu<String>(
+                label: Text(
+                  'Select Sound',
+                  style: TextStyle(color: Colors.white, fontFamily: 'Arial'),
+                ),
                 width: 200,
                 menuStyle: MenuStyle(
                   backgroundColor: WidgetStatePropertyAll(Colors.black),
@@ -73,6 +80,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                   ),
                 ),
                 dropdownMenuEntries: const [
+                  DropdownMenuEntry(value: "none", label: "System Default"),
                   DropdownMenuEntry(value: "blob", label: "Blob"),
                   DropdownMenuEntry(value: "swoosh", label: "Swoosh"),
                   DropdownMenuEntry(value: "crystal", label: "Crystal"),
@@ -80,7 +88,28 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                   DropdownMenuEntry(value: "digital", label: "Digital"),
                 ],
               ),
-
+              SizedBox(height: 120.0),
+              Center(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      width: 200.0,
+                      child: Center(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/start');
+                          },
+                          style: ElevatedButton.styleFrom(alignment: Alignment.center, backgroundColor: Colors.grey),
+                          child: Text(
+                            'Back to Start',
+                            style: TextStyle(color: Colors.white, fontFamily: 'Arial'),
+                          ), // Text
+                        ), // ElevatedButton
+                      ), // Center
+                    ), // SizedBox
+                  ],
+                ), // Column
+              ), // Center
               /*  DropdownMenu<String>(
                 //menuHeight: 16.0,
                 initialSelection: selectedValue,
@@ -98,8 +127,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                 ],
               ), */
             ],
-          ),
-        ), // Column
+          ), // Column
+        ), // Padding
       ), // Scaffold
     ); // SafeArea
   }

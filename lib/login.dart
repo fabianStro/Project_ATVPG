@@ -22,11 +22,11 @@ class _LoginWidgetState extends State<LoginWidget> {
       ),
       _loginTextStyle = TextStyle(fontSize: 35.0, letterSpacing: 2.0, fontFamily: 'Arial');
 
-  final String _title = 'ATVPG', _username = 'Reaper', _password = 'root';
+  final String _title = 'ATVPG', _username = 'reaper', _password = 'root';
   late String _formatString;
 
   void _loginCheck(BuildContext context) {
-    _formatString = _usernameController.text.replaceAll(' ', '');
+    _formatString = _usernameController.text.replaceAll(' ', '').toLowerCase();
     if (_formatString == _username && _passwordController.text == _password) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -63,6 +63,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         resizeToAvoidBottomInset: false,
         extendBodyBehindAppBar: true,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           toolbarHeight: 100.0,
           shape: Border(
             bottom: BorderSide(color: Colors.white, width: 2.0),
@@ -82,6 +83,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 ), // Padding
                 SizedBox(height: 20.0),
                 TextField(
+                  autocorrect: false,
                   controller: _usernameController,
                   obscureText: false,
                   decoration: InputDecoration(
@@ -92,6 +94,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 ), // TextField
                 SizedBox(height: 20.0),
                 TextField(
+                  autocorrect: false,
                   controller: _passwordController,
                   obscureText: true,
                   decoration: InputDecoration(
