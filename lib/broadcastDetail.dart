@@ -21,8 +21,8 @@ class _DetailWidgetState extends State<DetailWidget> {
         titleString = Error.safeToString(index.title),
         subtitleString = Error.safeToString(index.subtitle),
         descriptionString = Error.safeToString(index.description);
-    String title = titleString;
-    String picture = pictureAdressString;
+    final String title = titleString;
+    final String picture = pictureAdressString;
 
     return SafeArea(
       child: Scaffold(

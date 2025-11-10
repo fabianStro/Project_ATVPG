@@ -17,6 +17,8 @@ class _ShareWidgetState extends State<ShareWidget> {
   //final DetailWidget _detail = DetailWidget();
   @override
   Widget build(BuildContext context) {
+    String picture = widget.picture;
+    String title = widget.title;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -34,9 +36,7 @@ class _ShareWidgetState extends State<ShareWidget> {
             Padding(
               padding: EdgeInsets.only(top: 30.0),
               child: Center(
-                child: ClipOval(
-                  //child: Image.asset(picture, width: 180, height: 180, fit: BoxFit.cover),
-                ), // ClipOval
+                child: ClipOval(child: Image.asset(picture, width: 180, height: 180, fit: BoxFit.cover)), // ClipOval
               ), // Center
             ), // Padding
             SizedBox(height: 15.0),

@@ -66,6 +66,7 @@ class MyApp extends StatelessWidget {
         '/profile': (context) => ProfileWidget(),
         '/notification': (context) => NotificationWidget(),
         '/share': (context) => ShareWidget(title: '', picture: ''),
+        // '/forgot': (context) => PasswordForgotWidget(),
       }, // routes
     ); // MaterialApp
   }

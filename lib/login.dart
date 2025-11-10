@@ -15,7 +15,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   final TextStyle _titleTextStyle = TextStyle(fontSize: 50.0, letterSpacing: 4.0, fontFamily: 'Audiowide'),
       _buttonTextStyle = TextStyle(color: Colors.white, fontFamily: 'Arial'),
       _registryTextStyle = TextStyle(color: Colors.grey[400], fontFamily: 'Arial'),
-      _loginTextStyle = TextStyle(fontSize: 28.0, letterSpacing: 2.0, fontFamily: 'Arial');
+      _loginTextStyle = TextStyle(fontSize: 35.0, letterSpacing: 2.0, fontFamily: 'Arial');
 
   final String _title = 'ATVPG', _username = 'Reaper', _password = 'root';
   late String _formatString;
@@ -106,6 +106,15 @@ class _LoginWidgetState extends State<LoginWidget> {
                     child: Text('Login', style: _buttonTextStyle),
                   ), // ElevatedButtton
                 ), // SizedBox
+                SizedBox(height: 15.0),
+                Align(
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/');
+                    },
+                    child: Text('Forgot your password?', style: _registryTextStyle),
+                  ), // GestureDetector
+                ), // Align
                 SizedBox(height: 15.0),
                 Align(
                   child: GestureDetector(
