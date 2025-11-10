@@ -52,7 +52,31 @@ class _LoginWidgetState extends State<ProfileWidget> {
                 ],
               ), // Column
             ), // Padding
-          ], // Children
+            SizedBox(height: 100.0),
+            Center(
+              child: Column(
+                /*   crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.end, */
+                children: [
+                  SizedBox(
+                    width: 150.0,
+                    child: Center(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/start');
+                        },
+                        style: ElevatedButton.styleFrom(alignment: Alignment.center),
+                        child: Text(
+                          'Zurück zum Login',
+                          style: TextStyle(color: Colors.white, fontFamily: 'Arial'),
+                        ),
+                      ),
+                    ), // ElevatedButtton
+                  ), // SizedBox
+                ],
+              ),
+            ), // Column
+          ], // children of body Column
         ), // Column
       ), // Scaffold
     ); // SafeArea

@@ -1,6 +1,9 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_one/firebase_options.dart';
 import 'package:flutter_application_one/login.dart';
 import 'package:flutter_application_one/notification.dart';
+import 'package:flutter_application_one/passwordForgot.dart';
 import 'package:flutter_application_one/registry.dart';
 import 'package:flutter_application_one/share.dart';
 import 'package:flutter_application_one/startScreen.dart';
@@ -44,14 +47,10 @@ List<Map> expectedList = [
   {'name': 'another name', 'id': 2, 'value': 12345678, 'num': 3.1416}
 ]; */
 
-void main() {
-  /*  WidgetsFlutterBinding.ensureInitialized();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-await Firebase.initializeApp(
-
-options: DefaultFirebaseOptions.currentPlatform,
-
-); */
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -73,7 +72,7 @@ class MyApp extends StatelessWidget {
         '/profile': (context) => ProfileWidget(),
         '/notification': (context) => NotificationWidget(),
         '/share': (context) => ShareWidget(title: '', picture: ''),
-        // '/forgot': (context) => PasswordForgotWidget(),
+        '/forgot': (context) => PasswordForgotWidget(),
       }, // routes
     ); // MaterialApp
   }

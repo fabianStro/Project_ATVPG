@@ -36,8 +36,10 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
       child: SafeArea(
         child: Scaffold(
           appBar: AppBar(
+            automaticallyImplyLeading: false,
             toolbarHeight: 100.0,
             title: Text(''),
+            centerTitle: true,
             leading: GestureDetector(
               onTap: () {
                 Navigator.pushNamed(context, '/profile');

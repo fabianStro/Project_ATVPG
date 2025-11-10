@@ -14,7 +14,12 @@ class _LoginWidgetState extends State<LoginWidget> {
   final ButtonStyle _buttonStyle = ElevatedButton.styleFrom(backgroundColor: Colors.grey);
   final TextStyle _titleTextStyle = TextStyle(fontSize: 50.0, letterSpacing: 4.0, fontFamily: 'Audiowide'),
       _buttonTextStyle = TextStyle(color: Colors.white, fontFamily: 'Arial'),
-      _registryTextStyle = TextStyle(color: Colors.grey[400], fontFamily: 'Arial'),
+      _registryAndForgotTextStyle = TextStyle(
+        color: Colors.grey[400],
+        fontFamily: 'Arial',
+        fontSize: 17.0,
+        decoration: TextDecoration.underline,
+      ),
       _loginTextStyle = TextStyle(fontSize: 35.0, letterSpacing: 2.0, fontFamily: 'Arial');
 
   final String _title = 'ATVPG', _username = 'Reaper', _password = 'root';
@@ -110,18 +115,23 @@ class _LoginWidgetState extends State<LoginWidget> {
                 Align(
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, '/');
+                      Navigator.pushNamed(context, '/forgot');
                     },
-                    child: Text('Forgot your password?', style: _registryTextStyle),
+                    child: Text('Forgot your password?', style: _registryAndForgotTextStyle),
                   ), // GestureDetector
                 ), // Align
-                SizedBox(height: 15.0),
+                SizedBox(height: 8.0),
+                Text(
+                  'or',
+                  style: TextStyle(color: Colors.grey[400], fontFamily: 'Arial', fontSize: 17.0),
+                ),
+                SizedBox(height: 8.0),
                 Align(
                   child: GestureDetector(
                     onTap: () {
                       Navigator.pushNamed(context, '/registry');
                     },
-                    child: Text('Registration', style: _registryTextStyle),
+                    child: Text('Registration', style: _registryAndForgotTextStyle),
                   ), // GestureDetector
                 ), // Align
               ], // Children
