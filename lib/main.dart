@@ -45,6 +45,13 @@ List<Map> expectedList = [
 ]; */
 
 void main() {
+  /*  WidgetsFlutterBinding.ensureInitialized();
+
+await Firebase.initializeApp(
+
+options: DefaultFirebaseOptions.currentPlatform,
+
+); */
   runApp(const MyApp());
 }
 
