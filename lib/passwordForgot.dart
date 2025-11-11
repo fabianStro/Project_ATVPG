@@ -20,14 +20,28 @@ class _PasswordForgotWidgetState extends State<PasswordForgotWidget> {
             top: BorderSide(color: Colors.white, width: 2.0),
           ), // Border
           centerTitle: true,
-          title: Text('Pwd Forgot?', style: TextStyle(fontSize: 40.0, letterSpacing: 4.0, fontFamily: 'Audiowide')),
+          title: Text('Pwd Forgot', style: TextStyle(fontSize: 40.0, letterSpacing: 4.0, fontFamily: 'Audiowide')),
         ), // AppBar
         body: Column(
           children: [
-            Center(
-              child: Text('Password Forgot Screen', style: TextStyle(fontSize: 20.0, fontFamily: 'Arial')),
-            ), // Center
-            SizedBox(height: 100.0),
+            SizedBox(height: 30.0),
+            Text('Please enter your email address', style: TextStyle(fontSize: 20.0, fontFamily: 'Arial')),
+            SizedBox(height: 30.0),
+            SizedBox(
+              width: 300.0,
+              child: TextField(
+                obscureText: false,
+                autocorrect: false,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.all(10.0),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
+                  labelText: 'E-mail',
+                  filled: true,
+                  fillColor: Colors.black,
+                ), // InputDecoration
+              ), // TextField
+            ), // TextField
+            SizedBox(height: 370.0),
             Center(
               child: Column(
                 children: [

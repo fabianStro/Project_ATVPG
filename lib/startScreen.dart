@@ -23,8 +23,6 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
   // ######################################################################################
   // Instanzen der Screens
   // ######################################################################################
-  // final LoginWidget _loginWidget = LoginWidget();
-  // late final String _user = ModalRoute.of(context)!.settings.arguments as String;
   final AllAnime _allAnime = AllAnime();
   final MyAnime _myAnime = MyAnime();
   final FavoriteAnime _myFavAnime = FavoriteAnime();
@@ -57,9 +55,9 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
             ), // GestureDetector
             bottom: TabBar(
               unselectedLabelColor: Colors.grey,
-              unselectedLabelStyle: TextStyle(fontStyle: FontStyle.italic),
+              unselectedLabelStyle: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0),
               labelColor: Colors.white,
-              labelStyle: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+              labelStyle: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
               indicatorPadding: EdgeInsets.only(left: -15.0, right: -15.0),
               indicator: BoxDecoration(
                 color: Colors.black,
@@ -71,12 +69,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                 ), // Border
               ), // BoxDecoration
               tabs: [
-                /*  Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  decoration: BoxDecoration(color: Colors.pink),
-                  child: Tab(text: 'All Anime'),
-                ), */
-                Tab(text: 'All Anime'),
+                Tab(text: 'All Anime', icon: Icon(Icons.list_alt_outlined)),
                 Tab(text: 'My Anime', icon: Icon(Icons.bookmark_border_outlined)),
                 Tab(text: 'Fav Anime', icon: Icon(Icons.star_border_outlined)),
               ],
@@ -124,29 +117,6 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
               ), // Padding
             ],
           ), // AppBar
-          /*  drawer: Drawer(
-            child: ListView(
-              padding: EdgeInsets.only(left: 30.0),
-              children: [
-                DrawerHeader(
-                  decoration: BoxDecoration(color: Colors.black), // BoxDecoration
-                  child: Text('Menu', style: TextStyle(fontSize: 30.0, color: Colors.white)),
-                ), // DrawerHeader
-                ListTile(
-                  title: Text('Home', style: TextStyle(fontSize: 20.0, color: Colors.white)),
-                  onTap: () {
-                    Navigator.pushNamed(context, '/start');
-                  },
-                ), // ListTile
-                ListTile(
-                  title: Text('Logout', style: TextStyle(fontSize: 20.0, color: Colors.white)),
-                  onTap: () {
-                    Navigator.pushNamed(context, '/home');
-                  },
-                ), // ListTile
-              ],
-            ), // ListView
-          ), // Drawer */
           body: TabBarView(
             children: [
               // ######################################################################################

@@ -46,8 +46,15 @@ flutter:
       - assets/images/broadcastImages/CallOfTheNight_logo.png
       - assets/images/broadcastImages/Shinchou_Yuusha_logo.png
       - assets/images/profile2.png
+      - assets/images/shareIcons/facebook.png
+      - assets/images/shareIcons/instagram.png
+      - assets/images/shareIcons/telegram.png
+      - assets/images/shareIcons/tiktok.png
+      - assets/images/shareIcons/x-icon.png
+      # - assets/images/shareIcons/twitter.png
+      # - assets/images/shareIcons/whatsapp.png
+      - assets/sounds/bFrog.mp3
       # - assets/sounds/blob.mp3
       # - assets/sounds/swoosh.mp3
       # - assets/sounds/crystal.mp3
-      - assets/sounds/bFrog.mp3
       # - assets/sounds/digital.mp3

@@ -8,6 +8,12 @@ class RegistryWidget extends StatefulWidget {
 }
 
 class _RegistryWidgetState extends State<RegistryWidget> {
+  final TextEditingController _usernameController = TextEditingController(),
+      _clearNameController = TextEditingController(),
+      _emailController = TextEditingController(),
+      _passwordController = TextEditingController(),
+      _passwordConfirmController = TextEditingController();
+
   final _appBarBorderStyle = BorderSide(color: Colors.white, width: 2.0);
 
   final ButtonStyle _buttonStyle = ElevatedButton.styleFrom(backgroundColor: Colors.grey);
@@ -45,6 +51,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                 child: Column(
                   children: [
                     TextField(
+                      controller: _usernameController,
                       autocorrect: false,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(top: 16.0),
@@ -54,6 +61,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                     ), // TextField
                     SizedBox(height: 20.0),
                     TextField(
+                      controller: _clearNameController,
                       autocorrect: false,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(top: 16.0),
@@ -63,6 +71,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                     ), // TextField
                     SizedBox(height: 20.0),
                     TextField(
+                      controller: _emailController,
                       autocorrect: false,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(top: 16.0),
@@ -72,6 +81,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                     ), // TextField
                     SizedBox(height: 20.0),
                     TextField(
+                      controller: _passwordController,
                       autocorrect: false,
                       obscureText: true,
                       decoration: InputDecoration(
@@ -82,6 +92,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                     ), // TextField
                     SizedBox(height: 20.0),
                     TextField(
+                      controller: _passwordConfirmController,
                       autocorrect: false,
                       obscureText: true,
                       decoration: InputDecoration(
@@ -102,8 +113,8 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                       ), // ElevatedButton
                     ), // SizedBox
                   ],
-                ),
-              ),
+                ), // Column
+              ), // Padding
               SizedBox(height: 50.0),
               const Divider(height: 30, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
               Text(

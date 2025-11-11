@@ -11,6 +11,8 @@ class DetailWidget extends StatefulWidget {
 }
 
 class _DetailWidgetState extends State<DetailWidget> {
+  bool isPressedStar = false;
+  bool isPressedBoomark = false;
   final OverlayPortalController _overlayShareController = OverlayPortalController();
 
   @override
@@ -21,6 +23,7 @@ class _DetailWidgetState extends State<DetailWidget> {
         titleString = Error.safeToString(index.title),
         subtitleString = Error.safeToString(index.subtitle),
         descriptionString = Error.safeToString(index.description);
+
     final String title = titleString;
     final String picture = pictureAdressString;
 
@@ -58,7 +61,7 @@ class _DetailWidgetState extends State<DetailWidget> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(30.0),
                                     color: Colors.white,
-                                  ),
+                                  ), // BoxDecoration
                                   height: 400.0,
                                   child: ShareWidget(title: '', picture: ''),
                                 ), // Container
@@ -71,12 +74,28 @@ class _DetailWidgetState extends State<DetailWidget> {
                           ), // OverlayPortal
                         ), // GestureDetector
                         IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.bookmark_border_outlined, color: Colors.white, size: 35),
-                        ),
+                          onPressed: () {
+                            setState(() {
+                              isPressedBoomark = !isPressedBoomark;
+                            });
+                          },
+                          icon: Icon(
+                            Icons.bookmark_border_outlined,
+                            size: 35,
+                            color: isPressedBoomark ? Colors.yellow : Colors.white,
+                          ), // Icon
+                        ), // IconButton
                         IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.star_border_outlined, color: Colors.white, size: 35),
+                          onPressed: () {
+                            setState(() {
+                              isPressedStar = !isPressedStar;
+                            });
+                          },
+                          icon: Icon(
+                            Icons.star_border_outlined,
+                            size: 35,
+                            color: isPressedStar ? Colors.yellow : Colors.white,
+                          ), // Icon
                         ), // IconButton
                       ], // children
                     ), // Row

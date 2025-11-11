@@ -1,13 +1,13 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_application_one/broadcastDetail.dart';
+// import 'package:flutter_application_one/broadcastDetail.dart';
 
 class ShareWidget extends StatefulWidget {
-  //const ShareWidget({super.key});
-
+  // ShareWidget({super.key});
+  ShareWidget({super.key, required this.title, required this.picture});
   String title = '';
   String picture = '';
-
-  ShareWidget({super.key, required this.title, required this.picture});
 
   @override
   State<ShareWidget> createState() => _ShareWidgetState();
@@ -15,10 +15,10 @@ class ShareWidget extends StatefulWidget {
 
 class _ShareWidgetState extends State<ShareWidget> {
   //final DetailWidget _detail = DetailWidget();
+  /*  String picture = widget.picture;
+    String title = widget.title;*/
   @override
   Widget build(BuildContext context) {
-    String picture = widget.picture;
-    String title = widget.title;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -30,26 +30,93 @@ class _ShareWidgetState extends State<ShareWidget> {
           centerTitle: true,
           title: Text('Share', style: TextStyle(fontSize: 50.0, letterSpacing: 4.0, fontFamily: 'Arial')),
         ), // AppBar
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        body: Stack(
           children: [
-            Padding(
-              padding: EdgeInsets.only(top: 30.0),
-              child: Center(
-                child: ClipOval(child: Image.asset(picture, width: 180, height: 180, fit: BoxFit.cover)), // ClipOval
-              ), // Center
+            Container(
+              child: Positioned.fill(
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                  child: Container(color: Colors.black.withOpacity(0.3)),
+                ), // BackdropFilter
+              ), // Powered.fill
+            ), // Container
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    //Navigator.pop(context);
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 16.0, top: 220.0),
+                    child: Image.asset('assets/images/shareIcons/facebook.png', width: 35.0, height: 35.0),
+                  ), // Padding
+                ), // GestureDetector
+                SizedBox(width: 10.0),
+                GestureDetector(
+                  onTap: () {
+                    //Navigator.pop(context);
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 220.0),
+                    child: Image.asset('assets/images/shareIcons/instagram.png', width: 35.0, height: 35.0),
+                  ), // Padding
+                ), // GestureDetector
+                SizedBox(width: 10.0),
+                GestureDetector(
+                  onTap: () {
+                    //Navigator.pop(context);
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 220.0),
+                    child: Image.asset('assets/images/shareIcons/telegram.png', width: 35.0, height: 35.0),
+                  ), // Padding
+                ), // GestureDetector
+                SizedBox(width: 10.0),
+                GestureDetector(
+                  onTap: () {
+                    //Navigator.pop(context);
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 220.0),
+                    child: Image.asset('assets/images/shareIcons/tiktok.png', width: 35.0, height: 35.0),
+                  ), // Padding
+                ), // GestureDetector
+                SizedBox(width: 10.0),
+                GestureDetector(
+                  onTap: () {
+                    //Navigator.pop(context);
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 220.0, right: 16.0),
+                    child: Image.asset('assets/images/shareIcons/x-icon.png', width: 35.0, height: 35.0),
+                  ), // Padding
+                ), // GestureDetector
+              ],
+            ), // Row
+            Container(
+              child: Padding(
+                padding: EdgeInsets.only(left: 16.0, top: 10.0),
+                child: Text('Which channel would you like to share through?', style: TextStyle(fontSize: 20.0)),
+              ), // Padding
             ), // Padding
-            SizedBox(height: 15.0),
-            const Divider(height: 30, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
-            SizedBox(height: 15.0),
-            Padding(
-              padding: EdgeInsets.only(left: 16.0),
-              child: Container(
-                child: Text('Share Functionality Coming Soon!', style: TextStyle(fontSize: 20.0)),
-              ), // Container
-            ), // Padding
+            Container(
+              child: Padding(
+                padding: EdgeInsets.only(top: 0.0),
+                child: Center(
+                  child: ClipOval(
+                    child: Image.asset(
+                      'assets/images/shareIcons/facebook.png',
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    ),
+                  ), // ClipOval
+                ), // Center
+              ), // Padding
+            ), // Container
           ], // Children
-        ), // Column
+        ), // Stack
       ), // Scaffold
     ); // SafeArea
   }

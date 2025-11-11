@@ -8,9 +8,15 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
+  // ############################################################################
+  // Controller für Textfelder
+  // ############################################################################
   final TextEditingController _usernameController = TextEditingController(),
       _passwordController = TextEditingController();
 
+  // ############################################################################
+  // Stile und Konstanten
+  // ############################################################################
   final ButtonStyle _buttonStyle = ElevatedButton.styleFrom(backgroundColor: Colors.grey);
   final TextStyle _titleTextStyle = TextStyle(fontSize: 50.0, letterSpacing: 4.0, fontFamily: 'Audiowide'),
       _buttonTextStyle = TextStyle(color: Colors.white, fontFamily: 'Arial'),
@@ -22,6 +28,9 @@ class _LoginWidgetState extends State<LoginWidget> {
       ),
       _loginTextStyle = TextStyle(fontSize: 35.0, letterSpacing: 2.0, fontFamily: 'Arial');
 
+  // ############################################################################
+  // Feste Werte
+  // ############################################################################
   final String _title = 'ATVPG', _username = 'reaper', _password = 'root';
   late String _formatString;
 

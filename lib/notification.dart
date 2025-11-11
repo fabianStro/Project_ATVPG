@@ -53,32 +53,32 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                 label: Text(
                   'Select Sound',
                   style: TextStyle(color: Colors.white, fontFamily: 'Arial'),
-                ),
+                ), // Text
                 width: 200,
                 menuStyle: MenuStyle(
                   backgroundColor: WidgetStatePropertyAll(Colors.black),
                   shape: WidgetStatePropertyAll(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25), // Dropdown rund
-                    ),
-                  ),
-                ),
+                    ), // RoundedRectangleBorder
+                  ), // WidgetStatePropertyAll
+                ), // MenuStyle
                 inputDecorationTheme: InputDecorationTheme(
                   filled: true,
                   fillColor: Colors.black,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(25), // Feld rund
                     borderSide: BorderSide(color: Colors.grey),
-                  ),
+                  ), // OutlineInputBorder
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(25),
                     borderSide: BorderSide(color: Colors.grey),
-                  ),
+                  ), // OutlineInputBorder
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(25),
                     borderSide: BorderSide(color: Colors.blue, width: 2),
-                  ),
-                ),
+                  ), // OutlineInputBorder
+                ), // InputDecorationTheme
                 dropdownMenuEntries: const [
                   DropdownMenuEntry(value: "none", label: "System Default"),
                   DropdownMenuEntry(value: "blob", label: "Blob"),
@@ -101,7 +101,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                           },
                           style: ElevatedButton.styleFrom(alignment: Alignment.center, backgroundColor: Colors.grey),
                           child: Text(
-                            'Back to Start',
+                            'Back to Main Screen',
                             style: TextStyle(color: Colors.white, fontFamily: 'Arial'),
                           ), // Text
                         ), // ElevatedButton
@@ -110,22 +110,6 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                   ],
                 ), // Column
               ), // Center
-              /*  DropdownMenu<String>(
-                //menuHeight: 16.0,
-                initialSelection: selectedValue,
-                onSelected: (value) {
-                  setState(() {
-                    selectedValue = value!;
-                  });
-                },
-                dropdownMenuEntries: const [
-                  DropdownMenuEntry(value: "Option 1", label: "Blob"),
-                  DropdownMenuEntry(value: "Option 2", label: "Crystal"),
-                  DropdownMenuEntry(value: "Option 3", label: "Guitar"),
-                  DropdownMenuEntry(value: "Option 4", label: "Bull Frog"),
-                  DropdownMenuEntry(value: "Option 5", label: "Digital"),
-                ],
-              ), */
             ],
           ), // Column
         ), // Padding
