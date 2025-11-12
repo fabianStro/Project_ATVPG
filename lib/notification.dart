@@ -22,10 +22,10 @@ class _NotificationWidgetState extends State<NotificationWidget> {
             top: BorderSide(color: Colors.white, width: 2.0),
           ), // Border
           centerTitle: true,
-          title: Text('Notification', style: TextStyle(fontSize: 50.0, letterSpacing: 4.0, fontFamily: 'Arial')),
+          title: Text('Notification', style: TextStyle(fontSize: 50.0, letterSpacing: 4.0, fontFamily: 'Audiowide')),
         ), // AppBar
         body: Padding(
-          padding: const EdgeInsets.only(top: 16.0, left: 16.0),
+          padding: const EdgeInsets.only(top: 25.0, left: 16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,16 +58,14 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                 menuStyle: MenuStyle(
                   backgroundColor: WidgetStatePropertyAll(Colors.black),
                   shape: WidgetStatePropertyAll(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25), // Dropdown rund
-                    ), // RoundedRectangleBorder
+                    RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)), // RoundedRectangleBorder
                   ), // WidgetStatePropertyAll
                 ), // MenuStyle
                 inputDecorationTheme: InputDecorationTheme(
                   filled: true,
                   fillColor: Colors.black,
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(25), // Feld rund
+                    borderRadius: BorderRadius.circular(25),
                     borderSide: BorderSide(color: Colors.grey),
                   ), // OutlineInputBorder
                   enabledBorder: OutlineInputBorder(
@@ -88,7 +86,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                   DropdownMenuEntry(value: "digital", label: "Digital"),
                 ],
               ),
-              SizedBox(height: 120.0),
+              SizedBox(height: 280.0),
               Center(
                 child: Column(
                   children: [

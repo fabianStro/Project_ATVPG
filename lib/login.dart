@@ -31,11 +31,11 @@ class _LoginWidgetState extends State<LoginWidget> {
   // ############################################################################
   // Feste Werte
   // ############################################################################
-  final String _title = 'ATVPG', _username = 'reaper', _password = 'root';
+  final String _title = 'ATVPG', _username = 'Reaper', _password = 'root';
   late String _formatString;
 
   void _loginCheck(BuildContext context) {
-    _formatString = _usernameController.text.replaceAll(' ', '').toLowerCase();
+    _formatString = _usernameController.text.replaceAll(' ', '');
     if (_formatString == _username && _passwordController.text == _password) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -69,7 +69,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        resizeToAvoidBottomInset: false,
+        //resizeToAvoidBottomInset: false,
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           automaticallyImplyLeading: false,

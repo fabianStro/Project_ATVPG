@@ -24,9 +24,6 @@ class _DetailWidgetState extends State<DetailWidget> {
         subtitleString = Error.safeToString(index.subtitle),
         descriptionString = Error.safeToString(index.description);
 
-    final String title = titleString;
-    final String picture = pictureAdressString;
-
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(),
@@ -63,7 +60,7 @@ class _DetailWidgetState extends State<DetailWidget> {
                                     color: Colors.white,
                                   ), // BoxDecoration
                                   height: 400.0,
-                                  child: ShareWidget(title: '', picture: ''),
+                                  child: ShareWidget(title: titleString, picture: pictureAdressString),
                                 ), // Container
                               ); // Positioned
                             },

@@ -41,7 +41,7 @@ class _PasswordForgotWidgetState extends State<PasswordForgotWidget> {
                 ), // InputDecoration
               ), // TextField
             ), // TextField
-            SizedBox(height: 370.0),
+            SizedBox(height: 320.0),
             Center(
               child: Column(
                 children: [

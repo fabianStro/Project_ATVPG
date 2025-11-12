@@ -18,18 +18,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
 
   final ButtonStyle _buttonStyle = ElevatedButton.styleFrom(backgroundColor: Colors.grey);
   final TextStyle _buttonTextStyle = TextStyle(color: Colors.white, fontFamily: 'Arial');
-  final String _registerLabel = 'Register', _loginLabel = 'Go to Login';
-  final double _sendBoxWidth = 150.0;
-  /* final TextStyle _registryTextStyle = TextStyle(color: Colors.grey[400], fontFamily: 'Arial');
-  final TextStyle _loginTextStyle = TextStyle(fontSize: 28.0, letterSpacing: 2.0, fontFamily: 'Arial');
-  final Color _whiteColor = Colors.white;
-  final String _title = 'TVPG';
-  final String _username = 'Username';
-  final String _password = 'Password';
-   final TextStyle _titleTextStyle = TextStyle(fontSize: 50.0, letterSpacing: 4.0, fontFamily: 'Audiowide');
-  final double _borderRadius = 25.0;
-  final double _toolbarHeight = 100.0;
-  final bool _isTrue = true; */
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -103,13 +92,13 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                     ), // TextField
                     SizedBox(height: 40.0),
                     SizedBox(
-                      width: _sendBoxWidth,
+                      width: 150.0,
                       child: ElevatedButton(
                         style: _buttonStyle,
                         onPressed: () {
                           Navigator.pushNamed(context, '');
                         },
-                        child: Text(_registerLabel, style: _buttonTextStyle), // Text
+                        child: Text('Register', style: _buttonTextStyle), // Text
                       ), // ElevatedButton
                     ), // SizedBox
                   ],
@@ -127,13 +116,13 @@ class _RegistryWidgetState extends State<RegistryWidget> {
               ), // Text
               SizedBox(height: 20.0),
               SizedBox(
-                width: _sendBoxWidth,
+                width: 150.0,
                 child: ElevatedButton(
                   style: _buttonStyle,
                   onPressed: () {
                     Navigator.pushNamed(context, '/home');
                   },
-                  child: Text(_loginLabel, style: _buttonTextStyle), // Text
+                  child: Text('Go to Login', style: _buttonTextStyle), // Text
                 ), // ElevatedButton
               ), // SizedBox
             ], // Children

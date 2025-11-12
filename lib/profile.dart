@@ -20,7 +20,7 @@ class _LoginWidgetState extends State<ProfileWidget> {
             top: BorderSide(color: Colors.white, width: 2.0),
           ), // Border
           centerTitle: true,
-          title: Text('Profile', style: TextStyle(fontSize: 50.0, letterSpacing: 4.0, fontFamily: 'Arial')),
+          title: Text('Profile', style: TextStyle(fontSize: 50.0, letterSpacing: 4.0, fontFamily: 'Audiowide')),
         ), // AppBar
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,7 +53,7 @@ class _LoginWidgetState extends State<ProfileWidget> {
                 ],
               ), // Column
             ), // Padding
-            SizedBox(height: 120.0),
+            SizedBox(height: 40.0),
             Center(
               child: Column(
                 children: [

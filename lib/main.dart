@@ -7,7 +7,7 @@ import 'package:flutter_application_one/passwordForgot.dart';
 import 'package:flutter_application_one/registry.dart';
 import 'package:flutter_application_one/share.dart';
 import 'package:flutter_application_one/startScreen.dart';
-import 'package:flutter_application_one/broadcastDetail.dart';
+import 'package:flutter_application_one/detail.dart';
 import 'package:flutter_application_one/profile.dart';
 
 // import 'package:sqflite/sqflite.dart';

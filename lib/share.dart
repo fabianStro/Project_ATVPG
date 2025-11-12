@@ -1,11 +1,10 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-// import 'package:flutter_application_one/broadcastDetail.dart';
 
+// ignore: must_be_immutable
 class ShareWidget extends StatefulWidget {
-  // ShareWidget({super.key});
   ShareWidget({super.key, required this.title, required this.picture});
+
   String title = '';
   String picture = '';
 
@@ -14,9 +13,6 @@ class ShareWidget extends StatefulWidget {
 }
 
 class _ShareWidgetState extends State<ShareWidget> {
-  //final DetailWidget _detail = DetailWidget();
-  /*  String picture = widget.picture;
-    String title = widget.title;*/
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -28,24 +24,22 @@ class _ShareWidgetState extends State<ShareWidget> {
             top: BorderSide(color: Colors.white, width: 2.0),
           ), // Border
           centerTitle: true,
-          title: Text('Share', style: TextStyle(fontSize: 50.0, letterSpacing: 4.0, fontFamily: 'Arial')),
+          title: Text('Share', style: TextStyle(fontSize: 50.0, letterSpacing: 4.0, fontFamily: 'Audiowide')),
         ), // AppBar
         body: Stack(
           children: [
-            Container(
-              child: Positioned.fill(
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-                  child: Container(color: Colors.black.withOpacity(0.3)),
-                ), // BackdropFilter
-              ), // Powered.fill
+            Positioned.fill(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                child: Container(color: Colors.black.withOpacity(0.3)),
+              ), // BackdropFilter
             ), // Container
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GestureDetector(
                   onTap: () {
-                    //Navigator.pop(context);
+                    Navigator.pushNamed(context, '/start');
                   },
                   child: Padding(
                     padding: EdgeInsets.only(left: 16.0, top: 220.0),
@@ -55,7 +49,7 @@ class _ShareWidgetState extends State<ShareWidget> {
                 SizedBox(width: 10.0),
                 GestureDetector(
                   onTap: () {
-                    //Navigator.pop(context);
+                    Navigator.pushNamed(context, '/start');
                   },
                   child: Padding(
                     padding: EdgeInsets.only(top: 220.0),
@@ -65,7 +59,7 @@ class _ShareWidgetState extends State<ShareWidget> {
                 SizedBox(width: 10.0),
                 GestureDetector(
                   onTap: () {
-                    //Navigator.pop(context);
+                    Navigator.pushNamed(context, '/start');
                   },
                   child: Padding(
                     padding: EdgeInsets.only(top: 220.0),
@@ -75,7 +69,7 @@ class _ShareWidgetState extends State<ShareWidget> {
                 SizedBox(width: 10.0),
                 GestureDetector(
                   onTap: () {
-                    //Navigator.pop(context);
+                    Navigator.pushNamed(context, '/start');
                   },
                   child: Padding(
                     padding: EdgeInsets.only(top: 220.0),
@@ -85,7 +79,7 @@ class _ShareWidgetState extends State<ShareWidget> {
                 SizedBox(width: 10.0),
                 GestureDetector(
                   onTap: () {
-                    //Navigator.pop(context);
+                    Navigator.pushNamed(context, '/start');
                   },
                   child: Padding(
                     padding: EdgeInsets.only(top: 220.0, right: 16.0),
@@ -94,26 +88,17 @@ class _ShareWidgetState extends State<ShareWidget> {
                 ), // GestureDetector
               ],
             ), // Row
-            Container(
-              child: Padding(
-                padding: EdgeInsets.only(left: 16.0, top: 10.0),
-                child: Text('Which channel would you like to share through?', style: TextStyle(fontSize: 20.0)),
-              ), // Padding
-            ), // Padding
-            Container(
-              child: Padding(
-                padding: EdgeInsets.only(top: 0.0),
-                child: Center(
-                  child: ClipOval(
-                    child: Image.asset(
-                      'assets/images/shareIcons/facebook.png',
-                      width: 100,
-                      height: 100,
-                      fit: BoxFit.cover,
-                    ),
-                  ), // ClipOval
-                ), // Center
-              ), // Padding
+            Padding(
+              padding: EdgeInsets.only(left: 16.0, top: 10.0),
+              child: Text('Which channel would you like to share through?', style: TextStyle(fontSize: 20.0)),
+            ), // Container
+            Padding(
+              padding: EdgeInsets.only(top: 0.0),
+              child: Center(
+                child: ClipOval(
+                  child: Image.asset(widget.picture, width: 100, height: 100, fit: BoxFit.cover), // Image.asset
+                ), // ClipOval
+              ), // Center
             ), // Container
           ], // Children
         ), // Stack
