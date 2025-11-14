@@ -33,7 +33,7 @@ class _ShareWidgetState extends State<ShareWidget> {
                 filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
                 child: Container(color: Colors.black.withOpacity(0.3)),
               ), // BackdropFilter
-            ), // Container
+            ), // Positioned.fill
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -91,7 +91,7 @@ class _ShareWidgetState extends State<ShareWidget> {
             Padding(
               padding: EdgeInsets.only(left: 16.0, top: 10.0),
               child: Text('Which channel would you like to share through?', style: TextStyle(fontSize: 20.0)),
-            ), // Container
+            ), // Padding
             Padding(
               padding: EdgeInsets.only(top: 0.0),
               child: Center(
@@ -99,7 +99,7 @@ class _ShareWidgetState extends State<ShareWidget> {
                   child: Image.asset(widget.picture, width: 100, height: 100, fit: BoxFit.cover), // Image.asset
                 ), // ClipOval
               ), // Center
-            ), // Container
+            ), // Padding
           ], // Children
         ), // Stack
       ), // Scaffold

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
 class NotificationWidget extends StatefulWidget {
   const NotificationWidget({super.key});
@@ -30,6 +31,27 @@ class _NotificationWidgetState extends State<NotificationWidget> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Text('Enable Notification', style: TextStyle(fontSize: 20.0, fontFamily: 'Arial')),
+              SizedBox(height: 10.0),
+              ToggleSwitch(
+                customWidths: [80.0, 80.0],
+                cornerRadius: 20.0,
+                borderColor: [Colors.white],
+                borderWidth: 1.0,
+                dividerColor: Colors.white,
+                activeBgColors: [
+                  [Colors.green],
+                  [Colors.red],
+                ],
+                inactiveBgColor: Colors.black,
+                inactiveFgColor: Colors.white,
+                totalSwitches: 2,
+                labels: ['On', 'Off'],
+                onToggle: (index) {
+                  //print('switched to: $index');
+                },
+              ), // ToggleSwitch
+              SizedBox(height: 30.0),
               Text('When would you like to be reminded', style: TextStyle(fontSize: 20.0, fontFamily: 'Arial')),
               SizedBox(height: 10.0),
               SizedBox(
@@ -86,7 +108,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                   DropdownMenuEntry(value: "digital", label: "Digital"),
                 ],
               ),
-              SizedBox(height: 280.0),
+              SizedBox(height: 160.0),
               Center(
                 child: Column(
                   children: [
