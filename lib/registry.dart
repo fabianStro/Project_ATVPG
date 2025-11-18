@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class RegistryWidget extends StatefulWidget {
   const RegistryWidget({super.key});
@@ -9,7 +10,8 @@ class RegistryWidget extends StatefulWidget {
 
 class _RegistryWidgetState extends State<RegistryWidget> {
   final TextEditingController _usernameController = TextEditingController(),
-      _clearNameController = TextEditingController(),
+      _clearFirstNameController = TextEditingController(),
+      _clearLastNameController = TextEditingController(),
       _emailController = TextEditingController(),
       _passwordController = TextEditingController(),
       _passwordConfirmController = TextEditingController();
@@ -50,12 +52,22 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                     ), // TextField
                     SizedBox(height: 20.0),
                     TextField(
-                      controller: _clearNameController,
+                      controller: _clearFirstNameController,
                       autocorrect: false,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(top: 16.0),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
-                        labelText: 'First/Last name',
+                        labelText: 'First name',
+                      ), // InputDecoration
+                    ), // TextField
+                    SizedBox(height: 20.0),
+                    TextField(
+                      controller: _clearLastNameController,
+                      autocorrect: false,
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.only(top: 16.0),
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
+                        labelText: 'Last name',
                       ), // InputDecoration
                     ), // TextField
                     SizedBox(height: 20.0),
@@ -95,8 +107,12 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                       width: 150.0,
                       child: ElevatedButton(
                         style: _buttonStyle,
-                        onPressed: () {
-                          Navigator.pushNamed(context, '');
+                        onPressed: () async {
+                          await Supabase.instance.client.auth.signUp(
+                            email: _emailController.text,
+                            password: _passwordController.text,
+                          );
+                          Navigator.pushNamed(context, '/home');
                         },
                         child: Text('Register', style: _buttonTextStyle), // Text
                       ), // ElevatedButton
@@ -105,7 +121,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                 ), // Column
               ), // Padding
               SizedBox(height: 50.0),
-              const Divider(height: 30, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
+              const Divider(height: 20, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
               Text(
                 'You already have an account?',
                 style: TextStyle(color: Colors.grey[400], fontFamily: 'Arial'),

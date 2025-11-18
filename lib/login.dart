@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({super.key});
@@ -31,39 +32,9 @@ class _LoginWidgetState extends State<LoginWidget> {
   // ############################################################################
   // Feste Werte
   // ############################################################################
-  final String _title = 'ATVPG', _username = 'Reaper', _password = 'root';
-  late String _formatString;
+  final String _title = 'ATVPG';
 
-  void _loginCheck(BuildContext context) {
-    _formatString = _usernameController.text.replaceAll(' ', '');
-    if (_formatString == _username && _passwordController.text == _password) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          duration: const Duration(seconds: 2),
-          backgroundColor: Colors.black,
-          showCloseIcon: false,
-          closeIconColor: Colors.white,
-          content: Text(
-            'Welcome $_formatString. Login successful !',
-            style: const TextStyle(fontSize: 20.0, color: Colors.white),
-          ),
-        ), // SnackBar
-      );
-      Navigator.pushNamed(context, '/start', arguments: _formatString);
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          duration: Duration(seconds: 2),
-          backgroundColor: Colors.black,
-          showCloseIcon: false,
-          closeIconColor: Colors.white,
-          content: Center(
-            child: Text('Incorrect Username or Password !', style: TextStyle(fontSize: 20.0, color: Colors.white)),
-          ), // Center
-        ), // SnackBar
-      );
-    }
-  }
+  //void _loginCheck(BuildContext context) {}
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +69,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.only(top: 16.0, left: 10.0),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
-                    labelText: 'Username',
+                    labelText: 'E-Mail',
                   ), // InputDecoration
                 ), // TextField
                 SizedBox(height: 20.0),
@@ -117,8 +88,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                   width: 150.0,
                   child: ElevatedButton(
                     style: _buttonStyle,
-                    onPressed: () {
-                      _loginCheck(context);
+                    onPressed: () async {
+                      await Supabase.instance.client.auth.signInWithPassword(
+                        email: _usernameController.text,
+                        password: _passwordController.text,
+                      );
+
+                      Navigator.pushNamed(context, '/start');
                     },
                     child: Text('Login', style: _buttonTextStyle),
                   ), // ElevatedButtton

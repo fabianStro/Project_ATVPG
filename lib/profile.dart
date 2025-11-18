@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ProfileWidget extends StatefulWidget {
   const ProfileWidget({super.key});
@@ -8,6 +9,11 @@ class ProfileWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<ProfileWidget> {
+  final supabase = Supabase.instance.client;
+  Future<List<dynamic>> loadUser() async {
+    return await supabase.from('Users').select('email, password');
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -41,15 +47,15 @@ class _LoginWidgetState extends State<ProfileWidget> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('First name: Fabian', style: TextStyle(fontSize: 20.0)),
+                  Text('E-Mail: fabian.strottmann@gamil.com', style: TextStyle(fontSize: 20.0)),
                   SizedBox(height: 15),
-                  Text('Last name: Strottmann', style: TextStyle(fontSize: 20.0)),
+                  Text('Username: XXX', style: TextStyle(fontSize: 20.0)),
                   SizedBox(height: 15),
-                  Text('Username: Reaper', style: TextStyle(fontSize: 20.0)),
+                  Text('First name: XXX', style: TextStyle(fontSize: 20.0)),
                   SizedBox(height: 15),
-                  Text('E-mail: Reaper@hell.com', style: TextStyle(fontSize: 20.0)),
+                  Text('Last name: XXX', style: TextStyle(fontSize: 20.0)),
                   SizedBox(height: 15),
-                  Text('Password: ****', style: TextStyle(fontSize: 20.0)),
+                  Text('Password: ********', style: TextStyle(fontSize: 20.0)),
                 ],
               ), // Column
             ), // Padding
