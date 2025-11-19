@@ -21,6 +21,30 @@ class _RegistryWidgetState extends State<RegistryWidget> {
   final ButtonStyle _buttonStyle = ElevatedButton.styleFrom(backgroundColor: Colors.grey);
   final TextStyle _buttonTextStyle = TextStyle(color: Colors.white, fontFamily: 'Arial');
 
+  Future<void> insertUserData(
+    String uid,
+    String username,
+    String firstName,
+    String lastName,
+    String pictureURL,
+    String email,
+  ) async {
+    try {
+      final result = await Supabase.instance.client.from('user_data').insert({
+        'uid': uid,
+        'username': username,
+        'firstName': firstName,
+        'lastName': lastName,
+        'pictureURL': pictureURL,
+        'email': email,
+      });
+
+      print("Erfolgreich eingefügt: $result");
+    } catch (e) {
+      print("Fehler beim Insert: $e");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -112,7 +136,22 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                             email: _emailController.text,
                             password: _passwordController.text,
                           );
-                          Navigator.pushNamed(context, '/home');
+                          /*    insertUserData(
+                            uid,
+                            _usernameController.text,
+                            _clearLastNameController.text,
+                            _clearFirstNameController.text,
+                            pictureURL,
+                            _emailController.text,
+                          ); */
+                          if (context.mounted) {
+                            SnackBar snackBar = SnackBar(
+                              content: Text('Registration successful!'),
+                              duration: Duration(seconds: 2),
+                            ); // SnackBar
+                            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                            Navigator.pushNamed(context, '/home');
+                          }
                         },
                         child: Text('Register', style: _buttonTextStyle), // Text
                       ), // ElevatedButton

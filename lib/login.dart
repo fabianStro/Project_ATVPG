@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import 'loginArchitecture.dart';
+
 class LoginWidget extends StatefulWidget {
   const LoginWidget({super.key});
 
@@ -62,42 +64,53 @@ class _LoginWidgetState extends State<LoginWidget> {
                   child: Text('LOGIN', style: _loginTextStyle),
                 ), // Padding
                 SizedBox(height: 20.0),
-                TextField(
+                TextFormField(
                   autocorrect: false,
                   controller: _usernameController,
                   obscureText: false,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      SnackBar snackBar = SnackBar(
+                        content: Text('Please enter your e-mail'),
+                        duration: Duration(seconds: 2),
+                      ); // SnackBar
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    }
+                    return null;
+                  },
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.only(top: 16.0, left: 10.0),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
                     labelText: 'E-Mail',
                   ), // InputDecoration
-                ), // TextField
+                ), // TextFormField
                 SizedBox(height: 20.0),
-                TextField(
+                TextFormField(
                   autocorrect: false,
                   controller: _passwordController,
                   obscureText: true,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      SnackBar snackBar = SnackBar(
+                        content: Text('Please enter your password'),
+                        duration: Duration(seconds: 2),
+                      ); // SnackBar
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    }
+                    return null;
+                  },
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.only(top: 16.0, left: 10.0),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
                     labelText: 'Password',
                   ), // InputDeecoration
-                ), // TextField
+                ), // TextFormField
                 SizedBox(height: 25.0),
-                SizedBox(
-                  width: 150.0,
-                  child: ElevatedButton(
-                    style: _buttonStyle,
-                    onPressed: () async {
-                      await Supabase.instance.client.auth.signInWithPassword(
-                        email: _usernameController.text,
-                        password: _passwordController.text,
-                      );
-
-                      Navigator.pushNamed(context, '/start');
-                    },
-                    child: Text('Login', style: _buttonTextStyle),
-                  ), // ElevatedButtton
+                LoginArchitectureWidget(
+                  buttonStyle: _buttonStyle,
+                  usernameController: _usernameController,
+                  passwordController: _passwordController,
+                  buttonTextStyle: _buttonTextStyle,
                 ), // SizedBox
                 SizedBox(height: 15.0),
                 Align(
@@ -112,7 +125,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 Text(
                   'or',
                   style: TextStyle(color: Colors.grey[400], fontFamily: 'Arial', fontSize: 17.0),
-                ),
+                ), // Text
                 SizedBox(height: 8.0),
                 Align(
                   child: GestureDetector(

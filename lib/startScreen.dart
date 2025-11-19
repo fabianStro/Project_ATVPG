@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_one/allAnime.dart';
 import 'package:flutter_application_one/myAnime.dart';
 import 'package:flutter_application_one/favoriteAnime.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class StartScreenWidget extends StatefulWidget {
   const StartScreenWidget({super.key});
@@ -112,8 +113,16 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                 padding: const EdgeInsets.only(top: 0.0, right: 8.0, left: 8.0),
                 child: IconButton(
                   icon: _exitIcon,
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/home');
+                  onPressed: () async {
+                    await Supabase.instance.client.auth.signOut();
+                    if (context.mounted) {
+                      SnackBar snackBar = SnackBar(
+                        content: Text('Logout successful!'),
+                        duration: Duration(seconds: 2),
+                      ); // SnackBar
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      Navigator.pushNamed(context, '/home');
+                    }
                   },
                 ), // IconButton
               ), // Padding

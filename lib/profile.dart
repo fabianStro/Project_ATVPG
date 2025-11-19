@@ -9,9 +9,9 @@ class ProfileWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<ProfileWidget> {
-  final supabase = Supabase.instance.client;
-  Future<List<dynamic>> loadUser() async {
-    return await supabase.from('Users').select('email, password');
+  //final supabase = Supabase.instance.client;
+  Future<String> loadUser() async {
+    return Supabase.instance.client.auth.currentUser?.email ?? 'No user logged in';
   }
 
   @override
@@ -42,23 +42,34 @@ class _LoginWidgetState extends State<ProfileWidget> {
             SizedBox(height: 15.0),
             const Divider(height: 30, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
             SizedBox(height: 15.0),
-            Padding(
-              padding: EdgeInsets.only(left: 16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('E-Mail: fabian.strottmann@gamil.com', style: TextStyle(fontSize: 20.0)),
-                  SizedBox(height: 15),
-                  Text('Username: XXX', style: TextStyle(fontSize: 20.0)),
-                  SizedBox(height: 15),
-                  Text('First name: XXX', style: TextStyle(fontSize: 20.0)),
-                  SizedBox(height: 15),
-                  Text('Last name: XXX', style: TextStyle(fontSize: 20.0)),
-                  SizedBox(height: 15),
-                  Text('Password: ********', style: TextStyle(fontSize: 20.0)),
-                ],
-              ), // Column
-            ), // Padding
+            FutureBuilder(
+              future: loadUser(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return Center(child: CircularProgressIndicator());
+                }
+                final userData = snapshot.data!;
+                //final user = userData;
+
+                return Padding(
+                  padding: EdgeInsets.only(left: 16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('E-Mail: $userData', style: TextStyle(fontSize: 20.0)),
+                      SizedBox(height: 15),
+                      Text('Username: XXX', style: TextStyle(fontSize: 20.0)),
+                      SizedBox(height: 15),
+                      Text('First name: XXX', style: TextStyle(fontSize: 20.0)),
+                      SizedBox(height: 15),
+                      Text('Last name: XXX', style: TextStyle(fontSize: 20.0)),
+                      SizedBox(height: 15),
+                      Text('Password:', style: TextStyle(fontSize: 20.0)),
+                    ], // children of Column
+                  ), // Column
+                ); // Padding
+              },
+            ), // FutureBuilder
             SizedBox(height: 40.0),
             Center(
               child: Column(
