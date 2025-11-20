@@ -96,10 +96,7 @@ class FavoriteAnime extends StatelessWidget {
           ), // GestureDetector
           title: Text(broadcastData[index].title),
           subtitle: Text(broadcastData[index].subtitle),
-          shape: Border(
-            bottom: BorderSide(color: Colors.white, width: 1.0),
-            // top: BorderSide(color: Colors.white, width: 1.0),
-          ), // Border
+          shape: Border(bottom: BorderSide(color: Colors.white, width: 1.0)), // Border
         ); // ListTile
       },
     ); // ListView.builder

@@ -9,11 +9,39 @@ class NotificationWidget extends StatefulWidget {
 }
 
 class _NotificationWidgetState extends State<NotificationWidget> {
+  // ############################################################################
+  // Controller für Textfelder
+  // ############################################################################
   final TextEditingController _minBeforeController = TextEditingController();
   final TextEditingController _reminderSoundController = TextEditingController();
   final TextEditingController _notificationMethodController = TextEditingController();
 
+  // ############################################################################
+  // Stile und Konstanten
+  // ############################################################################
   bool activeNotification = false;
+
+  // ############################################################################
+  // Feste Werte (Functions to get dropdown entries)
+  // ############################################################################
+  List<DropdownMenuEntry<String>> get _dropDowmEntriesSound {
+    return const [
+      DropdownMenuEntry(value: 'none', label: 'System Default'),
+      DropdownMenuEntry(value: 'blob', label: 'Blob'),
+      DropdownMenuEntry(value: 'swoosh', label: 'Swoosh'),
+      DropdownMenuEntry(value: 'crystal', label: 'Crystal'),
+      DropdownMenuEntry(value: 'bFrog', label: 'Bull Frog'),
+      DropdownMenuEntry(value: 'digital', label: 'Digital'),
+    ];
+  }
+
+  List<DropdownMenuEntry<String>> get _dropDownEntriesNotificationStyle {
+    return const [
+      DropdownMenuEntry(value: 'push', label: 'Push Notification'),
+      DropdownMenuEntry(value: 'mail', label: 'Mail Notification'),
+      DropdownMenuEntry(value: 'sms', label: 'SMS Notification'),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -114,14 +142,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                         borderSide: BorderSide(color: Colors.blue, width: 2),
                       ), // OutlineInputBorder
                     ), // InputDecorationTheme
-                    dropdownMenuEntries: const [
-                      DropdownMenuEntry(value: 'none', label: 'System Default'),
-                      DropdownMenuEntry(value: 'blob', label: 'Blob'),
-                      DropdownMenuEntry(value: 'swoosh', label: 'Swoosh'),
-                      DropdownMenuEntry(value: 'crystal', label: 'Crystal'),
-                      DropdownMenuEntry(value: 'bFrog', label: 'Bull Frog'),
-                      DropdownMenuEntry(value: 'digital', label: 'Digital'),
-                    ],
+                    dropdownMenuEntries: _dropDowmEntriesSound,
                   ), // DropdownMenu
                 SizedBox(height: 30.0),
                 if (!activeNotification)
@@ -157,14 +178,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                         borderSide: BorderSide(color: Colors.blue, width: 2),
                       ), // OutlineInputBorder
                     ), // InputDecorationTheme
-                    dropdownMenuEntries: const [
-                      //DropdownMenuEntry(value: 'none', label: 'System Default'),
-                      DropdownMenuEntry(value: 'push', label: 'Push Notification'),
-                      DropdownMenuEntry(value: 'mail', label: 'Mail Notification'),
-                      DropdownMenuEntry(value: 'sms', label: 'SMS Notification'),
-                      /* DropdownMenuEntry(value: 'bFrog', label: 'Bull Frog'),
-                    DropdownMenuEntry(value: 'digital', label: 'Digital'), */
-                    ],
+                    dropdownMenuEntries: _dropDownEntriesNotificationStyle,
                   ), // DropdownMenu
                 SizedBox(height: 40.0),
                 Center(
@@ -191,8 +205,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                 SizedBox(height: 20.0),
               ],
             ), // Column
-          ),
-        ), // Padding
+          ), // Padding
+        ), // SingleChildScrollView
       ), // Scaffold
     ); // SafeArea
   }
