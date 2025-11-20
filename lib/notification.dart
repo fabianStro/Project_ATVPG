@@ -55,7 +55,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
             top: BorderSide(color: Colors.white, width: 2.0),
           ), // Border
           centerTitle: true,
-          title: Text('Notification', style: TextStyle(fontSize: 50.0, letterSpacing: 4.0, fontFamily: 'Audiowide')),
+          title: Text('Notification', style: TextStyle(fontSize: 50.0, letterSpacing: 2.2, fontFamily: 'Audiowide')),
         ), // AppBar
         body: SingleChildScrollView(
           child: Padding(
@@ -176,11 +176,13 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                         borderSide: BorderSide(color: Colors.blue, width: 2),
-                      ), // OutlineInputBorder
+                      ),
+                      // OutlineInputBorder
                     ), // InputDecorationTheme
                     dropdownMenuEntries: _dropDownEntriesNotificationStyle,
                   ), // DropdownMenu
-                SizedBox(height: 40.0),
+                if (!activeNotification) SizedBox(height: 40.0),
+                if (activeNotification) SizedBox(height: 290.0),
                 Center(
                   child: Column(
                     children: [

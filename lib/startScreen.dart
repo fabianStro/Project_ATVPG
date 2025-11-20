@@ -58,7 +58,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
             ), // GestureDetector
             bottom: TabBar(
               unselectedLabelColor: Colors.grey,
-              unselectedLabelStyle: TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0),
+              unselectedLabelStyle: TextStyle(fontStyle: FontStyle.italic, fontSize: 13.0),
               labelColor: Colors.white,
               labelStyle: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
               indicatorPadding: EdgeInsets.only(left: -15.0, right: -15.0),
@@ -116,11 +116,15 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                   onPressed: () async {
                     await Supabase.instance.client.auth.signOut();
                     if (context.mounted) {
-                      SnackBar snackBar = SnackBar(
-                        content: Text('Logout successful!'),
-                        duration: Duration(seconds: 2),
-                      ); // SnackBar
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'Logout successful!',
+                            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                          ),
+                          duration: Duration(seconds: 2),
+                        ),
+                      );
                       Navigator.pushNamed(context, '/home');
                     }
                   },

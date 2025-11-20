@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
 // import 'package:supabase_flutter/supabase_flutter.dart';
-
+import 'package:flutter/material.dart';
 import 'loginArchitecture.dart';
 
 class LoginWidget extends StatefulWidget {
@@ -21,7 +20,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   // Stile und Konstanten
   // ############################################################################
   final ButtonStyle _buttonStyle = ElevatedButton.styleFrom(backgroundColor: Colors.grey);
-  final TextStyle _titleTextStyle = TextStyle(fontSize: 50.0, letterSpacing: 4.0, fontFamily: 'Audiowide'),
+  final TextStyle _titleTextStyle = TextStyle(fontSize: 50.0, letterSpacing: 2.2, fontFamily: 'Audiowide'),
       _buttonTextStyle = TextStyle(color: Colors.white, fontFamily: 'Arial'),
       _registryAndForgotTextStyle = TextStyle(
         color: Colors.grey[400],

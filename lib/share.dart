@@ -24,7 +24,7 @@ class _ShareWidgetState extends State<ShareWidget> {
             top: BorderSide(color: Colors.white, width: 2.0),
           ), // Border
           centerTitle: true,
-          title: Text('Share', style: TextStyle(fontSize: 50.0, letterSpacing: 4.0, fontFamily: 'Audiowide')),
+          title: Text('Share', style: TextStyle(fontSize: 50.0, letterSpacing: 2.2, fontFamily: 'Audiowide')),
         ), // AppBar
         body: Stack(
           children: [

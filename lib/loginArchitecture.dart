@@ -31,11 +31,15 @@ class LoginArchitectureWidget extends StatelessWidget {
             password: _passwordController.text,
           );
           if (context.mounted) {
-            SnackBar snackBar = SnackBar(
-              content: Text('Login successful!'),
-              duration: Duration(seconds: 2),
-            ); // SnackBar
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  'Login successful!',
+                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                ),
+                duration: Duration(seconds: 2),
+              ),
+            );
             Navigator.pushNamed(context, '/start');
           }
         },

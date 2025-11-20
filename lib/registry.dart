@@ -23,7 +23,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
 
   Future<void> insertUserData(
     String uid,
-    String username,
+    //String username,
     String firstName,
     String lastName,
     String pictureURL,
@@ -32,7 +32,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
     try {
       final result = await Supabase.instance.client.from('user_data').insert({
         'uid': uid,
-        'username': username,
+
         'firstName': firstName,
         'lastName': lastName,
         'pictureURL': pictureURL,
@@ -136,14 +136,13 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                             email: _emailController.text,
                             password: _passwordController.text,
                           );
-                          /* insertUserData(
+                          /*   insertUserData(
                             Supabase.instance.client.auth.currentUser?.uid,
-                            _usernameController.text,
                             _clearLastNameController.text,
                             _clearFirstNameController.text,
                             pictureURL,
                             _emailController.text,
-                          );  */
+                          ); */
                           if (context.mounted) {
                             SnackBar snackBar = SnackBar(
                               content: Text('Registration successful!'),

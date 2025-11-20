@@ -26,7 +26,7 @@ class _LoginWidgetState extends State<ProfileWidget> {
             top: BorderSide(color: Colors.white, width: 2.0),
           ), // Border
           centerTitle: true,
-          title: Text('Profile', style: TextStyle(fontSize: 50.0, letterSpacing: 4.0, fontFamily: 'Audiowide')),
+          title: Text('Profile', style: TextStyle(fontSize: 50.0, letterSpacing: 2.2, fontFamily: 'Audiowide')),
         ), // AppBar
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
