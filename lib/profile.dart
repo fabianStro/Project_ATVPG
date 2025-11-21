@@ -10,7 +10,7 @@ class ProfileWidget extends StatefulWidget {
 
 class _LoginWidgetState extends State<ProfileWidget> {
   //final supabase = Supabase.instance.client;
-  Future<String> loadUser() async {
+  Future<String> loadUserEmail() async {
     return Supabase.instance.client.auth.currentUser?.email ?? 'No user logged in';
   }
 
@@ -43,12 +43,12 @@ class _LoginWidgetState extends State<ProfileWidget> {
             const Divider(height: 30, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
             SizedBox(height: 15.0),
             FutureBuilder(
-              future: loadUser(),
+              future: loadUserEmail(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   return Center(child: CircularProgressIndicator());
                 }
-                final userData = snapshot.data!;
+                final userEmail = snapshot.data!;
                 //final user = userData;
 
                 return Padding(
@@ -56,7 +56,7 @@ class _LoginWidgetState extends State<ProfileWidget> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('E-Mail: $userData', style: TextStyle(fontSize: 20.0)),
+                      Text('E-Mail: $userEmail', style: TextStyle(fontSize: 20.0)),
                       SizedBox(height: 15),
                       Text('Username: XXX', style: TextStyle(fontSize: 20.0)),
                       SizedBox(height: 15),

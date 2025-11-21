@@ -22,13 +22,22 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
       _exitIcon = Icon(Icons.logout_rounded, size: 30.0),
       _noteIcon = Icon(Icons.notifications_outlined, size: 30.0);
   final OverlayPortalController _overlaySearchController = OverlayPortalController();
+  final ValueNotifier<String> _searchQuery = ValueNotifier<String>('');
 
   // ######################################################################################
   // Instanzen der Screens
   // ######################################################################################
-  final AllAnime _allAnime = AllAnime();
-  final MyAnime _myAnime = MyAnime();
-  final FavoriteAnime _myFavAnime = FavoriteAnime();
+  late final AllAnime _allAnime;
+  late final MyAnime _myAnime;
+  late final FavoriteAnime _myFavAnime;
+
+  @override
+  void initState() {
+    super.initState();
+    _allAnime = AllAnime(searchQuery: _searchQuery);
+    _myAnime = MyAnime(searchQuery: _searchQuery);
+    _myFavAnime = FavoriteAnime(searchQuery: _searchQuery);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,11 +98,25 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                       child: Container(
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(30.0), color: Colors.white),
                         height: 50,
-                        child: const Text(
-                          'Hier erscheint die SearchBar',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
-                        ), // Text
+                        child: TextField(
+                          onChanged: (value) {
+                            _searchQuery.value = value;
+                          },
+                          decoration: InputDecoration(
+                            hintText: 'Search anime...',
+                            hintStyle: TextStyle(color: Colors.black, fontSize: 14.0),
+                            prefixIcon: Icon(Icons.search, color: Colors.grey),
+                            suffixIcon: GestureDetector(
+                              onTap: () {
+                                _searchQuery.value = '';
+                              },
+                              child: Icon(Icons.clear, color: Colors.grey),
+                            ),
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.symmetric(vertical: 15.0),
+                          ),
+                          style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.normal, color: Colors.black),
+                        ),
                       ), // Container
                     ); // Positioned
                   },
