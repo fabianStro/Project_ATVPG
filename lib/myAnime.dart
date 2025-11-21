@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_one/broadcastAttribute.dart';
 import 'package:flutter_application_one/searchableAnimeList.dart';
+import 'package:flutter_application_one/searchableAnimeList.dart';
 
 // #########################################################################################
 // MyChannel Widget
@@ -11,7 +12,11 @@ class MyAnime extends StatelessWidget {
   MyAnime({super.key, required this.searchQuery});
 
   final ValueNotifier<String> searchQuery;
+  MyAnime({super.key, required this.searchQuery});
 
+  final ValueNotifier<String> searchQuery;
+
+  final List<BroadcastAttribute> broadcastData = [
   final List<BroadcastAttribute> broadcastData = [
     /*  BroadcastAttribute(
       title: 'Highschool DxD',
