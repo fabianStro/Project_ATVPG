@@ -12,11 +12,7 @@ class MyAnime extends StatelessWidget {
   MyAnime({super.key, required this.searchQuery});
 
   final ValueNotifier<String> searchQuery;
-  MyAnime({super.key, required this.searchQuery});
 
-  final ValueNotifier<String> searchQuery;
-
-  final List<BroadcastAttribute> broadcastData = [
   final List<BroadcastAttribute> broadcastData = [
     /*  BroadcastAttribute(
       title: 'Highschool DxD',

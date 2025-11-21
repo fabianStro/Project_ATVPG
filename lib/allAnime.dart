@@ -12,11 +12,7 @@ class AllAnime extends StatelessWidget {
   AllAnime({super.key, required this.searchQuery});
 
   final ValueNotifier<String> searchQuery;
-  AllAnime({super.key, required this.searchQuery});
 
-  final ValueNotifier<String> searchQuery;
-
-  final List<BroadcastAttribute> broadcastData = [
   final List<BroadcastAttribute> broadcastData = [
     BroadcastAttribute(
       title: 'Highschool DxD',
@@ -69,8 +65,7 @@ class AllAnime extends StatelessWidget {
     ),
     BroadcastAttribute(
       title: 'Akame Ga Kill',
-      subtitle:
-          'Genre: Anime, Action, Adventure, Drama, Horror, Fantasy, Shōnen',
+      subtitle: 'Genre: Anime, Action, Adventure, Drama, Horror, Fantasy, Shōnen',
       imagePath: 'assets/images/broadcastImages/AkameGaKill_logo.png',
       description:
           'Akame ga Kill! ist eine düstere Fantasy-Anime-Serie, die sich um eine Gruppe von Attentätern namens Night Raid dreht, die das korrupte Kaiserreich stürzen wollen. Der junge Held Tatsumi schließt sich ihnen an, nachdem er die Grausamkeit des Regimes am eigenen Leib erfahren hat. Die Serie ist bekannt für ihre extreme Gewalt und den Tod zahlreicher Charaktere, die Teil der Geschichte sind. Handlung: Tatsumi verlässt sein Dorf, um als Held dem Kaiserreich zu dienen, muss aber schnell erkennen, dass die Realität weitaus grausamer ist, als er dachte. Nach dem Tod seiner Freunde wird er von der Rebellenorganisation Night Raid gerettet und schließt sich ihr an, um das unterdrückende Regime zu bekämpfen.',
