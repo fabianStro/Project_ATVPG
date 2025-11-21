@@ -115,7 +115,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.symmetric(vertical: 15.0),
                           ),
-                          style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.normal, color: Colors.black),
+                          style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.normal, color: Colors.black),
                         ),
                       ), // Container
                     ); // Positioned
