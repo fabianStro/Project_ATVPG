@@ -2,14 +2,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_one/broadcastAttribute.dart';
+import 'package:flutter_application_one/searchableAnimeList.dart';
 
 // #########################################################################################
 // Favorite Widget
 // #########################################################################################
 class FavoriteAnime extends StatelessWidget {
-  FavoriteAnime({super.key});
+  FavoriteAnime({super.key, required this.searchQuery});
 
-  List<BroadcastAttribute> broadcastData = [
+  final ValueNotifier<String> searchQuery;
+
+  final List<BroadcastAttribute> broadcastData = [
     /* BroadcastAttribute(
       title: 'Highschool DxD',
       subtitle: 'Genre: Anime, Comedy, Ecchi, Harem',
@@ -84,21 +87,9 @@ class FavoriteAnime extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: broadcastData.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          leading: GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, '/detail', arguments: broadcastData[index]);
-            },
-            child: Image.asset(broadcastData[index].imagePath, width: 80, height: 80, fit: BoxFit.cover),
-          ), // GestureDetector
-          title: Text(broadcastData[index].title),
-          subtitle: Text(broadcastData[index].subtitle),
-          shape: Border(bottom: BorderSide(color: Colors.white, width: 1.0)), // Border
-        ); // ListTile
-      },
-    ); // ListView.builder
+    return SearchableAnimeList(
+      allData: broadcastData,
+      searchQuery: searchQuery,
+    );
   }
 }
