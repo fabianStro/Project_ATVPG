@@ -97,7 +97,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                   SizedBox(
                     height: 50.0,
                     width: 200.0,
-                    child: TextField(
+                    child: TextFormField(
                       controller: _minBeforeController,
                       obscureText: false,
                       decoration: InputDecoration(
@@ -107,7 +107,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                         filled: true,
                         fillColor: Colors.black,
                       ), // InputDecoration
-                    ), // TextField
+                    ), // TextFormField
                   ), // SizedBox
                 SizedBox(height: 30.0),
                 if (!activeNotification) Text('Reminder Sound', style: TextStyle(fontSize: 20.0, fontFamily: 'Arial')),

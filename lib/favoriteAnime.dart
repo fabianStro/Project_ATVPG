@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_one/broadcastAttribute.dart';
 import 'package:flutter_application_one/searchableAnimeList.dart';
-import 'package:flutter_application_one/searchableAnimeList.dart';
 
 // #########################################################################################
 // Favorite Widget
@@ -29,7 +28,7 @@ class FavoriteAnime extends StatelessWidget {
     ),
     /*  BroadcastAttribute(
       title: 'Highschool DxD Born',
-      subtitle: 'Genre: vAnime, Comedy, Ecchi, Harem',
+      subtitle: 'Genre: Anime, Comedy, Ecchi, Harem',
       imagePath: 'assets/images/broadcastImages/Highschool_dxd_born_logo.png',
       description: 'High School DxD ist eine japanische Light-Novel-Reihe, die als Anime und Manga adaptiert wurde und die Geschichte von Issei Hyoudou erzählt, einem Oberschüler, der nach seinem Tod als Dämon wiederbelebt wird, um einem mächtigen Dämonenclan zu dienen. Er muss an seiner neuen Schule, der einstigen Mädchenschule Kuoh Academy, mit den anderen Mitgliedern des Okkulten Forschungsclubs – die selbst Dämonen sind – klarkommen, während er sich auf Kämpfe zwischen Engeln, Dämonen und gefallenen Engeln einlässt. Die Serie ist bekannt für ihre Mischung aus Comedy, Action und Ecchi-Elementen.',
     ),
@@ -66,7 +65,7 @@ class FavoriteAnime extends StatelessWidget {
     ),
     BroadcastAttribute(
       title: 'Konosuba',
-      subtitle: 'Genre: Anime, Comedy, Fantasy, Etchi',
+      subtitle: 'Genre: Anime, Comedy, Fantasy, Ecchi',
       imagePath: 'assets/images/broadcastImages/KonoSuba_logo.png',
       description: 'Konosuba ist eine japanische Anime- und Manga-Serie, die die Geschichte des unglücklichen Teenagers Kazuma Satou erzählt, der nach seinem Tod in eine Fantasiewelt geschickt wird. Dort gründet er mit der nutzlosen Göttin Aqua, der explosionsbesessenen Magierin Megumin und der masochistischen Kreuzritterin Darkness eine dysfunktionale Abenteurergruppe, um den Dämonenkönig zu besiegen. Die Serie ist eine Comedy-Fantasy, die für ihren humorvollen Umgang mit dem Isekai-Genre bekannt ist. Grundhandlung: Nach einem peinlichen Tod in seiner Welt wird Kazuma von der Göttin Aqua in eine Fantasiewelt geschickt. Sie gibt ihm die Wahl zwischen Himmel oder einer Wiedergeburt in einer Fantasy-Welt und erlaubt ihm, eine mächtige Fähigkeit oder Waffe mitzunehmen.', 
     ), */

@@ -9,10 +9,9 @@ class RegistryWidget extends StatefulWidget {
 }
 
 class _RegistryWidgetState extends State<RegistryWidget> {
-  final TextEditingController _usernameController = TextEditingController(),
+  final TextEditingController _emailController = TextEditingController(),
       _clearFirstNameController = TextEditingController(),
       _clearLastNameController = TextEditingController(),
-      _emailController = TextEditingController(),
       _passwordController = TextEditingController(),
       _passwordConfirmController = TextEditingController();
 
@@ -65,17 +64,19 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                 padding: const EdgeInsets.only(top: 40, left: 60.0, right: 60.0),
                 child: Column(
                   children: [
-                    TextField(
-                      controller: _usernameController,
+                    TextFormField(
+                      controller: _emailController,
                       autocorrect: false,
+                      validator: validateEmail,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(top: 16.0),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
-                        labelText: 'Username',
+                        labelText: 'E-mail',
                       ), // InputDecoration
-                    ), // TextField
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                    ), // TextFormField
                     SizedBox(height: 20.0),
-                    TextField(
+                    TextFormField(
                       controller: _clearFirstNameController,
                       autocorrect: false,
                       decoration: InputDecoration(
@@ -83,9 +84,9 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
                         labelText: 'First name',
                       ), // InputDecoration
-                    ), // TextField
+                    ), // TextFormField
                     SizedBox(height: 20.0),
-                    TextField(
+                    TextFormField(
                       controller: _clearLastNameController,
                       autocorrect: false,
                       decoration: InputDecoration(
@@ -93,20 +94,11 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
                         labelText: 'Last name',
                       ), // InputDecoration
-                    ), // TextField
+                    ), // TextFormField
                     SizedBox(height: 20.0),
-                    TextField(
-                      controller: _emailController,
-                      autocorrect: false,
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(top: 16.0),
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
-                        labelText: 'E-mail',
-                      ), // InputDecoration
-                    ), // TextField
-                    SizedBox(height: 20.0),
-                    TextField(
+                    TextFormField(
                       controller: _passwordController,
+                      validator: validatePw,
                       autocorrect: false,
                       obscureText: true,
                       decoration: InputDecoration(
@@ -114,10 +106,12 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
                         labelText: 'Password',
                       ), // InputDecoration
-                    ), // TextField
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                    ), // TextFormField
                     SizedBox(height: 20.0),
-                    TextField(
+                    TextFormField(
                       controller: _passwordConfirmController,
+                      validator: validatePwRepeat,
                       autocorrect: false,
                       obscureText: true,
                       decoration: InputDecoration(
@@ -125,7 +119,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
                         labelText: 'Confirm Password',
                       ), // InputDecoration
-                    ), // TextField
+                    ), // TextFormField
                     SizedBox(height: 40.0),
                     SizedBox(
                       width: 150.0,
@@ -185,4 +179,32 @@ class _RegistryWidgetState extends State<RegistryWidget> {
       ), // Scaffold
     ); // SafeArea
   }
+
+  String? validatePw(String? value) {
+    if (value == null || value == '') {
+      return 'Enter the password';
+    } else if (value.length >= 8) {
+      return null;
+    } else {
+      return 'minimum 8 characters';
+    }
+  }
+
+  String? validatePwRepeat(String? value) {
+    if (_passwordController.text == _passwordConfirmController.text) {
+      return null;
+    } else {
+      return "Passwords don't match";
+    }
+  }
+}
+
+String? validateEmail(String? value) {
+  final emailPattern = r'^[^@\s]+@[^@\s]+\.[^@\s]+$';
+  final regex = RegExp(emailPattern);
+
+  if (!regex.hasMatch(value!)) {
+    return 'Enter a valid e-mail';
+  }
+  return null;
 }

@@ -13,8 +13,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   // ############################################################################
   // Controller für Textfelder
   // ############################################################################
-  final TextEditingController _usernameController = TextEditingController(),
-      _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController(), _passwordController = TextEditingController();
 
   // ############################################################################
   // Stile und Konstanten
@@ -65,52 +64,36 @@ class _LoginWidgetState extends State<LoginWidget> {
                 SizedBox(height: 20.0),
                 TextFormField(
                   autocorrect: false,
-                  controller: _usernameController,
+                  controller: _emailController,
                   obscureText: false,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      SnackBar snackBar = SnackBar(
-                        content: Text('Please enter your e-mail'),
-                        duration: Duration(seconds: 2),
-                      ); // SnackBar
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    }
-                    return null;
-                  },
+                  validator: validateEmail,
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.only(top: 16.0, left: 10.0),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
                     labelText: 'E-Mail',
                   ), // InputDecoration
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                 ), // TextFormField
                 SizedBox(height: 20.0),
                 TextFormField(
                   autocorrect: false,
                   controller: _passwordController,
                   obscureText: true,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      SnackBar snackBar = SnackBar(
-                        content: Text('Please enter your password'),
-                        duration: Duration(seconds: 2),
-                      ); // SnackBar
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    }
-                    return null;
-                  },
+                  validator: validatePw,
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.only(top: 16.0, left: 10.0),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
                     labelText: 'Password',
-                  ), // InputDeecoration
+                  ), // InputDecoration
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                 ), // TextFormField
                 SizedBox(height: 25.0),
                 LoginArchitectureWidget(
                   buttonStyle: _buttonStyle,
-                  usernameController: _usernameController,
+                  usernameController: _emailController,
                   passwordController: _passwordController,
                   buttonTextStyle: _buttonTextStyle,
-                ), // SizedBox
+                ), // LoginArchitectureWidget
                 SizedBox(height: 15.0),
                 Align(
                   child: GestureDetector(
@@ -141,4 +124,24 @@ class _LoginWidgetState extends State<LoginWidget> {
       ), // Scaffold
     ); // SafeArea
   }
+
+  String? validatePw(String? value) {
+    if (value == null || value == '') {
+      return 'Enter the password';
+    } else if (value.length >= 8) {
+      return null;
+    } else {
+      return 'minimum 8 characters';
+    }
+  }
+}
+
+String? validateEmail(String? value) {
+  final emailPattern = r'^[^@\s]+@[^@\s]+\.[^@\s]+$';
+  final regex = RegExp(emailPattern);
+
+  if (!regex.hasMatch(value!)) {
+    return 'Enter a valid e-mail';
+  }
+  return null;
 }

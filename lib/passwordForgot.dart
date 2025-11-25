@@ -31,7 +31,7 @@ class _PasswordForgotWidgetState extends State<PasswordForgotWidget> {
             SizedBox(height: 30.0),
             SizedBox(
               width: 300.0,
-              child: TextField(
+              child: TextFormField(
                 obscureText: false,
                 autocorrect: false,
                 decoration: InputDecoration(
@@ -41,8 +41,8 @@ class _PasswordForgotWidgetState extends State<PasswordForgotWidget> {
                   filled: true,
                   fillColor: Colors.black,
                 ), // InputDecoration
-              ), // TextField
-            ), // TextField
+              ), // TextFormField
+            ), // TextFormField
             SizedBox(height: 320.0),
             Center(
               child: Column(

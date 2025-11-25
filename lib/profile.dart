@@ -58,8 +58,6 @@ class _LoginWidgetState extends State<ProfileWidget> {
                     children: [
                       Text('E-Mail: $userEmail', style: TextStyle(fontSize: 20.0)),
                       SizedBox(height: 15),
-                      Text('Username: XXX', style: TextStyle(fontSize: 20.0)),
-                      SizedBox(height: 15),
                       Text('First name: XXX', style: TextStyle(fontSize: 20.0)),
                       SizedBox(height: 15),
                       Text('Last name: XXX', style: TextStyle(fontSize: 20.0)),
@@ -70,7 +68,7 @@ class _LoginWidgetState extends State<ProfileWidget> {
                 ); // Padding
               },
             ), // FutureBuilder
-            SizedBox(height: 40.0),
+            SizedBox(height: 85.0),
             Center(
               child: Column(
                 children: [

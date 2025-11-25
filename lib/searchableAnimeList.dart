@@ -53,12 +53,12 @@ class _SearchableAnimeListState extends State<SearchableAnimeList> {
               Navigator.pushNamed(context, '/detail', arguments: filteredData[index]);
             },
             child: Image.asset(filteredData[index].imagePath, width: 80, height: 80, fit: BoxFit.cover),
-          ),
+          ), // GestureDetector
           title: Text(filteredData[index].title),
           subtitle: Text(filteredData[index].subtitle),
           shape: Border(bottom: BorderSide(color: Colors.white, width: 1.0)),
-        );
+        ); // ListTile
       },
-    );
+    ); // ListView.builder
   }
 }

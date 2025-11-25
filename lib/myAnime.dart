@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_one/broadcastAttribute.dart';
 import 'package:flutter_application_one/searchableAnimeList.dart';
-import 'package:flutter_application_one/searchableAnimeList.dart';
 
 // #########################################################################################
 // MyChannel Widget

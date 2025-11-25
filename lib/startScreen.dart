@@ -94,29 +94,31 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                   overlayChildBuilder: (BuildContext context) {
                     return Positioned(
                       top: 110,
-                      width: 390,
+                      width: 380,
+                      left: 15.0,
+                      //right: 20.0,
                       child: Container(
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(30.0), color: Colors.white),
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(30.0), color: Colors.grey),
                         height: 50,
-                        child: TextField(
+                        child: TextFormField(
                           onChanged: (value) {
                             _searchQuery.value = value;
                           },
                           decoration: InputDecoration(
                             hintText: 'Search anime...',
                             hintStyle: TextStyle(color: Colors.black, fontSize: 14.0),
-                            prefixIcon: Icon(Icons.search, color: Colors.grey),
+                            prefixIcon: Icon(Icons.search, color: Colors.white),
                             suffixIcon: GestureDetector(
                               onTap: () {
-                                _searchQuery.value = '';
+                                _searchQuery.value = ' ';
                               },
-                              child: Icon(Icons.clear, color: Colors.grey),
-                            ),
+                              child: Icon(Icons.clear, color: Colors.white),
+                            ), // GestureDetector
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.symmetric(vertical: 15.0),
-                          ),
-                          style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.normal, color: Colors.black),
-                        ),
+                          ), // InputDecoration
+                          style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.normal, color: Colors.white),
+                        ), // TextFormField
                       ), // Container
                     ); // Positioned
                   },
@@ -144,9 +146,9 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                           content: Text(
                             'Logout successful!',
                             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-                          ),
+                          ), // Text
                           duration: Duration(seconds: 2),
-                        ),
+                        ), // SnackBar
                       );
                       Navigator.pushNamed(context, '/home');
                     }
