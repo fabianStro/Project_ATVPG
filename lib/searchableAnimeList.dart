@@ -4,15 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_one/broadcastAttribute.dart';
 
 class SearchableAnimeList extends StatefulWidget {
-  final List<BroadcastAttribute> _allData;
-  final ValueNotifier<String> _searchQuery;
+  final List<BroadcastAttribute> allData;
+  final ValueNotifier<String> searchQuery;
 
-  const SearchableAnimeList({
-    required List<BroadcastAttribute> allData,
-    required ValueNotifier<String> searchQuery,
-    super.key,
-  }) : _searchQuery = searchQuery,
-       _allData = allData;
+  const SearchableAnimeList({required this.allData, required this.searchQuery, super.key});
 
   @override
   State<SearchableAnimeList> createState() => _SearchableAnimeListState();
@@ -24,23 +19,23 @@ class _SearchableAnimeListState extends State<SearchableAnimeList> {
   @override
   void initState() {
     super.initState();
-    filteredData = widget._allData;
-    widget._searchQuery.addListener(_updateFilter);
+    filteredData = widget.allData;
+    widget.searchQuery.addListener(_updateFilter);
   }
 
   @override
   void dispose() {
-    widget._searchQuery.removeListener(_updateFilter);
+    widget.searchQuery.removeListener(_updateFilter);
     super.dispose();
   }
 
   void _updateFilter() {
     setState(() {
-      final query = widget._searchQuery.value.toLowerCase();
+      final query = widget.searchQuery.value.toLowerCase();
       if (query.isEmpty) {
-        filteredData = widget._allData;
+        filteredData = widget.allData;
       } else {
-        filteredData = widget._allData
+        filteredData = widget.allData
             .where((anime) => anime.title.toLowerCase().contains(query) || anime.subtitle.toLowerCase().contains(query))
             .toList();
       }

@@ -1,4 +1,4 @@
-// ignore_for_file: no_leading_underscores_for_local_identifiers
+// ignore_for_file: no_leading_underscores_for_local_identifiers, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -23,21 +23,21 @@ class _RegistryWidgetState extends State<RegistryWidget> {
   final TextStyle buttonTextStyle = TextStyle(color: Colors.white, fontFamily: 'Arial');
 
   Future<void> insertUserData(
-    String _uid,
+    String uid,
     //String username,
-    String _firstName,
-    String _lastName,
-    String _pictureURL,
-    String _email,
+    String firstName,
+    String lastName,
+    String pictureURL,
+    String email,
   ) async {
     try {
       final result = await Supabase.instance.client.from('user_data').insert({
-        'uid': _uid,
+        'uid': uid,
 
-        'firstName': _firstName,
-        'lastName': _lastName,
-        'pictureURL': _pictureURL,
-        'email': _email,
+        'firstName': firstName,
+        'lastName': lastName,
+        'pictureURL': pictureURL,
+        'email': email,
       });
 
       print("Erfolgreich eingefügt: $result");

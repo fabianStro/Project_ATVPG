@@ -5,26 +5,24 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class LoginArchitectureWidget extends StatelessWidget {
   const LoginArchitectureWidget({
     super.key,
-    required ButtonStyle buttonStyle,
+    required this.buttonStyle,
     required TextEditingController emailController,
     required TextEditingController passwordController,
-    required TextStyle buttonTextStyle,
-  }) : _buttonStyle = buttonStyle,
-       _emailController = emailController,
-       _passwordController = passwordController,
-       _buttonTextStyle = buttonTextStyle;
+    required this.buttonTextStyle,
+  }) : _emailController = emailController,
+       _passwordController = passwordController;
 
-  final ButtonStyle _buttonStyle;
+  final ButtonStyle buttonStyle;
   final TextEditingController _emailController;
   final TextEditingController _passwordController;
-  final TextStyle _buttonTextStyle;
+  final TextStyle buttonTextStyle;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 150.0,
       child: ElevatedButton(
-        style: _buttonStyle,
+        style: buttonStyle,
         onPressed: () async {
           await Supabase.instance.client.auth.signInWithPassword(
             email: _emailController.text,
@@ -43,7 +41,7 @@ class LoginArchitectureWidget extends StatelessWidget {
             Navigator.pushNamed(context, '/start');
           }
         },
-        child: Text('Login', style: _buttonTextStyle),
+        child: Text('Login', style: buttonTextStyle),
       ), // ElevatedButtton
     ); // SizedBox
   }
