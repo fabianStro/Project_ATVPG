@@ -1,7 +1,8 @@
+// ignore_for_file: must_be_immutable
+
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class ShareWidget extends StatefulWidget {
   ShareWidget({super.key, required this.title, required this.picture});
 
