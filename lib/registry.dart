@@ -1,3 +1,5 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -15,27 +17,27 @@ class _RegistryWidgetState extends State<RegistryWidget> {
       _passwordController = TextEditingController(),
       _passwordConfirmController = TextEditingController();
 
-  final _appBarBorderStyle = BorderSide(color: Colors.white, width: 2.0);
+  final BorderSide appBarBorderStyle = BorderSide(color: Colors.white, width: 2.0);
 
-  final ButtonStyle _buttonStyle = ElevatedButton.styleFrom(backgroundColor: Colors.grey);
-  final TextStyle _buttonTextStyle = TextStyle(color: Colors.white, fontFamily: 'Arial');
+  final ButtonStyle buttonStyle = ElevatedButton.styleFrom(backgroundColor: Colors.grey);
+  final TextStyle buttonTextStyle = TextStyle(color: Colors.white, fontFamily: 'Arial');
 
   Future<void> insertUserData(
-    String uid,
+    String _uid,
     //String username,
-    String firstName,
-    String lastName,
-    String pictureURL,
-    String email,
+    String _firstName,
+    String _lastName,
+    String _pictureURL,
+    String _email,
   ) async {
     try {
       final result = await Supabase.instance.client.from('user_data').insert({
-        'uid': uid,
+        'uid': _uid,
 
-        'firstName': firstName,
-        'lastName': lastName,
-        'pictureURL': pictureURL,
-        'email': email,
+        'firstName': _firstName,
+        'lastName': _lastName,
+        'pictureURL': _pictureURL,
+        'email': _email,
       });
 
       print("Erfolgreich eingefügt: $result");
@@ -52,7 +54,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           toolbarHeight: 100,
-          shape: Border(bottom: _appBarBorderStyle, top: _appBarBorderStyle), // Border
+          shape: Border(bottom: appBarBorderStyle, top: appBarBorderStyle), // Border
           centerTitle: true,
           title: Text('Registry', style: TextStyle(fontSize: 50.0, letterSpacing: 4.0, fontFamily: 'Audiowide')),
         ), // AppBar
@@ -124,7 +126,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                     SizedBox(
                       width: 150.0,
                       child: ElevatedButton(
-                        style: _buttonStyle,
+                        style: buttonStyle,
                         onPressed: () async {
                           await Supabase.instance.client.auth.signUp(
                             email: _emailController.text,
@@ -146,7 +148,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
                             Navigator.pushNamed(context, '/home');
                           }
                         },
-                        child: Text('Register', style: _buttonTextStyle), // Text
+                        child: Text('Register', style: buttonTextStyle), // Text
                       ), // ElevatedButton
                     ), // SizedBox
                   ],
@@ -166,11 +168,11 @@ class _RegistryWidgetState extends State<RegistryWidget> {
               SizedBox(
                 width: 150.0,
                 child: ElevatedButton(
-                  style: _buttonStyle,
+                  style: buttonStyle,
                   onPressed: () {
                     Navigator.pushNamed(context, '/home');
                   },
-                  child: Text('Go to Login', style: _buttonTextStyle), // Text
+                  child: Text('Go to Login', style: buttonTextStyle), // Text
                 ), // ElevatedButton
               ), // SizedBox
             ], // Children

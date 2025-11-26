@@ -24,7 +24,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
   // ############################################################################
   // Feste Werte (Functions to get dropdown entries)
   // ############################################################################
-  List<DropdownMenuEntry<String>> get _dropDowmEntriesSound {
+  List<DropdownMenuEntry<String>> get dropDowmEntriesSound {
     return const [
       DropdownMenuEntry(value: 'none', label: 'System Default'),
       DropdownMenuEntry(value: 'blob', label: 'Blob'),
@@ -142,7 +142,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                         borderSide: BorderSide(color: Colors.blue, width: 2),
                       ), // OutlineInputBorder
                     ), // InputDecorationTheme
-                    dropdownMenuEntries: _dropDowmEntriesSound,
+                    dropdownMenuEntries: dropDowmEntriesSound,
                   ), // DropdownMenu
                 SizedBox(height: 30.0),
                 if (!activeNotification)

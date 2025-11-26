@@ -1,4 +1,4 @@
-// ignore: file_names
+//ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -6,16 +6,16 @@ class LoginArchitectureWidget extends StatelessWidget {
   const LoginArchitectureWidget({
     super.key,
     required ButtonStyle buttonStyle,
-    required TextEditingController usernameController,
+    required TextEditingController emailController,
     required TextEditingController passwordController,
     required TextStyle buttonTextStyle,
   }) : _buttonStyle = buttonStyle,
-       _usernameController = usernameController,
+       _emailController = emailController,
        _passwordController = passwordController,
        _buttonTextStyle = buttonTextStyle;
 
   final ButtonStyle _buttonStyle;
-  final TextEditingController _usernameController;
+  final TextEditingController _emailController;
   final TextEditingController _passwordController;
   final TextStyle _buttonTextStyle;
 
@@ -27,7 +27,7 @@ class LoginArchitectureWidget extends StatelessWidget {
         style: _buttonStyle,
         onPressed: () async {
           await Supabase.instance.client.auth.signInWithPassword(
-            email: _usernameController.text,
+            email: _emailController.text,
             password: _passwordController.text,
           );
           if (context.mounted) {
@@ -36,9 +36,9 @@ class LoginArchitectureWidget extends StatelessWidget {
                 content: Text(
                   'Login successful!',
                   style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-                ),
+                ), // Text
                 duration: Duration(seconds: 2),
-              ),
+              ), // SnachBar
             );
             Navigator.pushNamed(context, '/start');
           }

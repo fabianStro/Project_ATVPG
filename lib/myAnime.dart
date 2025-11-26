@@ -87,7 +87,5 @@ class MyAnime extends StatelessWidget {
   ];
 
   @override
-  Widget build(BuildContext context) {
-    return SearchableAnimeList(allData: broadcastData, searchQuery: searchQuery);
-  }
+  Widget build(BuildContext context) => SearchableAnimeList(allData: broadcastData, searchQuery: searchQuery);
 }

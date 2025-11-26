@@ -18,25 +18,29 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
   // Variablen
   // ######################################################################################
   int currentPageIndex = 0;
-  final Icon _searchIcon = Icon(Icons.search, size: 30.0),
-      _exitIcon = Icon(Icons.logout_rounded, size: 30.0),
-      _noteIcon = Icon(Icons.notifications_outlined, size: 30.0);
+  final Icon searchIcon = Icon(Icons.search, size: 30.0),
+      exitIcon = Icon(Icons.logout_rounded, size: 30.0),
+      noteIcon = Icon(Icons.notifications_outlined, size: 30.0);
+
+  final ValueNotifier<String> searchQuery = ValueNotifier<String>('');
+  // ######################################################################################
+  // Controller
+  // ######################################################################################
   final OverlayPortalController _overlaySearchController = OverlayPortalController();
-  final ValueNotifier<String> _searchQuery = ValueNotifier<String>('');
 
   // ######################################################################################
   // Instanzen der Screens
   // ######################################################################################
-  late final AllAnime _allAnime;
-  late final MyAnime _myAnime;
-  late final FavoriteAnime _myFavAnime;
+  late final AllAnime allAnime;
+  late final MyAnime myAnime;
+  late final FavoriteAnime myFavAnime;
 
   @override
   void initState() {
     super.initState();
-    _allAnime = AllAnime(searchQuery: _searchQuery);
-    _myAnime = MyAnime(searchQuery: _searchQuery);
-    _myFavAnime = FavoriteAnime(searchQuery: _searchQuery);
+    allAnime = AllAnime(searchQuery: searchQuery);
+    myAnime = MyAnime(searchQuery: searchQuery);
+    myFavAnime = FavoriteAnime(searchQuery: searchQuery);
   }
 
   @override
@@ -102,7 +106,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                         height: 50,
                         child: TextFormField(
                           onChanged: (value) {
-                            _searchQuery.value = value;
+                            searchQuery.value = value;
                           },
                           decoration: InputDecoration(
                             hintText: 'Search anime...',
@@ -110,7 +114,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                             prefixIcon: Icon(Icons.search, color: Colors.white),
                             suffixIcon: GestureDetector(
                               onTap: () {
-                                _searchQuery.value = ' ';
+                                searchQuery.value = ' ';
                               },
                               child: Icon(Icons.clear, color: Colors.white),
                             ), // GestureDetector
@@ -122,13 +126,13 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                       ), // Container
                     ); // Positioned
                   },
-                  child: Padding(padding: EdgeInsets.only(top: 0.0), child: _searchIcon), // Padding
+                  child: Padding(padding: EdgeInsets.only(top: 0.0), child: searchIcon), // Padding
                 ), // OverlayPortal
               ), // GestureDetector
               Padding(
                 padding: const EdgeInsets.only(top: 0.0, right: 0.0, left: 8.0),
                 child: IconButton(
-                  icon: _noteIcon,
+                  icon: noteIcon,
                   onPressed: () {
                     Navigator.pushNamed(context, '/notification');
                   },
@@ -137,7 +141,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
               Padding(
                 padding: const EdgeInsets.only(top: 0.0, right: 8.0, left: 8.0),
                 child: IconButton(
-                  icon: _exitIcon,
+                  icon: exitIcon,
                   onPressed: () async {
                     await Supabase.instance.client.auth.signOut();
                     if (context.mounted) {
@@ -161,13 +165,13 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
             children: [
               // ######################################################################################
               // FIRST SCREEN All Channels
-              _allAnime,
+              allAnime,
               // ######################################################################################
               // SECOND SCREEN My Channels
-              _myAnime,
+              myAnime,
               // ######################################################################################
               // THIRD SCREEN Favorites
-              _myFavAnime,
+              myFavAnime,
             ],
           ), // TabBarView
         ), // Scaffold
