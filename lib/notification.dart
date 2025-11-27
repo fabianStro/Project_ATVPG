@@ -37,11 +37,14 @@ class _NotificationWidgetState extends State<NotificationWidget> {
 
   List<DropdownMenuEntry<String>> get _dropDownEntriesNotificationStyle {
     return const [
+      DropdownMenuEntry(value: 'none', label: 'None'),
       DropdownMenuEntry(value: 'push', label: 'Push Notification'),
       DropdownMenuEntry(value: 'mail', label: 'Mail Notification'),
       DropdownMenuEntry(value: 'sms', label: 'SMS Notification'),
     ];
   }
+
+  final TextStyle dropDownAndLabelTextStyle = TextStyle(fontSize: 18.0, color: Colors.white, fontFamily: 'Arial');
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +52,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
+          backgroundColor: Colors.black,
+          foregroundColor: Colors.white,
           toolbarHeight: 100.0,
           shape: Border(
             bottom: BorderSide(color: Colors.white, width: 2.0),
@@ -59,7 +64,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
         ), // AppBar
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(top: 25.0, left: 16.0),
+            padding: const EdgeInsets.only(top: 15.0, left: 16.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,6 +87,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                   inactiveFgColor: Colors.white,
                   totalSwitches: 2,
                   labels: ['Enabled', 'Disabled'],
+                  fontSize: 18.0,
                   onToggle: (index) {
                     setState(() {
                       // index == 0 -> 'Enabled', index == 1 -> 'Disabled'
@@ -103,7 +109,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10.0),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
-                        labelText: 'Min before',
+                        labelText: 'Minutes before',
+                        labelStyle: dropDownAndLabelTextStyle,
                         filled: true,
                         fillColor: Colors.black,
                       ), // InputDecoration
@@ -115,11 +122,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                 if (!activeNotification)
                   DropdownMenu<String>(
                     controller: _reminderSoundController,
-                    label: Text(
-                      'Select Sound',
-                      style: TextStyle(color: Colors.white, fontFamily: 'Arial'),
-                    ), // Text
-                    width: 200,
+                    label: Text('Select Sound', style: dropDownAndLabelTextStyle), // Text
+                    width: 210.0,
                     menuStyle: MenuStyle(
                       backgroundColor: WidgetStatePropertyAll(Colors.black),
                       shape: WidgetStatePropertyAll(
@@ -146,16 +150,13 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                   ), // DropdownMenu
                 SizedBox(height: 30.0),
                 if (!activeNotification)
-                  Text('Notification method', style: TextStyle(fontSize: 20.0, fontFamily: 'Arial')),
+                  Text('Notification Method', style: TextStyle(fontSize: 20.0, fontFamily: 'Arial')),
                 SizedBox(height: 10.0),
                 if (!activeNotification)
                   DropdownMenu<String>(
                     controller: _notificationMethodController,
-                    label: Text(
-                      'Select method',
-                      style: TextStyle(color: Colors.white, fontFamily: 'Arial'),
-                    ), // Text
-                    width: 200,
+                    label: Text('Select Method', style: dropDownAndLabelTextStyle), // Text
+                    width: 210.0,
                     menuStyle: MenuStyle(
                       backgroundColor: WidgetStatePropertyAll(Colors.black),
                       shape: WidgetStatePropertyAll(

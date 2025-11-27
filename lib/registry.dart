@@ -33,7 +33,6 @@ class _RegistryWidgetState extends State<RegistryWidget> {
     try {
       final result = await Supabase.instance.client.from('user_data').insert({
         'uid': uid,
-
         'firstName': firstName,
         'lastName': lastName,
         'pictureURL': pictureURL,
@@ -42,7 +41,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
 
       print("Erfolgreich eingefügt: $result");
     } catch (e) {
-      print("Fehler beim Insert: $e");
+      print("Insert-Fehler: $e");
     }
   }
 
