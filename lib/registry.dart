@@ -51,6 +51,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
       child: Scaffold(
         //resizeToAvoidBottomInset: false,
         appBar: AppBar(
+          //backgroundColor: Colors.black,
           automaticallyImplyLeading: false,
           toolbarHeight: 100,
           shape: Border(bottom: appBarBorderStyle, top: appBarBorderStyle), // Border

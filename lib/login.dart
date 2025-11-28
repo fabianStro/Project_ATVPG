@@ -36,6 +36,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         //resizeToAvoidBottomInset: false,
         extendBodyBehindAppBar: true,
         appBar: AppBar(
+          //backgroundColor: Colors.black,
           automaticallyImplyLeading: false,
           toolbarHeight: 100.0,
           shape: Border(

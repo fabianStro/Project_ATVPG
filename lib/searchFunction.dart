@@ -13,7 +13,6 @@ class searchFunction extends StatelessWidget {
       top: 110,
       width: 380,
       left: 15.0,
-      //right: 20.0,
       child: Container(
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(30.0), color: Colors.grey),
         height: 50,

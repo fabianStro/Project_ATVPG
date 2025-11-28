@@ -15,6 +15,7 @@ class _PasswordForgotWidgetState extends State<PasswordForgotWidget> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.black,
           automaticallyImplyLeading: false,
           toolbarHeight: 100.0,
           shape: Border(
