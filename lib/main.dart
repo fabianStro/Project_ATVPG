@@ -9,7 +9,8 @@ import 'package:flutter_application_one/share.dart';
 import 'package:flutter_application_one/startScreen.dart';
 import 'package:flutter_application_one/detail.dart';
 import 'package:flutter_application_one/profile.dart';
-import 'package:flutter_application_one/themeService.dart';
+import 'package:flutter_application_one/theme_Service.dart';
+import 'package:flutter_application_one/auth_Service.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -25,35 +26,34 @@ Future<void> main() async {
   );
   //runApp(ChangeNotifierProvider(create: (_) => searchFunction(searchQuery: null,), child: MyApp()));
   runApp(
+    // ################################ Provider ################################
     MultiProvider(
-      providers: [ChangeNotifierProvider<ThemeService>(create: (_) => ThemeService())],
-
-      child: MyApp(),
-    ),
+      providers: [
+        Provider<AuthService>(create: (_) => AuthService()),
+        ChangeNotifierProvider<ThemeService>(create: (_) => ThemeService()),
+      ],
+      // ################################ Provider ################################
+      child: Consumer<ThemeService>(
+        builder: (context, themeService, child) {
+          return MaterialApp(
+            title: 'Flutter Project',
+            theme: ThemeData(brightness: Brightness.light, fontFamily: 'Arial'),
+            darkTheme: ThemeData.dark(),
+            themeMode: themeService.themeMode,
+            initialRoute: '/home',
+            routes: {
+              '/home': (context) => LoginWidget(),
+              '/registry': (context) => RegistryWidget(),
+              '/start': (context) => StartScreenWidget(),
+              '/detail': (context) => DetailWidget(),
+              '/profile': (context) => ProfileWidget(),
+              '/notification': (context) => NotificationWidget(),
+              '/share': (context) => ShareWidget(title: '', picture: ''),
+              '/forgot': (context) => PasswordForgotWidget(),
+            }, // routes
+          ); // MaterialApp
+        },
+      ), // Consumer
+    ), // MultiProvider
   );
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Project',
-      theme: ThemeData(brightness: Brightness.light, fontFamily: 'Arial'),
-      darkTheme: ThemeData.dark(),
-      themeMode: ThemeMode.dark,
-      initialRoute: '/home',
-      routes: {
-        '/home': (context) => LoginWidget(),
-        '/registry': (context) => RegistryWidget(),
-        '/start': (context) => StartScreenWidget(),
-        '/detail': (context) => DetailWidget(),
-        '/profile': (context) => ProfileWidget(),
-        '/notification': (context) => NotificationWidget(),
-        '/share': (context) => ShareWidget(title: '', picture: ''),
-        '/forgot': (context) => PasswordForgotWidget(),
-      }, // routes
-    ); // MaterialApp
-  }
 }

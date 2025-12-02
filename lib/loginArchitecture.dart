@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:flutter_application_one/auth_Service.dart';
 
 class LoginArchitectureWidget extends StatelessWidget {
   const LoginArchitectureWidget({

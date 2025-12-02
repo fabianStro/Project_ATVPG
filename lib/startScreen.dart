@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_one/allAnime.dart';
 import 'package:flutter_application_one/myAnime.dart';
 import 'package:flutter_application_one/favoriteAnime.dart';
+import 'package:flutter_application_one/theme_Service.dart';
+import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'searchFunction.dart';
@@ -22,7 +24,9 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
   int currentPageIndex = 0;
   final Icon searchIcon = Icon(Icons.search, size: 30.0),
       exitIcon = Icon(Icons.logout_rounded, size: 30.0),
-      noteIcon = Icon(Icons.notifications_outlined, size: 30.0);
+      noteIcon = Icon(Icons.notifications_outlined, size: 30.0),
+      themeIconLight = Icon(Icons.light_mode, size: 30.0),
+      themeIconDark = Icon(Icons.dark_mode, size: 30.0);
 
   final ValueNotifier<String> searchQuery = ValueNotifier<String>('');
   // ######################################################################################
@@ -72,6 +76,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                 ), // Container
               ), // Padding
             ), // GestureDetector
+
             bottom: TabBar(
               unselectedLabelColor: Colors.grey,
               unselectedLabelStyle: TextStyle(fontStyle: FontStyle.italic, fontSize: 13.0),
@@ -112,6 +117,16 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                     Navigator.pushNamed(context, '/notification');
                   },
                 ), // IconButton
+              ), // Padding
+              Padding(
+                padding: const EdgeInsets.only(top: 0.0, right: 8.0, left: 8.0),
+                child: IconButton(
+                  icon: themeIconLight,
+                  onPressed: () {
+                    //print("${context.read<ThemeService>().themeMode.toString()}");
+                    context.read<ThemeService>().toggleTheme();
+                  },
+                ), // IconbButton
               ), // Padding
               Padding(
                 padding: const EdgeInsets.only(top: 0.0, right: 8.0, left: 8.0),
