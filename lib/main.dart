@@ -1,6 +1,7 @@
 // import 'package:firebase_core/firebase_core.dart';
 // import 'package:flutter_application_one/firebase_options.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_one/anime_movie_provider.dart';
 import 'package:flutter_application_one/login.dart';
 import 'package:flutter_application_one/notification.dart';
 import 'package:flutter_application_one/passwordForgot.dart';
@@ -30,6 +31,7 @@ Future<void> main() async {
     MultiProvider(
       providers: [
         Provider<AuthService>(create: (_) => AuthService()),
+        ChangeNotifierProvider<AnimeMovieProvider>(create: (_) => AnimeMovieProvider()),
         ChangeNotifierProvider<ThemeService>(create: (_) => ThemeService()),
       ],
       // ################################ Provider ################################

@@ -1,4 +1,6 @@
 include: package:flutter_lints/flutter.yaml
 analyzer:
+  plugins:
+    - custom_lint
   exclude:
     #file_names: ignore ignore

@@ -1,7 +1,9 @@
 //import 'package:flutter_application_one/allChannels.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_one/anime_movie_provider.dart';
 import 'package:flutter_application_one/broadcastAttribute.dart';
 import 'package:flutter_application_one/share.dart';
+import 'package:provider/provider.dart';
 
 class DetailWidget extends StatefulWidget {
   const DetailWidget({super.key});
@@ -72,9 +74,7 @@ class _DetailWidgetState extends State<DetailWidget> {
                         ), // GestureDetector
                         IconButton(
                           onPressed: () {
-                            setState(() {
-                              isPressedBoomark = !isPressedBoomark;
-                            });
+                            context.read<AnimeMovieProvider>().toggleMyAnime(index.title);
                           },
                           icon: Icon(
                             Icons.bookmark_border_outlined,
@@ -84,9 +84,7 @@ class _DetailWidgetState extends State<DetailWidget> {
                         ), // IconButton
                         IconButton(
                           onPressed: () {
-                            setState(() {
-                              isPressedStar = !isPressedStar;
-                            });
+                            context.read<AnimeMovieProvider>().toggleFavorite(index.title);
                           },
                           icon: Icon(
                             Icons.star_border_outlined,

@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter_application_one/auth_Service.dart';
 
@@ -26,10 +27,7 @@ class LoginArchitectureWidget extends StatelessWidget {
       child: ElevatedButton(
         style: buttonStyle,
         onPressed: () async {
-          await Supabase.instance.client.auth.signInWithPassword(
-            email: _emailController.text,
-            password: _passwordController.text,
-          );
+          context.read<AuthService>().login(_emailController.text, _passwordController.text);
           if (context.mounted) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
