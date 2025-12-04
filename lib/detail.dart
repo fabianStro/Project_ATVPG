@@ -20,11 +20,11 @@ class _DetailWidgetState extends State<DetailWidget> {
   @override
   Widget build(BuildContext context) {
     final BroadcastAttribute index = ModalRoute.of(context)!.settings.arguments as BroadcastAttribute;
-    String pictureAdress = Error.safeToString(index.imagePath),
-        pictureAdressString = pictureAdress.substring(1, pictureAdress.length - 1),
-        titleString = Error.safeToString(index.title),
-        subtitleString = Error.safeToString(index.subtitle),
-        descriptionString = Error.safeToString(index.description);
+    String pictureAdress = index.imagePath,
+        pictureAdressString = pictureAdress,
+        titleString = index.title,
+        subtitleString = index.subtitle,
+        descriptionString = index.description;
 
     return SafeArea(
       child: Scaffold(
@@ -37,9 +37,13 @@ class _DetailWidgetState extends State<DetailWidget> {
                 children: [
                   Image.asset(pictureAdressString, width: 200, height: 180, fit: BoxFit.cover),
                   const Divider(height: 30, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
-                  Text(titleString, style: TextStyle(color: Colors.white, fontSize: 16)),
+                  Center(
+                    child: Text(titleString, style: TextStyle(color: Colors.white, fontSize: 16)),
+                  ),
                   const Divider(height: 30, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
-                  Text(subtitleString, style: TextStyle(color: Colors.white, fontSize: 16)),
+                  Center(
+                    child: Text(subtitleString, style: TextStyle(color: Colors.white, fontSize: 16)),
+                  ),
                   const Divider(height: 30, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
                   Text(descriptionString, style: TextStyle(color: Colors.white, fontSize: 16)),
                   const Divider(height: 15, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
