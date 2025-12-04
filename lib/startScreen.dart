@@ -121,11 +121,13 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
               Padding(
                 padding: const EdgeInsets.only(top: 0.0, right: 8.0, left: 8.0),
                 child: IconButton(
-                  icon: themeIconLight,
                   onPressed: () {
                     // //print("${context.read<ThemeService>().themeMode.toString()}");
                     context.read<ThemeService>().toggleTheme();
                   },
+                  icon: Icon(
+                    context.read<ThemeService>().themeMode == ThemeMode.dark ? Icons.light_mode : Icons.dark_mode,
+                  ), // Icon
                 ), // IconbButton
               ), // Padding
               Padding(

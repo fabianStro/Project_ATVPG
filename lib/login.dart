@@ -1,6 +1,8 @@
-// import 'package:supabase_flutter/supabase_flutter.dart';
+// ignore_for_file: camel_case_types, non_constant_identifier_names
+
 import 'package:flutter/material.dart';
-import 'loginArchitecture.dart';
+import 'package:flutter_application_one/auth_Service.dart';
+import 'package:provider/provider.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({super.key});
@@ -10,33 +12,36 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
-  // ############################################################################
-  // Controller für Textfelder
-  // ############################################################################
   final TextEditingController _emailController = TextEditingController(), _passwordController = TextEditingController();
-
-  // ############################################################################
-  // Stile und Konstanten
-  // ############################################################################
-  final ButtonStyle buttonStyle = ElevatedButton.styleFrom(backgroundColor: Colors.grey);
-  final TextStyle buttonTextStyle = TextStyle(color: Colors.white, fontFamily: 'Arial'),
-      registryAndForgotTextStyle = TextStyle(
-        color: Colors.grey[400],
-        fontFamily: 'Arial',
-        fontSize: 17.0,
-        decoration: TextDecoration.underline,
-      );
-  final Text heading = Text('ATVPG', style: TextStyle(fontSize: 50.0, letterSpacing: 2.2, fontFamily: 'Audiowide'));
+  final ValueNotifier<bool> isValid = ValueNotifier<bool>(false);
+  final TextStyle buttonTextStyle = TextStyle(color: Colors.white, fontFamily: 'Arial');
+  final Text heading = Text(
+    'ATVPG',
+    style: TextStyle(fontSize: 50.0, letterSpacing: 2.2, fontFamily: 'Audiowide'),
+  ); // Text
   final Text heading2 = Text('LOGIN', style: TextStyle(fontSize: 35.0, letterSpacing: 2.0, fontFamily: 'Arial'));
+
+  @override
+  void initState() {
+    super.initState();
+
+    _emailController.addListener(_validate);
+    _passwordController.addListener(_validate);
+  }
+
+  void _validate() {
+    final email_Ok = validateEmail(_emailController.text) == null;
+    final pw_Ok = validatePw(_passwordController.text) == null;
+
+    isValid.value = email_Ok && pw_Ok;
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        //resizeToAvoidBottomInset: false,
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-          //backgroundColor: Colors.black,
           automaticallyImplyLeading: false,
           toolbarHeight: 100.0,
           shape: Border(
@@ -48,10 +53,10 @@ class _LoginWidgetState extends State<LoginWidget> {
         ), // AppBar
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(left: 60.0, right: 60.0),
+            padding: EdgeInsets.only(left: 60.0, right: 60.0),
             child: Column(
               children: [
-                Padding(padding: const EdgeInsets.only(top: 200.0), child: heading2), // Padding
+                Padding(padding: EdgeInsets.only(top: 200.0), child: heading2),
                 SizedBox(height: 20.0),
                 TextFormField(
                   autocorrect: false,
@@ -79,58 +84,118 @@ class _LoginWidgetState extends State<LoginWidget> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                 ), // TextFormField
                 SizedBox(height: 25.0),
-                LoginArchitectureWidget(
-                  buttonStyle: buttonStyle,
+                valueListenableBuilder(
+                  isValid: isValid,
                   emailController: _emailController,
                   passwordController: _passwordController,
                   buttonTextStyle: buttonTextStyle,
-                ), // LoginArchitectureWidget
+                ), // SizedBox
                 SizedBox(height: 15.0),
-                Align(
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/forgot');
-                    },
-                    child: Text('Forgot your password?', style: registryAndForgotTextStyle),
-                  ), // GestureDetector
-                ), // Align
+                GestureDetector(
+                  onTap: () => Navigator.pushNamed(context, '/forgot'),
+                  child: Text(
+                    'Forgot your password?',
+                    style: TextStyle(
+                      color: Colors.grey[400],
+                      fontFamily: 'Arial',
+                      fontSize: 17.0,
+                      decoration: TextDecoration.underline,
+                    ), // TextStyle
+                  ), // Text
+                ), // GestureDetector
                 SizedBox(height: 8.0),
                 Text(
                   'or',
                   style: TextStyle(color: Colors.grey[400], fontFamily: 'Arial', fontSize: 17.0),
                 ), // Text
                 SizedBox(height: 8.0),
-                Align(
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/registry');
-                    },
-                    child: Text('Registration', style: registryAndForgotTextStyle),
-                  ), // GestureDetector
-                ), // Align
-              ], // Children
+                GestureDetector(
+                  onTap: () => Navigator.pushNamed(context, '/registry'),
+                  child: Text(
+                    'Registration',
+                    style: TextStyle(
+                      color: Colors.grey[400],
+                      fontFamily: 'Arial',
+                      fontSize: 17.0,
+                      decoration: TextDecoration.underline,
+                    ), // TextStyle
+                  ), // Text
+                ), // GestureDetector
+              ], // children
             ), // Column
           ), // Padding
         ), // SingleChildScrollView
       ), // Scaffold
     ); // SafeArea
   }
+}
 
-  String? validatePw(String? value) {
-    if (value == null || value == '') {
-      return 'Enter the password';
-    } else if (value.length >= 8) {
-      return null;
-    } else {
-      return 'minimum 8 characters';
-    }
+class valueListenableBuilder extends StatelessWidget {
+  const valueListenableBuilder({
+    super.key,
+    required this.isValid,
+    required TextEditingController emailController,
+    required TextEditingController passwordController,
+    required this.buttonTextStyle,
+  }) : _emailController = emailController,
+       _passwordController = passwordController;
+
+  final ValueNotifier<bool> isValid;
+  final TextEditingController _emailController;
+  final TextEditingController _passwordController;
+  final TextStyle buttonTextStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 150.0,
+      child: ValueListenableBuilder<bool>(
+        valueListenable: isValid,
+        builder: (context, valid, _) {
+          return OutlinedButton(
+            style: OutlinedButton.styleFrom(
+              padding: EdgeInsets.symmetric(vertical: 14),
+              side: BorderSide(color: valid ? Colors.grey : Color.fromARGB(255, 21, 16, 24), width: 2.5), // BorderSide
+              backgroundColor: valid ? Colors.grey : Color.fromARGB(255, 21, 16, 24),
+            ),
+            onPressed: valid
+                ? () async {
+                    context.read<AuthService>().login(_emailController.text, _passwordController.text);
+                    if (context.mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'Login successful!',
+                            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                          ), // Text
+                          duration: Duration(seconds: 2),
+                        ), // SnackBar
+                      );
+                      Navigator.pushNamed(context, '/start');
+                    }
+                  }
+                : null,
+            child: Text(valid ? 'Login' : '', style: buttonTextStyle),
+          ); // OutlineButton
+        },
+      ), // ValueListenableBuilder
+    );
+  }
+}
+
+String? validatePw(String? value) {
+  if (value == null || value.isEmpty) {
+    return 'Enter the password';
+  } else if (value.length >= 8) {
+    return null;
+  } else {
+    return 'minimum 8 characters';
   }
 }
 
 String? validateEmail(String? value) {
   final emailPattern = r'^[^@\s]+@[^@\s]+\.[^@\s]+$';
   final regex = RegExp(emailPattern);
-
   if (!regex.hasMatch(value!)) {
     return 'Enter a valid e-mail';
   }

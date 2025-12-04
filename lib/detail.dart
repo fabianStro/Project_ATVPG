@@ -75,6 +75,9 @@ class _DetailWidgetState extends State<DetailWidget> {
                         IconButton(
                           onPressed: () {
                             context.read<AnimeMovieProvider>().toggleMyAnime(index.title);
+                            setState(() {
+                              isPressedBoomark = !isPressedBoomark;
+                            });
                           },
                           icon: Icon(
                             Icons.bookmark_border_outlined,
@@ -85,6 +88,9 @@ class _DetailWidgetState extends State<DetailWidget> {
                         IconButton(
                           onPressed: () {
                             context.read<AnimeMovieProvider>().toggleFavorite(index.title);
+                            setState(() {
+                              isPressedStar = !isPressedStar;
+                            });
                           },
                           icon: Icon(
                             Icons.star_border_outlined,
