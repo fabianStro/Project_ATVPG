@@ -1,7 +1,8 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, deprecated_member_use
 
 import 'dart:ui';
 import 'package:flutter/material.dart';
+// import 'package:share_plus/share_plus.dart';
 
 class ShareWidget extends StatefulWidget {
   ShareWidget({super.key, required this.title, required this.picture});

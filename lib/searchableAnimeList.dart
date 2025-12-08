@@ -30,7 +30,7 @@ class _SearchableAnimeListState extends State<SearchableAnimeList> {
             child: Image.asset(MyMovies[index].imagePath, width: 80, height: 80, fit: BoxFit.cover),
           ), // GestureDetector
           title: Text(MyMovies[index].title),
-          subtitle: Text(MyMovies[index].subtitle),
+          subtitle: Text(MyMovies[index].genre),
           shape: Border(bottom: BorderSide(color: Colors.white, width: 1.0)),
         ); // ListTile
       },

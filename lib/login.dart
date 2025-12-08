@@ -14,7 +14,12 @@ class LoginWidget extends StatefulWidget {
 class _LoginWidgetState extends State<LoginWidget> {
   final TextEditingController _emailController = TextEditingController(), _passwordController = TextEditingController();
   final ValueNotifier<bool> isValid = ValueNotifier<bool>(false);
-  final TextStyle buttonTextStyle = TextStyle(color: Colors.white, fontFamily: 'Arial');
+  final TextStyle buttonTextStyle = TextStyle(
+    color: Colors.black,
+    fontFamily: 'Arial',
+    fontWeight: FontWeight.bold,
+    fontSize: 16,
+  );
   final Text heading = Text(
     'ATVPG',
     style: TextStyle(fontSize: 50.0, letterSpacing: 2.2, fontFamily: 'Audiowide'),
@@ -179,7 +184,7 @@ class valueListenableBuilder extends StatelessWidget {
           ); // OutlineButton
         },
       ), // ValueListenableBuilder
-    );
+    ); // SizedBox
   }
 }
 

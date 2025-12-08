@@ -23,8 +23,11 @@ class _DetailWidgetState extends State<DetailWidget> {
     String pictureAdress = index.imagePath,
         pictureAdressString = pictureAdress,
         titleString = index.title,
-        subtitleString = index.subtitle,
+        genre = index.genre,
         descriptionString = index.description;
+
+    String broadcastingStations = 'Pro7 Maxx, Pro7 Fun, RTL II, Animax';
+    String streamingPlatform = 'Crunchyroll, Netflix, Amazon Prime Video';
 
     return SafeArea(
       child: Scaffold(
@@ -32,23 +35,41 @@ class _DetailWidgetState extends State<DetailWidget> {
         body: SingleChildScrollView(
           child: Center(
             child: Padding(
-              padding: const EdgeInsets.only(right: 16, left: 16),
+              padding: const EdgeInsets.only(right: 16.0, left: 16.0),
               child: Column(
                 children: [
                   Image.asset(pictureAdressString, width: 200, height: 180, fit: BoxFit.cover),
-                  const Divider(height: 30, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
+                  const Divider(height: 30.0, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
                   Center(
-                    child: Text(titleString, style: TextStyle(color: Colors.white, fontSize: 16)),
+                    child: Text(titleString, style: TextStyle(color: Colors.white, fontSize: 16.0)),
+                  ), // Center
+                  const Divider(height: 30.0, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
+                  Text(
+                    'Genre',
+                    style: TextStyle(color: Colors.white, fontSize: 16.0, fontWeight: FontWeight.bold),
                   ),
-                  const Divider(height: 30, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
                   Center(
-                    child: Text(subtitleString, style: TextStyle(color: Colors.white, fontSize: 16)),
-                  ),
-                  const Divider(height: 30, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
-                  Text(descriptionString, style: TextStyle(color: Colors.white, fontSize: 16)),
-                  const Divider(height: 15, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
+                    child: Text(genre, style: TextStyle(color: Colors.white, fontSize: 16.0)),
+                  ), // Center
+                  const Divider(height: 30.0, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
+                  Center(
+                    child: Text(
+                      'Broadcasting Stations',
+                      style: TextStyle(color: Colors.white, fontSize: 16.0, fontWeight: FontWeight.bold),
+                    ), // Text
+                  ), // Center
+                  Text('${broadcastingStations}', style: TextStyle(color: Colors.white, fontSize: 16.0)),
+                  Center(
+                    child: Text(
+                      '\nStreaming Platform',
+                      style: TextStyle(color: Colors.white, fontSize: 16.0, fontWeight: FontWeight.bold),
+                    ), // Text
+                  ), // Center
+                  Text('${streamingPlatform}', style: TextStyle(color: Colors.white, fontSize: 16.0)),
+                  const Divider(height: 30.0, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
+                  Text(descriptionString, style: TextStyle(color: Colors.white, fontSize: 16.0)),
+                  const Divider(height: 15.0, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
                   ListTile(
-                    // trailing: Icon(Icons.star_border_outlined, color: Colors.white, size: 35),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
