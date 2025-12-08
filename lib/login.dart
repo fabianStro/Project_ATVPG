@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_one/auth_Service.dart';
 import 'package:provider/provider.dart';
+import 'login_button.dart';
+import 'validators.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({super.key});
@@ -89,12 +91,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                 ), // TextFormField
                 SizedBox(height: 25.0),
-                valueListenableBuilder(
+                LoginButton(
                   isValid: isValid,
                   emailController: _emailController,
                   passwordController: _passwordController,
                   buttonTextStyle: buttonTextStyle,
-                ), // SizedBox
+                ),
                 SizedBox(height: 15.0),
                 GestureDetector(
                   onTap: () => Navigator.pushNamed(context, '/forgot'),
@@ -135,60 +137,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   }
 }
 
-class valueListenableBuilder extends StatelessWidget {
-  const valueListenableBuilder({
-    super.key,
-    required this.isValid,
-    required TextEditingController emailController,
-    required TextEditingController passwordController,
-    required this.buttonTextStyle,
-  }) : _emailController = emailController,
-       _passwordController = passwordController;
-
-  final ValueNotifier<bool> isValid;
-  final TextEditingController _emailController;
-  final TextEditingController _passwordController;
-  final TextStyle buttonTextStyle;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 150.0,
-      child: ValueListenableBuilder<bool>(
-        valueListenable: isValid,
-        builder: (context, valid, _) {
-          return OutlinedButton(
-            style: OutlinedButton.styleFrom(
-              padding: EdgeInsets.symmetric(vertical: 14),
-              side: BorderSide(color: valid ? Colors.grey : Color.fromARGB(255, 21, 16, 24), width: 2.5), // BorderSide
-              backgroundColor: valid ? Colors.grey : Color.fromARGB(255, 21, 16, 24),
-            ),
-            onPressed: valid
-                ? () async {
-                    context.read<AuthService>().login(_emailController.text, _passwordController.text);
-                    if (context.mounted) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            'Login successful!',
-                            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-                          ), // Text
-                          duration: Duration(seconds: 2),
-                        ), // SnackBar
-                      );
-                      Navigator.pushNamed(context, '/start');
-                    }
-                  }
-                : null,
-            child: Text(valid ? 'Login' : '', style: buttonTextStyle),
-          ); // OutlineButton
-        },
-      ), // ValueListenableBuilder
-    ); // SizedBox
-  }
-}
-
-String? validatePw(String? value) {
+/* String? validatePw(String? value) {
   if (value == null || value.isEmpty) {
     return 'Enter the password';
   } else if (value.length >= 8) {
@@ -205,4 +154,4 @@ String? validateEmail(String? value) {
     return 'Enter a valid e-mail';
   }
   return null;
-}
+} */
