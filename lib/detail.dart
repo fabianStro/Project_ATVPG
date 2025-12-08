@@ -1,4 +1,5 @@
-//import 'package:flutter_application_one/allChannels.dart';
+// ignore_for_file: unnecessary_string_interpolations, unnecessary_brace_in_string_interps
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_one/anime_movie_provider.dart';
 import 'package:flutter_application_one/broadcastAttribute.dart';

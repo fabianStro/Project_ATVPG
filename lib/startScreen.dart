@@ -56,7 +56,6 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
       child: SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            //backgroundColor: Colors.black,
             automaticallyImplyLeading: false,
             toolbarHeight: 100.0,
             title: Text(''),

@@ -9,8 +9,6 @@ class ProfileWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<ProfileWidget> {
-  //final supabase = Supabase.instance.client;
-
   Future<String> loadUserEmail() async => Supabase.instance.client.auth.currentUser?.email ?? 'No user logged in';
 
   @override
