@@ -136,22 +136,3 @@ class _LoginWidgetState extends State<LoginWidget> {
     ); // SafeArea
   }
 }
-
-/* String? validatePw(String? value) {
-  if (value == null || value.isEmpty) {
-    return 'Enter the password';
-  } else if (value.length >= 8) {
-    return null;
-  } else {
-    return 'minimum 8 characters';
-  }
-}
-
-String? validateEmail(String? value) {
-  final emailPattern = r'^[^@\s]+@[^@\s]+\.[^@\s]+$';
-  final regex = RegExp(emailPattern);
-  if (!regex.hasMatch(value!)) {
-    return 'Enter a valid e-mail';
-  }
-  return null;
-} */
