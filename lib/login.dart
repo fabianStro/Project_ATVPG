@@ -1,10 +1,10 @@
 // ignore_for_file: camel_case_types, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_one/auth_Service.dart';
-import 'package:provider/provider.dart';
 import 'login_button.dart';
-import 'validators.dart';
+import 'features/input_validators.dart';
+// import 'package:flutter_application_one/auth_Service.dart';
+// import 'package:provider/provider.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({super.key});
@@ -16,23 +16,16 @@ class LoginWidget extends StatefulWidget {
 class _LoginWidgetState extends State<LoginWidget> {
   final TextEditingController _emailController = TextEditingController(), _passwordController = TextEditingController();
   final ValueNotifier<bool> isValid = ValueNotifier<bool>(false);
-  final TextStyle buttonTextStyle = TextStyle(
-    color: Colors.black,
-    fontFamily: 'Arial',
-    fontWeight: FontWeight.bold,
-    fontSize: 16,
-  );
-  final Text heading = Text(
+  final Text heading01 = Text(
     'ATVPG',
     style: TextStyle(fontSize: 50.0, letterSpacing: 2.2, fontFamily: 'Audiowide'),
   ); // Text
-  final Text heading2 = Text('LOGIN', style: TextStyle(fontSize: 35.0, letterSpacing: 2.0, fontFamily: 'Arial'));
+  final Text heading02 = Text('LOGIN', style: TextStyle(fontSize: 35.0, letterSpacing: 2.0, fontFamily: 'Arial'));
 
   @override
   void initState() {
     super.initState();
 
-    _emailController.addListener(_validate);
     _passwordController.addListener(_validate);
   }
 
@@ -56,14 +49,14 @@ class _LoginWidgetState extends State<LoginWidget> {
             top: BorderSide(color: Colors.white, width: 2.0),
           ), // Border
           centerTitle: true,
-          title: heading,
+          title: heading01,
         ), // AppBar
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(left: 60.0, right: 60.0),
             child: Column(
               children: [
-                Padding(padding: EdgeInsets.only(top: 200.0), child: heading2),
+                Padding(padding: EdgeInsets.only(top: 200.0), child: heading02),
                 SizedBox(height: 20.0),
                 TextFormField(
                   autocorrect: false,
@@ -95,8 +88,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   isValid: isValid,
                   emailController: _emailController,
                   passwordController: _passwordController,
-                  buttonTextStyle: buttonTextStyle,
-                ),
+                ), // LoginButton
                 SizedBox(height: 15.0),
                 GestureDetector(
                   onTap: () => Navigator.pushNamed(context, '/forgot'),

@@ -10,8 +10,8 @@ import 'package:flutter_application_one/share.dart';
 import 'package:flutter_application_one/startScreen.dart';
 import 'package:flutter_application_one/detail.dart';
 import 'package:flutter_application_one/profile.dart';
-import 'package:flutter_application_one/theme_Service.dart';
-import 'package:flutter_application_one/auth_Service.dart';
+import 'package:flutter_application_one/services/theme_Service.dart';
+import 'package:flutter_application_one/services/auth_Service.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 

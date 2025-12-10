@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_one/allAnime.dart';
+import 'package:flutter_application_one/logout_button.dart';
 import 'package:flutter_application_one/myAnime.dart';
 import 'package:flutter_application_one/favoriteAnime.dart';
-import 'package:flutter_application_one/theme_Service.dart';
+import 'package:flutter_application_one/services/theme_Service.dart';
 import 'package:provider/provider.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-
 import 'searchFunction.dart';
+// import 'package:supabase_flutter/supabase_flutter.dart';
 
 class StartScreenWidget extends StatefulWidget {
   const StartScreenWidget({super.key});
@@ -131,24 +131,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
               ), // Padding
               Padding(
                 padding: const EdgeInsets.only(top: 0.0, right: 8.0, left: 8.0),
-                child: IconButton(
-                  icon: exitIcon,
-                  onPressed: () async {
-                    await Supabase.instance.client.auth.signOut();
-                    if (context.mounted) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            'Logout successful!',
-                            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-                          ), // Text
-                          duration: Duration(seconds: 2),
-                        ), // SnackBar
-                      );
-                      Navigator.pushNamed(context, '/home');
-                    }
-                  },
-                ), // IconButton
+                child: exitButton(exitIcon: exitIcon), // IconButton
               ), // Padding
             ],
           ), // AppBar

@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'validators.dart';
+import 'features/input_validators.dart';
 
 class RegistryWidget extends StatefulWidget {
   const RegistryWidget({super.key});
@@ -50,9 +50,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        //resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          //backgroundColor: Colors.black,
           automaticallyImplyLeading: false,
           toolbarHeight: 100,
           shape: Border(bottom: appBarBorderStyle, top: appBarBorderStyle), // Border
