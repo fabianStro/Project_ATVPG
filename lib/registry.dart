@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'validators.dart';
 
 class RegistryWidget extends StatefulWidget {
   const RegistryWidget({super.key});
@@ -182,16 +183,6 @@ class _RegistryWidgetState extends State<RegistryWidget> {
     ); // SafeArea
   }
 
-  String? validatePw(String? value) {
-    if (value == null || value == '') {
-      return 'Enter the password';
-    } else if (value.length >= 8) {
-      return null;
-    } else {
-      return 'minimum 8 characters';
-    }
-  }
-
   String? validatePwRepeat(String? value) {
     if (_passwordController.text == _passwordConfirmController.text) {
       return null;
@@ -199,14 +190,4 @@ class _RegistryWidgetState extends State<RegistryWidget> {
       return "Passwords don't match";
     }
   }
-}
-
-String? validateEmail(String? value) {
-  final emailPattern = r'^[^@\s]+@[^@\s]+\.[^@\s]+$';
-  final regex = RegExp(emailPattern);
-
-  if (!regex.hasMatch(value!)) {
-    return 'Enter a valid e-mail';
-  }
-  return null;
 }
