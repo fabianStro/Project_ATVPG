@@ -2,6 +2,7 @@
 // import 'package:flutter_application_one/firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_one/anime_movie_provider.dart';
+import 'package:flutter_application_one/features/search_Function.dart';
 import 'package:flutter_application_one/login.dart';
 import 'package:flutter_application_one/notification.dart';
 import 'package:flutter_application_one/passwordForgot.dart';
@@ -16,7 +17,6 @@ import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 //import 'package:flutter_application_one/searchProvider.dart';
-//import 'searchFunction.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,9 +34,9 @@ Future<void> main() async {
         Provider<AuthService>(create: (_) => AuthService()),
         ChangeNotifierProvider<AnimeMovieProvider>(create: (_) => AnimeMovieProvider()),
         ChangeNotifierProvider<ThemeService>(create: (_) => ThemeService()),
-        //runApp(ChangeNotifierProvider(create: (_) => searchFunction(searchQuery: null,), child: MyApp()));
+        //ChangeNotifierProvider(create: (_) => searchFunction(searchQuery: null,), child: MyApp())
       ],
-      // ################################ Provider ################################
+      // ########################################################################
       child: Consumer<ThemeService>(
         builder: (context, themeService, child) {
           return MaterialApp(
@@ -61,5 +61,3 @@ Future<void> main() async {
     ), // MultiProvider
   );
 }
-
-class SearchProvider {}
