@@ -84,11 +84,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                 ), // TextFormField
                 SizedBox(height: 25.0),
+                // ############################# Login Button #############################
                 LoginButton(
                   isValid: isValid,
                   emailController: _emailController,
                   passwordController: _passwordController,
                 ), // LoginButton
+                // ########################################################################
                 SizedBox(height: 15.0),
                 GestureDetector(
                   onTap: () => Navigator.pushNamed(context, '/forgot'),

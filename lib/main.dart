@@ -7,7 +7,7 @@ import 'package:flutter_application_one/notification.dart';
 import 'package:flutter_application_one/passwordForgot.dart';
 import 'package:flutter_application_one/registry.dart';
 import 'package:flutter_application_one/share.dart';
-import 'package:flutter_application_one/startScreen.dart';
+import 'package:flutter_application_one/homeScreen.dart';
 import 'package:flutter_application_one/detail.dart';
 import 'package:flutter_application_one/profile.dart';
 import 'package:flutter_application_one/services/theme_Service.dart';
@@ -15,6 +15,7 @@ import 'package:flutter_application_one/services/auth_Service.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+//import 'package:flutter_application_one/searchProvider.dart';
 //import 'searchFunction.dart';
 
 Future<void> main() async {
@@ -25,7 +26,7 @@ Future<void> main() async {
     anonKey:
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBkaHRraGtycXNsaWF5aGJoY2lzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwMzE0OTIsImV4cCI6MjA3ODYwNzQ5Mn0.HsHfjXCazSZ0mFR9LMkS332OvJi222Pryr76A5WAgPo',
   );
-  //runApp(ChangeNotifierProvider(create: (_) => searchFunction(searchQuery: null,), child: MyApp()));
+
   runApp(
     // ################################ Provider ################################
     MultiProvider(
@@ -33,6 +34,7 @@ Future<void> main() async {
         Provider<AuthService>(create: (_) => AuthService()),
         ChangeNotifierProvider<AnimeMovieProvider>(create: (_) => AnimeMovieProvider()),
         ChangeNotifierProvider<ThemeService>(create: (_) => ThemeService()),
+        //runApp(ChangeNotifierProvider(create: (_) => searchFunction(searchQuery: null,), child: MyApp()));
       ],
       // ################################ Provider ################################
       child: Consumer<ThemeService>(
@@ -59,3 +61,5 @@ Future<void> main() async {
     ), // MultiProvider
   );
 }
+
+class SearchProvider {}

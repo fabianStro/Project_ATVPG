@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class exitButton extends StatelessWidget {
-  const exitButton({super.key, required this.exitIcon});
+class Logout_Button extends StatelessWidget {
+  const Logout_Button({super.key, required this.exitIcon});
 
   final Icon exitIcon;
 

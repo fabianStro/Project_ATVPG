@@ -7,7 +7,7 @@ import 'package:flutter_application_one/myAnime.dart';
 import 'package:flutter_application_one/favoriteAnime.dart';
 import 'package:flutter_application_one/services/theme_Service.dart';
 import 'package:provider/provider.dart';
-import 'searchFunction.dart';
+import 'features/search_Function.dart';
 // import 'package:supabase_flutter/supabase_flutter.dart';
 
 class StartScreenWidget extends StatefulWidget {
@@ -80,7 +80,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
               unselectedLabelColor: Colors.grey,
               unselectedLabelStyle: TextStyle(fontStyle: FontStyle.italic, fontSize: 13.0),
               labelColor: Colors.white,
-              labelStyle: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+              labelStyle: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: 'Audiowide'),
               indicatorPadding: EdgeInsets.only(left: -15.0, right: -15.0),
               indicator: BoxDecoration(
                 color: Colors.black,
@@ -121,7 +121,6 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                 padding: const EdgeInsets.only(top: 0.0, right: 8.0, left: 8.0),
                 child: IconButton(
                   onPressed: () {
-                    // //print("${context.read<ThemeService>().themeMode.toString()}");
                     context.read<ThemeService>().toggleTheme();
                   },
                   icon: Icon(
@@ -131,20 +130,23 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
               ), // Padding
               Padding(
                 padding: const EdgeInsets.only(top: 0.0, right: 8.0, left: 8.0),
-                child: exitButton(exitIcon: exitIcon), // IconButton
+                child:
+                    // ############################# Logout Button ############################
+                    Logout_Button(exitIcon: exitIcon), // IconButton
+                // ########################################################################
               ), // Padding
             ],
           ), // AppBar
           body: TabBarView(
             children: [
               // ######################################################################################
-              // FIRST SCREEN All Channels
+              // FIRST TAB All Anime
               allAnime,
               // ######################################################################################
-              // SECOND SCREEN My Channels
+              // SECOND TAB My Anime
               myAnime,
               // ######################################################################################
-              // THIRD SCREEN Favorites
+              // THIRD TAB Fav Anime
               myFavAnime,
             ],
           ), // TabBarView

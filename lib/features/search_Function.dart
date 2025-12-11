@@ -36,6 +36,6 @@ class searchFunction extends StatelessWidget {
           style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.normal, color: Colors.white),
         ), // TextFormField
       ), // Container
-    );
+    ); // Positioned
   }
 }

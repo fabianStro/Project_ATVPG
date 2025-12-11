@@ -25,8 +25,8 @@ class LoginButton extends StatelessWidget {
           return OutlinedButton(
             style: OutlinedButton.styleFrom(
               padding: const EdgeInsets.symmetric(vertical: 14),
-              side: BorderSide(color: valid ? Colors.white : Colors.black, width: 2.5),
-              backgroundColor: valid ? Colors.grey : Colors.black,
+              side: BorderSide(color: valid ? Colors.white : Colors.black12, width: 2.5),
+              backgroundColor: valid ? Colors.grey : Colors.black12,
             ),
             onPressed: valid
                 ? () async {
@@ -53,7 +53,12 @@ class LoginButton extends StatelessWidget {
                 : null,
             child: Text(
               valid ? 'Login' : ' ',
-              style: TextStyle(color: Colors.black, fontFamily: 'Arial', fontWeight: FontWeight.bold, fontSize: 20.0),
+              style: TextStyle(
+                color: Colors.black,
+                fontFamily: 'Audiowide',
+                fontWeight: FontWeight.bold,
+                fontSize: 16.0,
+              ),
             ),
           ); // OutlinedButton
         },
