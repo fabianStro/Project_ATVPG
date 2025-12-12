@@ -1,8 +1,5 @@
-// import 'package:firebase_core/firebase_core.dart';
-// import 'package:flutter_application_one/firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_one/anime_movie_provider.dart';
-import 'package:flutter_application_one/features/search_Function.dart';
 import 'package:flutter_application_one/login.dart';
 import 'package:flutter_application_one/notification.dart';
 import 'package:flutter_application_one/passwordForgot.dart';
@@ -15,8 +12,6 @@ import 'package:flutter_application_one/services/theme_Service.dart';
 import 'package:flutter_application_one/services/auth_Service.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-
-//import 'package:flutter_application_one/searchProvider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

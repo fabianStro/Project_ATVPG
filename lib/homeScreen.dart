@@ -8,7 +8,6 @@ import 'package:flutter_application_one/favoriteAnime.dart';
 import 'package:flutter_application_one/services/theme_Service.dart';
 import 'package:provider/provider.dart';
 import 'features/search_Function.dart';
-// import 'package:supabase_flutter/supabase_flutter.dart';
 
 class StartScreenWidget extends StatefulWidget {
   const StartScreenWidget({super.key});
@@ -37,16 +36,10 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
   // ######################################################################################
   // Instanzen der Screens
   // ######################################################################################
-  late final AllAnime allAnime;
-  late final MyAnime myAnime;
-  late final FavoriteAnime myFavAnime;
 
   @override
   void initState() {
     super.initState();
-    allAnime = AllAnime(searchQuery: searchQuery);
-    myAnime = MyAnime(searchQuery: searchQuery);
-    myFavAnime = FavoriteAnime(searchQuery: searchQuery);
   }
 
   @override
@@ -139,15 +132,9 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
           ), // AppBar
           body: TabBarView(
             children: [
-              // ######################################################################################
-              // FIRST TAB All Anime
-              allAnime,
-              // ######################################################################################
-              // SECOND TAB My Anime
-              myAnime,
-              // ######################################################################################
-              // THIRD TAB Fav Anime
-              myFavAnime,
+              AllAnime(searchQuery: searchQuery),
+              MyAnime(searchQuery: searchQuery),
+              FavoriteAnime(searchQuery: searchQuery),
             ],
           ), // TabBarView
         ), // Scaffold

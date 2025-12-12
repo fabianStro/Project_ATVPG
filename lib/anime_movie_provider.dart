@@ -147,6 +147,8 @@ class AnimeMovieProvider extends ChangeNotifier {
     ),
   ];
 
+  String searchQuery = '';
+
   void toggleFavorite(String title) {
     int index = -1;
 
@@ -186,7 +188,32 @@ class AnimeMovieProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  List<BroadcastAttribute> getAllAnime() => broadcastData;
-  List<BroadcastAttribute> getAllFavorites() => broadcastData.where((e) => e.isFavorite).toList();
-  List<BroadcastAttribute> getAllMyAnime() => broadcastData.where((e) => e.isMyAnime).toList();
+  void filterList(String query) {
+    searchQuery = query.toLowerCase();
+    notifyListeners();
+  }
+
+  List<BroadcastAttribute> getAllAnime() {
+    if (searchQuery.isEmpty) {
+      return broadcastData;
+    } else {
+      return broadcastData.where((e) => e.title.toLowerCase().contains(searchQuery)).toList();
+    }
+  }
+
+  List<BroadcastAttribute> getAllFavoritesWithSearchQuery() {
+    if (searchQuery.isEmpty) {
+      return broadcastData.where((e) => e.isFavorite).toList();
+    } else {
+      return broadcastData.where((e) => e.isFavorite && e.title.toLowerCase().contains(searchQuery)).toList();
+    }
+  }
+
+  List<BroadcastAttribute> getAllMyAnimeWithSearchQuery() {
+    if (searchQuery.isEmpty) {
+      return broadcastData.where((e) => e.isMyAnime).toList();
+    } else {
+      return broadcastData.where((e) => e.isMyAnime && e.title.toLowerCase().contains(searchQuery)).toList();
+    }
+  }
 }

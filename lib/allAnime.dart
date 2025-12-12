@@ -11,27 +11,33 @@ import 'package:flutter_application_one/searchableAnimeList.dart';*/
 // allChannel Widget
 // #########################################################################################
 class AllAnime extends StatelessWidget {
-  AllAnime({super.key, required this.searchQuery});
+  const AllAnime({super.key, required this.searchQuery});
 
   final ValueNotifier<String> searchQuery;
 
+  @override
   Widget build(BuildContext context) {
-    final MyMovies = context.read<AnimeMovieProvider>().getAllAnime();
-    return ListView.builder(
-      itemCount: MyMovies.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          leading: GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, '/detail', arguments: MyMovies[index]);
-            },
-            child: Image.asset(MyMovies[index].imagePath, width: 80, height: 80, fit: BoxFit.cover),
-          ), // GestureDetector
-          title: Text(MyMovies[index].title),
-          subtitle: Text(MyMovies[index].genre),
-          shape: Border(bottom: BorderSide(color: Colors.white, width: 1.0)),
-        ); // ListTile
+    return Consumer<AnimeMovieProvider>(
+      builder: (context, value, child) {
+        final myMovies = value.getAllAnime();
+        return ListView.builder(
+          itemCount: myMovies.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              leading: GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/detail', arguments: myMovies[index]);
+                },
+                child: Image.asset(myMovies[index].imagePath, width: 80, height: 80, fit: BoxFit.cover),
+              ), // GestureDetector
+              title: Text(myMovies[index].title),
+              subtitle: Text(myMovies[index].genre),
+              shape: Border(bottom: BorderSide(color: Colors.white, width: 1.0)),
+            ); // ListTile
+          },
+        );
       },
-    ); // ListView.builder
+    );
+    // ListView.builder
   }
 }
