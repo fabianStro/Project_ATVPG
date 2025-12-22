@@ -1,7 +1,7 @@
 // ignore_for_file: camel_case_types, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'login_button.dart';
+import 'features/login_button.dart';
 import 'features/input_validators.dart';
 // import 'package:flutter_application_one/auth_Service.dart';
 // import 'package:provider/provider.dart';
@@ -122,6 +122,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ), // TextStyle
                   ), // Text
                 ), // GestureDetector
+                SizedBox(height: 85.0),
+                Text(
+                  '2025 \u00a9 ATVPG All Rights Reserved',
+                  style: TextStyle(color: Colors.grey[600], fontFamily: 'Arial'),
+                ),
               ], // children
             ), // Column
           ), // Padding

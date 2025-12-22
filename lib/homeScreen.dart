@@ -1,13 +1,14 @@
 // ignore_for_file: file_names, camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_one/allAnime.dart';
-import 'package:flutter_application_one/logout_button.dart';
-import 'package:flutter_application_one/myAnime.dart';
-import 'package:flutter_application_one/favoriteAnime.dart';
+import 'package:flutter_application_one/screens/allAnime.dart';
+import 'package:flutter_application_one/features/search_Function.dart';
+import 'package:flutter_application_one/features/logout_button.dart';
+import 'package:flutter_application_one/screens/myAnime.dart';
+import 'package:flutter_application_one/screens/favoriteAnime.dart';
 import 'package:flutter_application_one/services/theme_Service.dart';
 import 'package:provider/provider.dart';
-import 'features/search_Function.dart';
+//import 'features/search_Function.dart';
 
 class StartScreenWidget extends StatefulWidget {
   const StartScreenWidget({super.key});
@@ -96,7 +97,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                 child: OverlayPortal(
                   controller: _overlaySearchController,
                   overlayChildBuilder: (BuildContext context) {
-                    return searchFunction(searchQuery: searchQuery); //
+                    return SearchFunction(searchQuery: searchQuery); //
                   },
                   child: Padding(padding: EdgeInsets.only(top: 0.0), child: searchIcon), // Padding
                 ), // OverlayPortal

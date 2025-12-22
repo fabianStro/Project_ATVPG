@@ -1,14 +1,24 @@
 // ignore_for_file: file_names, camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_one/anime_movie_provider.dart';
+import 'package:flutter_application_one/services/movieProvider_Service.dart';
 import 'package:provider/provider.dart';
 
-class searchFunction extends StatelessWidget {
-  searchFunction({super.key, required this.searchQuery});
+class SearchFunction extends StatefulWidget {
+  const SearchFunction({super.key, required ValueNotifier<String> searchQuery});
 
-  final ValueNotifier<String> searchQuery;
+  @override
+  State<SearchFunction> createState() => _SearchFunctionState();
+}
+
+class _SearchFunctionState extends State<SearchFunction> {
   final TextEditingController _clearController = TextEditingController();
+
+  @override
+  void dispose() {
+    _clearController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -1,17 +1,17 @@
-// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors_in_immutables, annotate_overrides
+// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_one/anime_movie_provider.dart';
 import 'package:provider/provider.dart';
+import '../services/movieProvider_Service.dart';
 
 /* import 'package:flutter_application_one/broadcastAttribute.dart';
 import 'package:flutter_application_one/searchableAnimeList.dart'; */
 
 // #########################################################################################
-// Favorite Widget
+// MyChannel Widget
 // #########################################################################################
-class FavoriteAnime extends StatelessWidget {
-  FavoriteAnime({super.key, required this.searchQuery});
+class MyAnime extends StatelessWidget {
+  MyAnime({super.key, required this.searchQuery});
 
   final ValueNotifier<String> searchQuery;
 
@@ -19,7 +19,7 @@ class FavoriteAnime extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<AnimeMovieProvider>(
       builder: (context, value, child) {
-        final myMovies = value.getAllFavoritesWithSearchQuery();
+        final myMovies = value.getAllMyAnimeWithSearchQuery();
         return ListView.builder(
           itemCount: myMovies.length,
           itemBuilder: (context, index) {
@@ -32,11 +32,11 @@ class FavoriteAnime extends StatelessWidget {
               ), // GestureDetector
               title: Text(myMovies[index].title),
               subtitle: Text(myMovies[index].genre),
-              shape: Border(bottom: BorderSide(color: Colors.white, width: 1.0)),
+              shape: Border(bottom: BorderSide(color: Theme.of(context).dividerColor, width: 1.0)),
             ); // ListTile
           },
-        );
+        ); // ListView.builder
       },
-    );
+    ); // Consumer
   }
 }

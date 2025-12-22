@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_one/anime_movie_provider.dart';
+import 'package:flutter_application_one/services/movieProvider_Service.dart';
 import 'package:provider/provider.dart';
 
 /*import 'package:flutter_application_one/broadcastAttribute.dart';
@@ -32,12 +32,11 @@ class AllAnime extends StatelessWidget {
               ), // GestureDetector
               title: Text(myMovies[index].title),
               subtitle: Text(myMovies[index].genre),
-              shape: Border(bottom: BorderSide(color: Colors.white, width: 1.0)),
+              shape: Border(bottom: BorderSide(color: Theme.of(context).dividerColor, width: 1.0)),
             ); // ListTile
           },
-        );
+        ); // ListView.builder
       },
-    );
-    // ListView.builder
+    ); // Consumer
   }
 }

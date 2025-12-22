@@ -1,9 +1,9 @@
 // ignore_for_file: unnecessary_string_interpolations, unnecessary_brace_in_string_interps
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_one/anime_movie_provider.dart';
-import 'package:flutter_application_one/broadcastAttribute.dart';
-import 'package:flutter_application_one/share.dart';
+import 'package:flutter_application_one/services/movieProvider_Service.dart';
+import 'package:flutter_application_one/models/broadcastAttribute.dart';
+import 'package:flutter_application_one/screens/share.dart';
 import 'package:provider/provider.dart';
 
 class DetailWidget extends StatefulWidget {

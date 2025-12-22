@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'features/input_validators.dart';
+import '../features/input_validators.dart';
 
 class RegistryWidget extends StatefulWidget {
   const RegistryWidget({super.key});
