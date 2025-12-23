@@ -12,9 +12,12 @@ import 'package:flutter_application_one/services/theme_Service.dart';
 import 'package:flutter_application_one/services/auth_Service.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+// Hive packages
+import 'package:hive_flutter/hive_flutter.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
 
   await Supabase.initialize(
     url: 'https://pdhtkhkrqsliayhbhcis.supabase.co',
@@ -29,7 +32,6 @@ Future<void> main() async {
         Provider<AuthService>(create: (_) => AuthService()),
         ChangeNotifierProvider<AnimeMovieProvider>(create: (_) => AnimeMovieProvider()),
         ChangeNotifierProvider<ThemeService>(create: (_) => ThemeService()),
-        //ChangeNotifierProvider(create: (_) => searchFunction(searchQuery: null,), child: MyApp())
       ],
       // ########################################################################
       child: Consumer<ThemeService>(

@@ -1,0 +1,10 @@
+{
+          "configurations": [
+                    {
+                              "name": "Flutter (lib/core/hive/hive_adapters.dart)",
+                              "type": "dart",
+                              "request": "launch",
+                              "program": "lib/core/hive/hive_adapters.dart"
+                    }
+          ]
+}
