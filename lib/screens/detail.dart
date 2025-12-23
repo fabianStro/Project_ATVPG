@@ -42,7 +42,10 @@ class _DetailWidgetState extends State<DetailWidget> {
                   Image.asset(pictureAdressString, width: 200, height: 180, fit: BoxFit.cover),
                   const Divider(height: 30.0, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
                   Center(
-                    child: Text(titleString, style: TextStyle(color: Colors.white, fontSize: 16.0)),
+                    child: Text(
+                      titleString,
+                      style: TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold),
+                    ),
                   ), // Center
                   const Divider(height: 30.0, thickness: 2, indent: 0, endIndent: 0, color: Colors.white),
                   Text(

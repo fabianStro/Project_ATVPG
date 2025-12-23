@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_one/models/broadcastAttribute.dart';
 import 'package:flutter_application_one/services/movieProvider_Service.dart';
 import 'package:flutter_application_one/login.dart';
 import 'package:flutter_application_one/screens/notification.dart';
@@ -10,21 +11,29 @@ import 'package:flutter_application_one/screens/detail.dart';
 import 'package:flutter_application_one/screens/profile.dart';
 import 'package:flutter_application_one/services/theme_Service.dart';
 import 'package:flutter_application_one/services/auth_Service.dart';
+// Provider package
 import 'package:provider/provider.dart';
+// Supabase package
 import 'package:supabase_flutter/supabase_flutter.dart';
 // Hive packages
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:flutter_application_one/hive_registrar.g.dart';
+import 'package:hive_ce_flutter/hive_flutter.dart';
 
 Future<void> main() async {
+  // ################################ Provider ################################
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
+  Hive.registerAdapter(AnimeAdapter());
+  await Hive.openBox<BroadcastAttribute>('animeBox');
+  // ##########################################################################
 
+  // ################################ Supabase ################################
   await Supabase.initialize(
     url: 'https://pdhtkhkrqsliayhbhcis.supabase.co',
     anonKey:
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBkaHRraGtycXNsaWF5aGJoY2lzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwMzE0OTIsImV4cCI6MjA3ODYwNzQ5Mn0.HsHfjXCazSZ0mFR9LMkS332OvJi222Pryr76A5WAgPo',
   );
-
+  // ############################################################################
   runApp(
     // ################################ Provider ################################
     MultiProvider(
