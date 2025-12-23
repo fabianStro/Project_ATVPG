@@ -3,8 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_one/models/broadcastAttribute.dart';
 
-// import 'dart:io';
-
 class AnimeMovieProvider extends ChangeNotifier {
   final List<BroadcastAttribute> broadcastData = [
     BroadcastAttribute(

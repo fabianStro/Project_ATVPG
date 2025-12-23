@@ -16,14 +16,13 @@ import 'package:provider/provider.dart';
 // Supabase package
 import 'package:supabase_flutter/supabase_flutter.dart';
 // Hive packages
-import 'package:flutter_application_one/hive_registrar.g.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
 
 Future<void> main() async {
-  // ################################ Provider ################################
+  // ################################ Hive ################################
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  Hive.registerAdapter(AnimeAdapter());
+  // Hive.registerAdapter(AnimeAdapter());
   await Hive.openBox<BroadcastAttribute>('animeBox');
   // ##########################################################################
 
