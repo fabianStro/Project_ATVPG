@@ -1,4 +1,7 @@
+// ignore_for_file: unused_element, no_leading_underscores_for_local_identifiers
+
 import 'package:flutter/material.dart';
+import 'package:flutter_application_one/hive_registrar.g.dart';
 import 'package:flutter_application_one/models/broadcastAttribute.dart';
 import 'package:flutter_application_one/services/movieProvider_Service.dart';
 import 'package:flutter_application_one/login.dart';
@@ -22,8 +25,48 @@ Future<void> main() async {
   // ################################ Hive ################################
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  // Hive.registerAdapter(AnimeAdapter());
+  Hive.registerAdapters();
+  // Open Hive boxes
   await Hive.openBox<BroadcastAttribute>('animeBox');
+
+  late final Box<BroadcastAttribute> broadcastBox;
+
+  final TextEditingController attributeController = TextEditingController();
+
+  @override
+  void initState() {
+    broadcastBox = Hive.box<BroadcastAttribute>('animeBox');
+  }
+
+  Future<void> _add() async {
+    final text = attributeController.text.trim();
+    if (text.isEmpty) return;
+    await broadcastBox.add(
+      BroadcastAttribute(
+        id: 0,
+        title: 'Title',
+        genre: 'Genre',
+        imagePath: 'ImagePath',
+        description: 'Description',
+        isFavorite: false,
+        isMyAnime: false,
+      ),
+    );
+    attributeController.clear();
+  }
+
+  Future<void> _toggle(int i) async {
+    // Example to get all data from the box
+  }
+
+  Future<void> _delete(int i) async {
+    await broadcastBox.delete(i);
+  }
+
+  Future<void> _clear() async {
+    await broadcastBox.clear();
+  }
+
   // ##########################################################################
 
   // ################################ Supabase ################################
