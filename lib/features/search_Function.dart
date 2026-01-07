@@ -27,7 +27,11 @@ class _SearchFunctionState extends State<SearchFunction> {
       width: 380,
       left: 15.0,
       child: Container(
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(30.0), color: Colors.grey),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30.0),
+          color: Colors.black,
+          border: Border.all(color: Colors.white),
+        ),
         height: 50,
         child: TextFormField(
           controller: _clearController,
@@ -36,7 +40,7 @@ class _SearchFunctionState extends State<SearchFunction> {
           },
           decoration: InputDecoration(
             hintText: 'Search anime...',
-            hintStyle: TextStyle(color: Colors.black, fontSize: 16.0),
+            hintStyle: TextStyle(color: Colors.white, fontSize: 18.0),
             prefixIcon: Icon(Icons.search, color: Colors.white),
             suffixIcon: GestureDetector(
               onTap: () {
