@@ -17,9 +17,9 @@ class BroadcastAttribute {
   @HiveField(4)
   final String description;
   @HiveField(5)
-  bool isFavorite = false;
+  bool isFavorite;
   @HiveField(6)
-  bool isMyAnime = false;
+  bool isMyAnime;
 
   BroadcastAttribute({
     required this.id,
@@ -27,8 +27,8 @@ class BroadcastAttribute {
     required this.genre,
     required this.imagePath,
     required this.description,
-    required this.isFavorite,
-    required this.isMyAnime,
+    this.isFavorite = false,
+    this.isMyAnime = false,
   });
 
   // Für Provider

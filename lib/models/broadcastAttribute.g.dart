@@ -22,8 +22,8 @@ class BroadcastAttributeAdapter extends TypeAdapter<BroadcastAttribute> {
       genre: fields[2] as String,
       imagePath: fields[3] as String,
       description: fields[4] as String,
-      isFavorite: fields[5] as bool,
-      isMyAnime: fields[6] as bool,
+      isFavorite: fields[5] == null ? false : fields[5] as bool,
+      isMyAnime: fields[6] == null ? false : fields[6] as bool,
     );
   }
 

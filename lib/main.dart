@@ -2,16 +2,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_one/hive_registrar.g.dart';
-import 'package:flutter_application_one/models/broadcastAttribute.dart';
-import 'package:flutter_application_one/services/movieProvider_Service.dart';
 import 'package:flutter_application_one/login.dart';
+import 'package:flutter_application_one/homeScreen.dart';
+import 'package:flutter_application_one/models/broadcastAttribute.dart';
 import 'package:flutter_application_one/screens/notification.dart';
 import 'package:flutter_application_one/screens/passwordForgot.dart';
 import 'package:flutter_application_one/screens/registry.dart';
 import 'package:flutter_application_one/screens/share.dart';
-import 'package:flutter_application_one/homeScreen.dart';
 import 'package:flutter_application_one/screens/detail.dart';
 import 'package:flutter_application_one/screens/profile.dart';
+// Service imports
+import 'package:flutter_application_one/services/movieProvider_Service.dart';
 import 'package:flutter_application_one/services/theme_Service.dart';
 import 'package:flutter_application_one/services/auth_Service.dart';
 // Provider package
@@ -31,32 +32,32 @@ Future<void> main() async {
 
   late final Box<BroadcastAttribute> broadcastBox;
 
-  final TextEditingController attributeController = TextEditingController();
-
   @override
   void initState() {
     broadcastBox = Hive.box<BroadcastAttribute>('animeBox');
   }
 
-  Future<void> _add() async {
-    final text = attributeController.text.trim();
-    if (text.isEmpty) return;
-    await broadcastBox.add(
-      BroadcastAttribute(
-        id: 0,
-        title: 'Title',
-        genre: 'Genre',
-        imagePath: 'ImagePath',
-        description: 'Description',
-        isFavorite: false,
-        isMyAnime: false,
-      ),
-    );
-    attributeController.clear();
+  Future<void> _add(List<BroadcastAttribute> broadcastData) async {
+    if (broadcastData.isEmpty) {
+      return;
+    }
+    for (int i = 0; i < broadcastData.length - 1; i++) {
+      await broadcastBox.add(
+        BroadcastAttribute(
+          id: broadcastData[i].id,
+          title: broadcastData[i].title,
+          genre: broadcastData[i].genre,
+          imagePath: broadcastData[i].imagePath,
+          description: broadcastData[i].description,
+          isFavorite: false,
+          isMyAnime: false,
+        ),
+      );
+    }
   }
 
-  Future<void> _toggle(int i) async {
-    // Example to get all data from the box
+  Future<void> _show() async {
+    final animeList = broadcastBox.values.toList();
   }
 
   Future<void> _delete(int i) async {
