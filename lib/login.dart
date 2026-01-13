@@ -126,7 +126,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 Text(
                   '2025 \u00a9 ATVPG All Rights Reserved',
                   style: TextStyle(color: Colors.grey[600], fontFamily: 'Arial'),
-                ),
+                ), // Text
               ], // children
             ), // Column
           ), // Padding

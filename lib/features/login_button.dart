@@ -26,10 +26,7 @@ class LoginButton extends StatelessWidget {
           return OutlinedButton(
             style: OutlinedButton.styleFrom(
               padding: const EdgeInsets.symmetric(vertical: 14),
-              side: BorderSide(
-                color: valid ? Colors.white : Colors.black12,
-                width: 2.5,
-              ),
+              side: BorderSide(color: valid ? Colors.white : Colors.black12, width: 2.5), // BorderSide
               backgroundColor: valid ? Colors.grey : Colors.black12,
             ),
             onPressed: valid
@@ -38,10 +35,7 @@ class LoginButton extends StatelessWidget {
                       final authService = context.read<AuthService>();
                       final animeProvider = context.read<AnimeMovieProvider>();
 
-                      await authService.login(
-                        emailController.text,
-                        passwordController.text,
-                      );
+                      await authService.login(emailController.text, passwordController.text);
 
                       // Direkt nach Login: Hive-Datenbank initial befüllen
                       await animeProvider.ensureInitialized();
@@ -59,18 +53,16 @@ class LoginButton extends StatelessWidget {
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Arial',
-                              ),
-                            ),
-                          ),
+                              ), // TextStyle
+                            ), // Text
+                          ), // Container
                           duration: Duration(seconds: 2),
-                        ),
+                        ), // SnackBar
                       );
                       Navigator.pushNamed(context, '/start');
                     } catch (e) {
                       if (!context.mounted) return;
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Login failed: $e')),
-                      );
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login failed: $e')));
                     }
                   }
                 : null,
@@ -81,8 +73,8 @@ class LoginButton extends StatelessWidget {
                 fontFamily: 'Audiowide',
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
-              ),
-            ),
+              ), // TextStyle
+            ), // Text
           ); // OutlinedButton
         },
       ), // ValueListenableBuilder

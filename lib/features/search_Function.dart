@@ -31,7 +31,7 @@ class _SearchFunctionState extends State<SearchFunction> {
           borderRadius: BorderRadius.circular(30.0),
           color: Colors.black,
           border: Border.all(color: Colors.white),
-        ),
+        ), // BoxDecoration
         height: 50,
         child: TextFormField(
           controller: _clearController,

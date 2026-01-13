@@ -43,9 +43,7 @@ Future<void> main() async {
     MultiProvider(
       providers: [
         Provider<AuthService>(create: (_) => AuthService()),
-        ChangeNotifierProvider<AnimeMovieProvider>(
-          create: (_) => AnimeMovieProvider(),
-        ),
+        ChangeNotifierProvider<AnimeMovieProvider>(create: (_) => AnimeMovieProvider()), // ChangeNotifierProvider
         ChangeNotifierProvider<ThemeService>(create: (_) => ThemeService()),
       ],
       // ########################################################################

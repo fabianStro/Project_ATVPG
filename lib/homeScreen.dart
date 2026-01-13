@@ -33,8 +33,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
   // ######################################################################################
   // Controller
   // ######################################################################################
-  final OverlayPortalController _overlaySearchController =
-      OverlayPortalController();
+  final OverlayPortalController _overlaySearchController = OverlayPortalController();
 
   // ######################################################################################
   // Instanzen der Screens
@@ -74,7 +73,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                     image: DecorationImage(
                       image: AssetImage('assets/images/profile2.png'),
                       fit: BoxFit.contain,
-                    ),
+                    ), // DecorationImage
                   ), // BoxDecoration
                 ), // Container
               ), // Padding
@@ -82,23 +81,16 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
 
             bottom: TabBar(
               unselectedLabelColor: Colors.grey,
-              unselectedLabelStyle: TextStyle(
-                fontStyle: FontStyle.italic,
-                fontSize: 13.0,
-              ),
+              unselectedLabelStyle: TextStyle(fontStyle: FontStyle.italic, fontSize: 13.0), // TextStyle
               labelColor: Colors.white,
-              labelStyle: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Audiowide',
-              ),
+              labelStyle: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: 'Audiowide'), // TextStyle
               indicatorPadding: EdgeInsets.only(left: -15.0, right: -15.0),
               indicator: BoxDecoration(
                 color: Colors.black,
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(10),
                   topLeft: Radius.circular(10),
-                ),
+                ), // BorderRadius.only
                 border: Border(
                   left: BorderSide(color: Colors.white),
                   right: BorderSide(color: Colors.white),
@@ -107,10 +99,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
               ), // BoxDecoration
               tabs: [
                 Tab(text: 'All Anime', icon: Icon(Icons.list_alt_outlined)),
-                Tab(
-                  text: 'My Anime',
-                  icon: Icon(Icons.bookmark_border_outlined),
-                ),
+                Tab(text: 'My Anime', icon: Icon(Icons.bookmark_border_outlined)), // Tab
                 Tab(text: 'Fav Anime', icon: Icon(Icons.star_border_outlined)),
               ],
             ), // TabBar
@@ -120,12 +109,9 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                 child: OverlayPortal(
                   controller: _overlaySearchController,
                   overlayChildBuilder: (BuildContext context) {
-                    return SearchFunction(searchQuery: searchQuery); //
+                    return SearchFunction(searchQuery: searchQuery); // SearchFunction
                   },
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 0.0),
-                    child: searchIcon,
-                  ), // Padding
+                  child: Padding(padding: EdgeInsets.only(top: 0.0), child: searchIcon), // Padding
                 ), // OverlayPortal
               ), // GestureDetector
               Padding(
@@ -144,9 +130,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                     context.read<ThemeService>().toggleTheme();
                   },
                   icon: Icon(
-                    context.read<ThemeService>().themeMode == ThemeMode.dark
-                        ? Icons.light_mode
-                        : Icons.dark_mode,
+                    context.read<ThemeService>().themeMode == ThemeMode.dark ? Icons.light_mode : Icons.dark_mode,
                   ), // Icon
                 ), // IconbButton
               ), // Padding
