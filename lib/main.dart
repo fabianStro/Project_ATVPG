@@ -1,5 +1,3 @@
-// ignore_for_file: unused_element, no_leading_underscores_for_local_identifiers
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_one/hive_registrar.g.dart';
 import 'package:flutter_application_one/login.dart';
@@ -23,66 +21,14 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
 
 Future<void> main() async {
-  // ################################ Hive ################################
   WidgetsFlutterBinding.ensureInitialized();
+
+  // ################################ Hive ################################
   await Hive.initFlutter();
   Hive.registerAdapters();
+
   // Open Hive boxes
   await Hive.openBox<BroadcastAttribute>('animeBox');
-
-  late final Box<BroadcastAttribute> broadcastBox;
-
-  @override
-  void initState() {
-    broadcastBox = Hive.box<BroadcastAttribute>('animeBox');
-  }
-
-  Future<void> _add(List<BroadcastAttribute> broadcastData) async {
-    if (broadcastData.isEmpty) {
-      return;
-    }
-    for (int i = 0; i < broadcastData.length - 1; i++) {
-      await broadcastBox.add(
-        BroadcastAttribute(
-          id: broadcastData[i].id,
-          title: broadcastData[i].title,
-          genre: broadcastData[i].genre,
-          imagePath: broadcastData[i].imagePath,
-          description: broadcastData[i].description,
-          isFavorite: false,
-          isMyAnime: false,
-        ),
-      );
-    }
-  }
-
-  Future<void> _update(int i, BroadcastAttribute newData) async {
-    await broadcastBox.put(
-      i,
-      BroadcastAttribute(
-        id: newData.id,
-        title: newData.title,
-        genre: newData.genre,
-        imagePath: newData.imagePath,
-        description: newData.description,
-        isFavorite: newData.isFavorite,
-        isMyAnime: newData.isMyAnime,
-      ),
-    );
-  }
-
-  Future<void> _show() async {
-    // final animeList = broadcastBox.values.toList();
-  }
-
-  /* Future<void> _delete(int i) async {
-    await broadcastBox.delete(i);
-  }
-
-  Future<void> _clear() async {
-    await broadcastBox.clear();
-  } */
-
   // ##########################################################################
 
   // ################################ Supabase ################################
@@ -97,7 +43,9 @@ Future<void> main() async {
     MultiProvider(
       providers: [
         Provider<AuthService>(create: (_) => AuthService()),
-        ChangeNotifierProvider<AnimeMovieProvider>(create: (_) => AnimeMovieProvider()),
+        ChangeNotifierProvider<AnimeMovieProvider>(
+          create: (_) => AnimeMovieProvider(),
+        ),
         ChangeNotifierProvider<ThemeService>(create: (_) => ThemeService()),
       ],
       // ########################################################################

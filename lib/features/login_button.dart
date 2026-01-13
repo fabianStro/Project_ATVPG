@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_application_one/services/auth_Service.dart';
+import 'package:flutter_application_one/services/movieProvider_Service.dart';
 
 class LoginButton extends StatelessWidget {
   final ValueNotifier<bool> isValid;
@@ -25,14 +26,27 @@ class LoginButton extends StatelessWidget {
           return OutlinedButton(
             style: OutlinedButton.styleFrom(
               padding: const EdgeInsets.symmetric(vertical: 14),
-              side: BorderSide(color: valid ? Colors.white : Colors.black12, width: 2.5),
+              side: BorderSide(
+                color: valid ? Colors.white : Colors.black12,
+                width: 2.5,
+              ),
               backgroundColor: valid ? Colors.grey : Colors.black12,
             ),
             onPressed: valid
                 ? () async {
-                    context.read<AuthService>().login(emailController.text, passwordController.text);
+                    try {
+                      final authService = context.read<AuthService>();
+                      final animeProvider = context.read<AnimeMovieProvider>();
 
-                    if (context.mounted) {
+                      await authService.login(
+                        emailController.text,
+                        passwordController.text,
+                      );
+
+                      // Direkt nach Login: Hive-Datenbank initial befüllen
+                      await animeProvider.ensureInitialized();
+
+                      if (!context.mounted) return;
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Container(
@@ -41,13 +55,22 @@ class LoginButton extends StatelessWidget {
                             child: const Text(
                               'Login successful !',
                               textAlign: TextAlign.center,
-                              style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontFamily: 'Arial'),
-                            ), // Text
-                          ), // Container
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Arial',
+                              ),
+                            ),
+                          ),
                           duration: Duration(seconds: 2),
-                        ), // SnackBar
+                        ),
                       );
                       Navigator.pushNamed(context, '/start');
+                    } catch (e) {
+                      if (!context.mounted) return;
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Login failed: $e')),
+                      );
                     }
                   }
                 : null,

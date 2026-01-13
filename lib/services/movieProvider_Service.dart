@@ -2,9 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_one/models/broadcastAttribute.dart';
+import 'package:hive_ce/hive.dart';
 
 class AnimeMovieProvider extends ChangeNotifier {
-  final List<BroadcastAttribute> broadcastData = [
+  static const String _boxName = 'animeBox';
+
+  bool _isInitialized = false;
+  late final Box<BroadcastAttribute> _broadcastBox;
+
+  final List<BroadcastAttribute> _seedData = [
     BroadcastAttribute(
       id: 01,
       title: 'Highschool DxD',
@@ -207,26 +213,65 @@ class AnimeMovieProvider extends ChangeNotifier {
     ),
   ];
 
-  String searchQuery = '';
+  List<BroadcastAttribute> broadcastData = [];
 
-  void toggleFavorite(String title) {
-    int index = -1;
+  Future<void> ensureInitialized() async {
+    if (_isInitialized) return;
 
-    for (int i = 0; i < broadcastData.length; i++) {
-      final e = broadcastData[i];
-      if (e.title == title) {
-        index = i;
-        break;
-      }
-    }
+    _broadcastBox = Hive.box<BroadcastAttribute>(_boxName);
 
-    if (index == -1) return;
+    // Direkt nach Login: DB (Hive Box) mit Initialdaten befüllen (nur wenn leer)
+    await _add(_seedData);
 
-    broadcastData[index].isFavorite = !broadcastData[index].isFavorite;
+    // Danach Provider-State aus der DB laden
+    broadcastData = _broadcastBox.values.toList(growable: true);
+    _isInitialized = true;
     notifyListeners();
   }
 
-  void toggleMyAnime(String title) {
+  Future<void> _add(List<BroadcastAttribute> data) async {
+    if (_broadcastBox.isNotEmpty || data.isEmpty) {
+      return;
+    }
+
+    for (final item in data) {
+      await _broadcastBox.add(
+        item.copyWith(isFavorite: false, isMyAnime: false),
+      );
+    }
+  }
+
+  Future<void> _update(int index, BroadcastAttribute newData) async {
+    // Update by position to match the provider list ordering
+    await _broadcastBox.putAt(index, newData);
+  }
+
+  String searchQuery = '';
+
+  Future<void> toggleFavorite(String title) async {
+    await ensureInitialized();
+    int index = -1;
+
+    for (int i = 0; i < broadcastData.length; i++) {
+      final e = broadcastData[i];
+      if (e.title == title) {
+        index = i;
+        break;
+      }
+    }
+
+    if (index == -1) return;
+
+    final updated = broadcastData[index].copyWith(
+      isFavorite: !broadcastData[index].isFavorite,
+    );
+    broadcastData[index] = updated;
+    await _update(index, updated);
+    notifyListeners();
+  }
+
+  Future<void> toggleMyAnime(String title) async {
+    await ensureInitialized();
     int index = -1;
     for (int i = 0; i < broadcastData.length; i++) {
       final e = broadcastData[i];
@@ -238,7 +283,11 @@ class AnimeMovieProvider extends ChangeNotifier {
 
     if (index == -1) return;
 
-    broadcastData[index].isMyAnime = !broadcastData[index].isMyAnime;
+    final updated = broadcastData[index].copyWith(
+      isMyAnime: !broadcastData[index].isMyAnime,
+    );
+    broadcastData[index] = updated;
+    await _update(index, updated);
     notifyListeners();
   }
 
@@ -251,7 +300,9 @@ class AnimeMovieProvider extends ChangeNotifier {
     if (searchQuery.isEmpty) {
       return broadcastData;
     } else {
-      return broadcastData.where((e) => e.title.toLowerCase().contains(searchQuery)).toList();
+      return broadcastData
+          .where((e) => e.title.toLowerCase().contains(searchQuery))
+          .toList();
     }
   }
 
@@ -259,7 +310,11 @@ class AnimeMovieProvider extends ChangeNotifier {
     if (searchQuery.isEmpty) {
       return broadcastData.where((e) => e.isFavorite).toList();
     } else {
-      return broadcastData.where((e) => e.isFavorite && e.title.toLowerCase().contains(searchQuery)).toList();
+      return broadcastData
+          .where(
+            (e) => e.isFavorite && e.title.toLowerCase().contains(searchQuery),
+          )
+          .toList();
     }
   }
 
@@ -267,7 +322,11 @@ class AnimeMovieProvider extends ChangeNotifier {
     if (searchQuery.isEmpty) {
       return broadcastData.where((e) => e.isMyAnime).toList();
     } else {
-      return broadcastData.where((e) => e.isMyAnime && e.title.toLowerCase().contains(searchQuery)).toList();
+      return broadcastData
+          .where(
+            (e) => e.isMyAnime && e.title.toLowerCase().contains(searchQuery),
+          )
+          .toList();
     }
   }
 }
