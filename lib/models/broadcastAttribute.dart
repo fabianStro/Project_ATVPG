@@ -51,4 +51,6 @@ class BroadcastAttribute {
       isMyAnime: isMyAnime ?? this.isMyAnime,
     );
   }
+
+  //_add(List<BroadcastAttribute> broadcastData);
 }

@@ -56,17 +56,32 @@ Future<void> main() async {
     }
   }
 
-  Future<void> _show() async {
-    final animeList = broadcastBox.values.toList();
+  Future<void> _update(int i, BroadcastAttribute newData) async {
+    await broadcastBox.put(
+      i,
+      BroadcastAttribute(
+        id: newData.id,
+        title: newData.title,
+        genre: newData.genre,
+        imagePath: newData.imagePath,
+        description: newData.description,
+        isFavorite: newData.isFavorite,
+        isMyAnime: newData.isMyAnime,
+      ),
+    );
   }
 
-  Future<void> _delete(int i) async {
+  Future<void> _show() async {
+    // final animeList = broadcastBox.values.toList();
+  }
+
+  /* Future<void> _delete(int i) async {
     await broadcastBox.delete(i);
   }
 
   Future<void> _clear() async {
     await broadcastBox.clear();
-  }
+  } */
 
   // ##########################################################################
 
