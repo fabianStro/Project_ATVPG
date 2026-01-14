@@ -1,11 +1,10 @@
 // ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
+// Provider package
 import 'package:provider/provider.dart';
+// Service imports
 import '../services/movieProvider_Service.dart';
-
-/* import 'package:flutter_application_one/broadcastAttribute.dart';
-import 'package:flutter_application_one/searchableAnimeList.dart'; */
 
 // #########################################################################################
 // MyChannel Widget

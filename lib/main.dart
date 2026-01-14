@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// Generated adapter imports
 import 'package:flutter_application_one/hive_registrar.g.dart';
 import 'package:flutter_application_one/login.dart';
 import 'package:flutter_application_one/homeScreen.dart';

@@ -177,8 +177,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                         borderSide: BorderSide(color: Colors.blue, width: 2),
-                      ),
-                      // OutlineInputBorder
+                      ), // OutlineInputBorder
                     ), // InputDecorationTheme
                     dropdownMenuEntries: _dropDownEntriesNotificationStyle,
                   ), // DropdownMenu

@@ -1,10 +1,9 @@
 // ignore_for_file: camel_case_types, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+// Feature imports
 import 'features/login_button.dart';
 import 'features/input_validators.dart';
-// import 'package:flutter_application_one/auth_Service.dart';
-// import 'package:provider/provider.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({super.key});

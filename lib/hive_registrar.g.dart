@@ -3,6 +3,7 @@
 // Check in to version control
 
 import 'package:hive_ce/hive.dart';
+// Model imports
 import 'package:flutter_application_one/models/broadcastAttribute.dart';
 
 extension HiveRegistrar on HiveInterface {

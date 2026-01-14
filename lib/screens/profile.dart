@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// Supabase package
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ProfileWidget extends StatefulWidget {

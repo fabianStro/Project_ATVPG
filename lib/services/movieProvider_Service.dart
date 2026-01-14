@@ -1,7 +1,9 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+// Service imports
 import 'package:flutter_application_one/models/broadcastAttribute.dart';
+// Provider package
 import 'package:hive_ce/hive.dart';
 
 class AnimeMovieProvider extends ChangeNotifier {
@@ -235,9 +237,7 @@ class AnimeMovieProvider extends ChangeNotifier {
     }
 
     for (final item in data) {
-      await _broadcastBox.add(
-        item.copyWith(isFavorite: false, isMyAnime: false),
-      );
+      await _broadcastBox.add(item.copyWith(isFavorite: false, isMyAnime: false));
     }
   }
 
@@ -262,9 +262,7 @@ class AnimeMovieProvider extends ChangeNotifier {
 
     if (index == -1) return;
 
-    final updated = broadcastData[index].copyWith(
-      isFavorite: !broadcastData[index].isFavorite,
-    );
+    final updated = broadcastData[index].copyWith(isFavorite: !broadcastData[index].isFavorite);
     broadcastData[index] = updated;
     await _update(index, updated);
     notifyListeners();
@@ -283,9 +281,7 @@ class AnimeMovieProvider extends ChangeNotifier {
 
     if (index == -1) return;
 
-    final updated = broadcastData[index].copyWith(
-      isMyAnime: !broadcastData[index].isMyAnime,
-    );
+    final updated = broadcastData[index].copyWith(isMyAnime: !broadcastData[index].isMyAnime);
     broadcastData[index] = updated;
     await _update(index, updated);
     notifyListeners();
@@ -300,9 +296,7 @@ class AnimeMovieProvider extends ChangeNotifier {
     if (searchQuery.isEmpty) {
       return broadcastData;
     } else {
-      return broadcastData
-          .where((e) => e.title.toLowerCase().contains(searchQuery))
-          .toList();
+      return broadcastData.where((e) => e.title.toLowerCase().contains(searchQuery)).toList();
     }
   }
 
@@ -310,11 +304,7 @@ class AnimeMovieProvider extends ChangeNotifier {
     if (searchQuery.isEmpty) {
       return broadcastData.where((e) => e.isFavorite).toList();
     } else {
-      return broadcastData
-          .where(
-            (e) => e.isFavorite && e.title.toLowerCase().contains(searchQuery),
-          )
-          .toList();
+      return broadcastData.where((e) => e.isFavorite && e.title.toLowerCase().contains(searchQuery)).toList();
     }
   }
 
@@ -322,11 +312,7 @@ class AnimeMovieProvider extends ChangeNotifier {
     if (searchQuery.isEmpty) {
       return broadcastData.where((e) => e.isMyAnime).toList();
     } else {
-      return broadcastData
-          .where(
-            (e) => e.isMyAnime && e.title.toLowerCase().contains(searchQuery),
-          )
-          .toList();
+      return broadcastData.where((e) => e.isMyAnime && e.title.toLowerCase().contains(searchQuery)).toList();
     }
   }
 }

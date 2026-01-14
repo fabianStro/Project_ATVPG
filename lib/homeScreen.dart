@@ -1,14 +1,17 @@
 // ignore_for_file: file_names, camel_case_types
 
 import 'package:flutter/material.dart';
+// Overlay Portal package
 import 'package:flutter_application_one/screens/allAnime.dart';
 import 'package:flutter_application_one/features/search_Function.dart';
 import 'package:flutter_application_one/features/logout_button.dart';
 import 'package:flutter_application_one/screens/myAnime.dart';
 import 'package:flutter_application_one/screens/favoriteAnime.dart';
 import 'package:flutter_application_one/services/theme_Service.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_application_one/services/movieProvider_Service.dart';
+// Overlay Portal package
+import 'package:provider/provider.dart';
+
 //import 'features/search_Function.dart';
 
 class StartScreenWidget extends StatefulWidget {

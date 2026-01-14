@@ -1,7 +1,9 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers, avoid_print
 
 import 'package:flutter/material.dart';
+// Supabase package
 import 'package:supabase_flutter/supabase_flutter.dart';
+// Input validators
 import '../features/input_validators.dart';
 
 class RegistryWidget extends StatefulWidget {

@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:hive_ce/hive.dart';
-
+// Generated adapter part
 part 'broadcastAttribute.g.dart';
 
 @HiveType(typeId: 0)

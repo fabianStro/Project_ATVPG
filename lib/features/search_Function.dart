@@ -1,7 +1,9 @@
 // ignore_for_file: file_names, camel_case_types
 
 import 'package:flutter/material.dart';
+// Service imports
 import 'package:flutter_application_one/services/movieProvider_Service.dart';
+// Provider package
 import 'package:provider/provider.dart';
 
 class SearchFunction extends StatefulWidget {
