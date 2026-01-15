@@ -3,17 +3,19 @@
 // Check in to version control
 
 import 'package:hive_ce/hive.dart';
-// Model imports
 import 'package:flutter_application_one/models/broadcastAttribute.dart';
+import 'package:flutter_application_one/models/notificationData.dart';
 
 extension HiveRegistrar on HiveInterface {
   void registerAdapters() {
     registerAdapter(BroadcastAttributeAdapter());
+    registerAdapter(NotificationDataAdapter());
   }
 }
 
 extension IsolatedHiveRegistrar on IsolatedHiveInterface {
   void registerAdapters() {
     registerAdapter(BroadcastAttributeAdapter());
+    registerAdapter(NotificationDataAdapter());
   }
 }

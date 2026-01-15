@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hive_ce/hive.dart';
 import 'package:toggle_switch/toggle_switch.dart';
+
+import '../models/notificationData.dart';
 
 class NotificationWidget extends StatefulWidget {
   const NotificationWidget({super.key});
@@ -20,6 +23,18 @@ class _NotificationWidgetState extends State<NotificationWidget> {
   // Stile und Konstanten
   // ############################################################################
   bool activeNotification = false;
+
+  void saveNotificationSettings() {
+    final box = Hive.box<NotificationData>('notificationBox');
+
+    final notificationSetting = NotificationData(
+      minBefore: _minBeforeController.text,
+      notificationSound: _reminderSoundController.text,
+      notificationMethod: _notificationMethodController.text,
+    );
+
+    box.add(notificationSetting);
+  }
 
   // ############################################################################
   // Feste Werte (Functions to get dropdown entries)
@@ -69,7 +84,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Enable Notification', style: TextStyle(fontSize: 20.0, fontFamily: 'Arial')),
+                Text('Enable/ Disable Notification', style: TextStyle(fontSize: 20.0, fontFamily: 'Arial')),
                 SizedBox(height: 10.0),
                 ToggleSwitch(
                   initialLabelIndex: activeNotification ? 1 : 0,
@@ -96,8 +111,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                   },
                 ), // ToggleSwitch
                 SizedBox(height: 30.0),
-                if (!activeNotification)
-                  Text('When would you like to be reminded', style: TextStyle(fontSize: 20.0, fontFamily: 'Arial')),
+                if (!activeNotification) Text('Reminder Time', style: TextStyle(fontSize: 20.0, fontFamily: 'Arial')),
                 SizedBox(height: 10.0),
                 if (!activeNotification)
                   SizedBox(
@@ -186,6 +200,20 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                 Center(
                   child: Column(
                     children: [
+                      SizedBox(
+                        width: 200.0,
+                        child: Center(
+                          child: ElevatedButton(
+                            onPressed: saveNotificationSettings,
+                            style: ElevatedButton.styleFrom(alignment: Alignment.center, backgroundColor: Colors.grey),
+                            child: Text(
+                              'Savee Settings',
+                              style: TextStyle(color: Colors.white, fontFamily: 'Arial'),
+                            ), // Text
+                          ), // ElevatedButton
+                        ), // Center
+                      ), // SizedBox
+                      SizedBox(height: 20.0),
                       SizedBox(
                         width: 200.0,
                         child: Center(
