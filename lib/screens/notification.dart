@@ -12,6 +12,35 @@ class NotificationWidget extends StatefulWidget {
 }
 
 class _NotificationWidgetState extends State<NotificationWidget> {
+  bool activeNotification = false;
+  String minLabel = '';
+  String reminderSoundLabel = '';
+  String notificationMethodLabel = '';
+
+  @override
+  void initState() {
+    super.initState();
+    loadLabel();
+  }
+
+  void loadLabel() {
+    final minLabelBox = Hive.box<NotificationData>('notificationBox');
+    final reminderSoundBox = Hive.box<NotificationData>('notificationBox');
+    final notificationMethodBox = Hive.box<NotificationData>('notificationBox');
+
+    if (minLabelBox.isNotEmpty) {
+      final minLabelData = minLabelBox.getAt(0)!;
+      final reminderSoundData = reminderSoundBox.getAt(0)!;
+      final notificationMethodData = notificationMethodBox.getAt(0)!;
+
+      setState(() {
+        minLabel = minLabelData.minBefore; // Hive-Wert als Label
+        reminderSoundLabel = reminderSoundData.notificationSound;
+        notificationMethodLabel = notificationMethodData.notificationMethod;
+      });
+    }
+  }
+
   // ############################################################################
   // Controller für Textfelder
   // ############################################################################
@@ -22,9 +51,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
   // ############################################################################
   // Stile und Konstanten
   // ############################################################################
-  bool activeNotification = false;
 
-  void saveNotificationSettings() {
+  /* void saveNotificationSettings() {
     final box = Hive.box<NotificationData>('notificationBox');
 
     final notificationSetting = NotificationData(
@@ -34,6 +62,19 @@ class _NotificationWidgetState extends State<NotificationWidget> {
     );
 
     box.add(notificationSetting);
+  } */
+
+  void updateNotificationSettings() {
+    final box = Hive.box<NotificationData>('notificationBox');
+
+    final data = box.getAt(0);
+    if (data == null) return;
+
+    data.minBefore = _minBeforeController.text;
+    data.notificationSound = _reminderSoundController.text;
+    data.notificationMethod = _notificationMethodController.text;
+
+    box.putAt(0, data);
   }
 
   // ############################################################################
@@ -58,8 +99,6 @@ class _NotificationWidgetState extends State<NotificationWidget> {
       DropdownMenuEntry(value: 'sms', label: 'SMS Notification'),
     ];
   }
-
-  final TextStyle dropDownAndLabelTextStyle = TextStyle(fontSize: 18.0, color: Colors.white, fontFamily: 'Arial');
 
   @override
   Widget build(BuildContext context) {
@@ -123,8 +162,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10.0),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
-                        labelText: 'Minutes before',
-                        labelStyle: dropDownAndLabelTextStyle,
+                        labelText: minLabel.isNotEmpty ? minLabel : 'Minutes Before',
+                        labelStyle: TextStyle(fontSize: 18.0, color: Colors.white, fontFamily: 'Arial'),
                         filled: true,
                         fillColor: Colors.black,
                       ), // InputDecoration
@@ -136,7 +175,15 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                 if (!activeNotification)
                   DropdownMenu<String>(
                     controller: _reminderSoundController,
-                    label: Text('Select Sound', style: dropDownAndLabelTextStyle), // Text
+                    label: reminderSoundLabel.isNotEmpty
+                        ? Text(
+                            reminderSoundLabel,
+                            style: TextStyle(fontSize: 18.0, color: Colors.white, fontFamily: 'Arial'),
+                          )
+                        : Text(
+                            'Select Sound',
+                            style: TextStyle(fontSize: 18.0, color: Colors.white, fontFamily: 'Arial'),
+                          ), // Text
                     width: 210.0,
                     menuStyle: MenuStyle(
                       backgroundColor: WidgetStatePropertyAll(Colors.black),
@@ -169,7 +216,15 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                 if (!activeNotification)
                   DropdownMenu<String>(
                     controller: _notificationMethodController,
-                    label: Text('Select Method', style: dropDownAndLabelTextStyle), // Text
+                    label: notificationMethodLabel.isNotEmpty
+                        ? Text(
+                            notificationMethodLabel,
+                            style: TextStyle(fontSize: 18.0, color: Colors.white, fontFamily: 'Arial'),
+                          )
+                        : Text(
+                            'Select Method',
+                            style: TextStyle(fontSize: 18.0, color: Colors.white, fontFamily: 'Arial'),
+                          ), // Text
                     width: 210.0,
                     menuStyle: MenuStyle(
                       backgroundColor: WidgetStatePropertyAll(Colors.black),
@@ -204,10 +259,31 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                         width: 200.0,
                         child: Center(
                           child: ElevatedButton(
-                            onPressed: saveNotificationSettings,
+                            onPressed: () {
+                              updateNotificationSettings();
+                              // saveNotificationSettings();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Container(
+                                    width: double.infinity,
+                                    alignment: Alignment.center,
+                                    child: const Text(
+                                      'Settings saved successfully !',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Arial',
+                                      ),
+                                    ), // Text
+                                  ), // Container
+                                  duration: Duration(seconds: 2),
+                                ), // SnackBar
+                              );
+                            },
                             style: ElevatedButton.styleFrom(alignment: Alignment.center, backgroundColor: Colors.grey),
                             child: Text(
-                              'Savee Settings',
+                              'Save Settings',
                               style: TextStyle(color: Colors.white, fontFamily: 'Arial'),
                             ), // Text
                           ), // ElevatedButton
@@ -219,6 +295,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                         child: Center(
                           child: ElevatedButton(
                             onPressed: () {
+                              // saveNotificationSettings();
                               Navigator.pushNamed(context, '/start');
                             },
                             style: ElevatedButton.styleFrom(alignment: Alignment.center, backgroundColor: Colors.grey),
