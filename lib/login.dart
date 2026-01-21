@@ -123,7 +123,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 ), // GestureDetector
                 SizedBox(height: 85.0),
                 Text(
-                  '2025 \u00a9 ATVPG All Rights Reserved',
+                  '2025/26 \u00a9 ATVPG All Rights Reserved',
                   style: TextStyle(color: Colors.grey[600], fontFamily: 'Arial'),
                 ), // Text
               ], // children

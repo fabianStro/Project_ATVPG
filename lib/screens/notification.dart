@@ -20,10 +20,10 @@ class _NotificationWidgetState extends State<NotificationWidget> {
   @override
   void initState() {
     super.initState();
-    loadLabel();
+    loadNotificationLabels();
   }
 
-  void loadLabel() {
+  void loadNotificationLabels() {
     final minLabelBox = Hive.box<NotificationData>('notificationBox');
     final reminderSoundBox = Hive.box<NotificationData>('notificationBox');
     final notificationMethodBox = Hive.box<NotificationData>('notificationBox');
@@ -67,14 +67,14 @@ class _NotificationWidgetState extends State<NotificationWidget> {
   void updateNotificationSettings() {
     final box = Hive.box<NotificationData>('notificationBox');
 
-    final data = box.getAt(0);
-    if (data == null) return;
+    final notificationSetting = box.getAt(0);
+    if (notificationSetting == null) return;
 
-    data.minBefore = _minBeforeController.text;
-    data.notificationSound = _reminderSoundController.text;
-    data.notificationMethod = _notificationMethodController.text;
+    notificationSetting.minBefore = _minBeforeController.text;
+    notificationSetting.notificationSound = _reminderSoundController.text;
+    notificationSetting.notificationMethod = _notificationMethodController.text;
 
-    box.putAt(0, data);
+    box.putAt(0, notificationSetting);
   }
 
   // ############################################################################
@@ -179,7 +179,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                         ? Text(
                             reminderSoundLabel,
                             style: TextStyle(fontSize: 18.0, color: Colors.white, fontFamily: 'Arial'),
-                          )
+                          ) // Text
                         : Text(
                             'Select Sound',
                             style: TextStyle(fontSize: 18.0, color: Colors.white, fontFamily: 'Arial'),
@@ -220,7 +220,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                         ? Text(
                             notificationMethodLabel,
                             style: TextStyle(fontSize: 18.0, color: Colors.white, fontFamily: 'Arial'),
-                          )
+                          ) // Text
                         : Text(
                             'Select Method',
                             style: TextStyle(fontSize: 18.0, color: Colors.white, fontFamily: 'Arial'),
@@ -268,13 +268,13 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                     width: double.infinity,
                                     alignment: Alignment.center,
                                     child: const Text(
-                                      'Settings saved successfully !',
+                                      'Settings successfully updated !',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
                                         fontFamily: 'Arial',
-                                      ),
+                                      ), // TextStyle
                                     ), // Text
                                   ), // Container
                                   duration: Duration(seconds: 2),
@@ -295,7 +295,6 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                         child: Center(
                           child: ElevatedButton(
                             onPressed: () {
-                              // saveNotificationSettings();
                               Navigator.pushNamed(context, '/start');
                             },
                             style: ElevatedButton.styleFrom(alignment: Alignment.center, backgroundColor: Colors.grey),
