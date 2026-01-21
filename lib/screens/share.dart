@@ -50,7 +50,7 @@ class _ShareWidgetState extends State<ShareWidget> {
                   },
                   child: Padding(
                     padding: EdgeInsets.only(left: 30.0, top: 220.0),
-                    child: Image.asset('assets/images/shareIcons/whatsApp.png', width: 35.0, height: 35.0),
+                    child: Image.asset('assets/images/shareIcons/x-icon.png', width: 35.0, height: 35.0),
                   ), // Padding
                 ), // GestureDetector
                 SizedBox(width: 10.0),
