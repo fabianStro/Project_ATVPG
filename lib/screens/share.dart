@@ -2,6 +2,7 @@
 
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 
 class ShareWidget extends StatefulWidget {
   ShareWidget({super.key, required this.title, required this.picture});
@@ -11,6 +12,11 @@ class ShareWidget extends StatefulWidget {
 
   @override
   State<ShareWidget> createState() => _ShareWidgetState();
+}
+
+Future<void> shareFunction(String imagePath, String text) async {
+  final file = XFile(imagePath);
+  await Share.shareXFiles([file], text: text);
 }
 
 class _ShareWidgetState extends State<ShareWidget> {
@@ -40,17 +46,17 @@ class _ShareWidgetState extends State<ShareWidget> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, '/start');
+                    shareFunction(widget.picture, widget.title);
                   },
                   child: Padding(
-                    padding: EdgeInsets.only(left: 16.0, top: 220.0),
-                    child: Image.asset('assets/images/shareIcons/facebook.png', width: 35.0, height: 35.0),
+                    padding: EdgeInsets.only(left: 30.0, top: 220.0),
+                    child: Image.asset('assets/images/shareIcons/whatsApp.png', width: 35.0, height: 35.0),
                   ), // Padding
                 ), // GestureDetector
                 SizedBox(width: 10.0),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, '/start');
+                    shareFunction(widget.picture, widget.title);
                   },
                   child: Padding(
                     padding: EdgeInsets.only(top: 220.0),
@@ -60,7 +66,7 @@ class _ShareWidgetState extends State<ShareWidget> {
                 SizedBox(width: 10.0),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, '/start');
+                    shareFunction(widget.picture, widget.title);
                   },
                   child: Padding(
                     padding: EdgeInsets.only(top: 220.0),
@@ -70,14 +76,14 @@ class _ShareWidgetState extends State<ShareWidget> {
                 SizedBox(width: 10.0),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, '/start');
+                    shareFunction(widget.picture, widget.title);
                   },
                   child: Padding(
-                    padding: EdgeInsets.only(top: 220.0),
+                    padding: EdgeInsets.only(top: 220.0, right: 30.0),
                     child: Image.asset('assets/images/shareIcons/tiktok.png', width: 35.0, height: 35.0),
                   ), // Padding
                 ), // GestureDetector
-                SizedBox(width: 10.0),
+                /* SizedBox(width: 10.0),
                 GestureDetector(
                   onTap: () {
                     Navigator.pushNamed(context, '/start');
@@ -86,21 +92,27 @@ class _ShareWidgetState extends State<ShareWidget> {
                     padding: EdgeInsets.only(top: 220.0, right: 16.0),
                     child: Image.asset('assets/images/shareIcons/x-icon.png', width: 35.0, height: 35.0),
                   ), // Padding
-                ), // GestureDetector
+                ), // GestureDetector */
               ],
             ), // Row
-            Padding(
-              padding: EdgeInsets.only(left: 16.0, top: 10.0),
-              child: Text('Which channel would you like to share through?', style: TextStyle(fontSize: 20.0)),
-            ), // Padding
-            Padding(
-              padding: EdgeInsets.only(top: 0.0),
-              child: Center(
-                child: ClipOval(
-                  child: Image.asset(widget.picture, width: 100, height: 100, fit: BoxFit.cover), // Image.asset
-                ), // ClipOval
-              ), // Center
-            ), // Padding
+            Align(
+              alignment: Alignment.topCenter,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: Text('Select the Channel', style: const TextStyle(fontSize: 25.0)),
+              ), // Padding
+            ), // Align
+            Align(
+              alignment: Alignment.topCenter,
+              child: Padding(
+                padding: EdgeInsets.only(top: 0.0),
+                child: Center(
+                  child: ClipOval(
+                    child: Image.asset(widget.picture, width: 100.0, height: 100.0, fit: BoxFit.cover), // Image.asset
+                  ), // ClipOval
+                ), // Center
+              ), // Padding
+            ), // Align
           ], // Children
         ), // Stack
       ), // Scaffold
