@@ -25,14 +25,7 @@ class _RegistryWidgetState extends State<RegistryWidget> {
   final ButtonStyle buttonStyle = ElevatedButton.styleFrom(backgroundColor: Colors.grey);
   final TextStyle buttonTextStyle = TextStyle(color: Colors.white, fontFamily: 'Arial');
 
-  Future<void> insertUserData(
-    String uid,
-    //String username,
-    String firstName,
-    String lastName,
-    String pictureURL,
-    String email,
-  ) async {
+  Future<void> insertUserData(String uid, String firstName, String lastName, String pictureURL, String email) async {
     try {
       final result = await Supabase.instance.client.from('user_data').insert({
         'uid': uid,

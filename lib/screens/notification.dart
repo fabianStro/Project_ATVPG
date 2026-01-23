@@ -12,10 +12,8 @@ class NotificationWidget extends StatefulWidget {
 }
 
 class _NotificationWidgetState extends State<NotificationWidget> {
+  String minLabel = '', reminderSoundLabel = '', notificationMethodLabel = '';
   bool activeNotification = false;
-  String minLabel = '';
-  String reminderSoundLabel = '';
-  String notificationMethodLabel = '';
 
   @override
   void initState() {
@@ -34,7 +32,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
       final notificationMethodData = notificationMethodBox.getAt(0)!;
 
       setState(() {
-        minLabel = minLabelData.minBefore; // Hive-Wert als Label
+        minLabel = minLabelData.minBefore;
         reminderSoundLabel = reminderSoundData.notificationSound;
         notificationMethodLabel = notificationMethodData.notificationMethod;
       });
@@ -42,14 +40,35 @@ class _NotificationWidgetState extends State<NotificationWidget> {
   }
 
   // ############################################################################
-  // Controller für Textfelder
+  // Controllers for TextFormFields and DropdownMenus
   // ############################################################################
+
   final TextEditingController _minBeforeController = TextEditingController();
   final TextEditingController _reminderSoundController = TextEditingController();
   final TextEditingController _notificationMethodController = TextEditingController();
 
+  List<DropdownMenuEntry<String>> get dropDowmEntriesSound {
+    return const [
+      DropdownMenuEntry(value: 'none', label: 'System Default'),
+      DropdownMenuEntry(value: 'blob', label: 'Blob'),
+      DropdownMenuEntry(value: 'swoosh', label: 'Swoosh'),
+      DropdownMenuEntry(value: 'crystal', label: 'Crystal'),
+      DropdownMenuEntry(value: 'bFrog', label: 'Bull Frog'),
+      DropdownMenuEntry(value: 'digital', label: 'Digital'),
+    ];
+  }
+
+  List<DropdownMenuEntry<String>> get _dropDownEntriesNotificationStyle {
+    return const [
+      DropdownMenuEntry(value: 'none', label: 'None'),
+      DropdownMenuEntry(value: 'push', label: 'Push Notification'),
+      DropdownMenuEntry(value: 'mail', label: 'Mail Notification'),
+      DropdownMenuEntry(value: 'sms', label: 'SMS Notification'),
+    ];
+  }
+
   // ############################################################################
-  // Stile und Konstanten
+  // Functions to save/update data in Hive
   // ############################################################################
 
   /* void saveNotificationSettings() {
@@ -75,29 +94,6 @@ class _NotificationWidgetState extends State<NotificationWidget> {
     notificationSetting.notificationMethod = _notificationMethodController.text;
 
     box.putAt(0, notificationSetting);
-  }
-
-  // ############################################################################
-  // Feste Werte (Functions to get dropdown entries)
-  // ############################################################################
-  List<DropdownMenuEntry<String>> get dropDowmEntriesSound {
-    return const [
-      DropdownMenuEntry(value: 'none', label: 'System Default'),
-      DropdownMenuEntry(value: 'blob', label: 'Blob'),
-      DropdownMenuEntry(value: 'swoosh', label: 'Swoosh'),
-      DropdownMenuEntry(value: 'crystal', label: 'Crystal'),
-      DropdownMenuEntry(value: 'bFrog', label: 'Bull Frog'),
-      DropdownMenuEntry(value: 'digital', label: 'Digital'),
-    ];
-  }
-
-  List<DropdownMenuEntry<String>> get _dropDownEntriesNotificationStyle {
-    return const [
-      DropdownMenuEntry(value: 'none', label: 'None'),
-      DropdownMenuEntry(value: 'push', label: 'Push Notification'),
-      DropdownMenuEntry(value: 'mail', label: 'Mail Notification'),
-      DropdownMenuEntry(value: 'sms', label: 'SMS Notification'),
-    ];
   }
 
   @override
@@ -144,7 +140,6 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                   fontSize: 18.0,
                   onToggle: (index) {
                     setState(() {
-                      // index == 0 -> 'Enabled', index == 1 -> 'Disabled'
                       activeNotification = (index == 1);
                     });
                   },
