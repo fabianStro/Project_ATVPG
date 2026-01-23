@@ -7,12 +7,10 @@ import 'package:flutter_application_one/features/search_Function.dart';
 import 'package:flutter_application_one/features/logout_button.dart';
 import 'package:flutter_application_one/screens/myAnime.dart';
 import 'package:flutter_application_one/screens/favoriteAnime.dart';
-// import 'package:flutter_application_one/services/theme_Service.dart';
+import 'package:flutter_application_one/services/theme_Service.dart';
 import 'package:flutter_application_one/services/movieProvider_Service.dart';
 // Overlay Portal package
 import 'package:provider/provider.dart';
-
-//import 'features/search_Function.dart';
 
 class StartScreenWidget extends StatefulWidget {
   const StartScreenWidget({super.key});
@@ -28,10 +26,9 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
   int currentPageIndex = 0;
   final Icon searchIcon = Icon(Icons.search, size: 30.0),
       exitIcon = Icon(Icons.logout_rounded, size: 30.0),
-      noteIcon = Icon(Icons.notifications_outlined, size: 30.0);
-  /*  themeIconLight = Icon(Icons.light_mode, size: 30.0),
-      themeIconDark = Icon(Icons.dark_mode, size: 30.0); */
-
+      noteIcon = Icon(Icons.notifications_outlined, size: 30.0),
+      themeIconLight = Icon(Icons.light_mode, size: 30.0),
+      themeIconDark = Icon(Icons.dark_mode, size: 30.0);
   final ValueNotifier<String> searchQuery = ValueNotifier<String>('');
   // ######################################################################################
   // Controller
@@ -126,7 +123,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                   },
                 ), // IconButton
               ), // Padding
-              /*  Padding(
+              Padding(
                 padding: const EdgeInsets.only(top: 0.0, right: 8.0, left: 8.0),
                 child: IconButton(
                   onPressed: () {
@@ -136,7 +133,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                     context.read<ThemeService>().themeMode == ThemeMode.dark ? Icons.light_mode : Icons.dark_mode,
                   ), // Icon
                 ), // IconbButton
-              ), // Padding */
+              ), // Padding
               Padding(
                 padding: const EdgeInsets.only(top: 0.0, right: 8.0, left: 8.0),
                 child:

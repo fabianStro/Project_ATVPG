@@ -1,5 +1,6 @@
 // login_button.dart
 import 'package:flutter/material.dart';
+import 'package:hive_ce_flutter/hive_flutter.dart';
 // Provider package
 import 'package:provider/provider.dart';
 // Service imports
@@ -39,8 +40,10 @@ class LoginButton extends StatelessWidget {
 
                       await authService.login(emailController.text, passwordController.text);
 
-                      // Direkt nach Login: Hive-Datenbank initial befüllen
-                      await animeProvider.ensureInitialized();
+                      /*  await Hive.box('animeBox').close(); // Close existing box
+                      await Hive.deleteBoxFromDisk('animeBox'); // Delete the box
+                      await Hive.openBox('animeBox'); // Reopen the box */
+                      await animeProvider.ensureInitialized(); // Initially populate the Hive database
 
                       if (!context.mounted) return;
                       ScaffoldMessenger.of(context).showSnackBar(

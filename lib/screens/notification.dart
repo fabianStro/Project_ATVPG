@@ -98,20 +98,26 @@ class _NotificationWidgetState extends State<NotificationWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final isLight = Theme.of(context).brightness == Brightness.light;
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          backgroundColor: Colors.black,
-          foregroundColor: Colors.white,
+          backgroundColor: isLight ? Colors.white : Colors.black,
+          foregroundColor: isLight ? Colors.black : Colors.white,
           toolbarHeight: 100.0,
           shape: Border(
-            bottom: BorderSide(color: Colors.white, width: 2.0),
-            top: BorderSide(color: Colors.white, width: 2.0),
-          ), // Border
+            bottom: BorderSide(color: isLight ? Colors.black : Colors.white, width: 2.0),
+            top: BorderSide(color: isLight ? Colors.black : Colors.white, width: 2.0),
+          ),
           centerTitle: true,
-          title: Text('Notification', style: TextStyle(fontSize: 50.0, letterSpacing: 2.2, fontFamily: 'Audiowide')),
-        ), // AppBar
+          title: const Text(
+            'Notification',
+            style: TextStyle(fontSize: 50.0, letterSpacing: 2.2, fontFamily: 'Audiowide'),
+          ),
+        ),
+
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.only(top: 15.0, left: 16.0),

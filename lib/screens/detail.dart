@@ -20,6 +20,11 @@ class _DetailWidgetState extends State<DetailWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final isLight = Theme.of(context).brightness == Brightness.light;
+    final textColor = isLight ? Colors.black : Colors.white;
+    final dividerColor = isLight ? Colors.black : Colors.white;
+    final iconColor = isLight ? Colors.black : Colors.white;
+
     final BroadcastAttribute passed = ModalRoute.of(context)!.settings.arguments as BroadcastAttribute;
 
     final provider = context.watch<AnimeMovieProvider>();
@@ -46,39 +51,39 @@ class _DetailWidgetState extends State<DetailWidget> {
               child: Column(
                 children: [
                   Image.asset(pictureAdressString, width: 200, height: 180, fit: BoxFit.cover), // Image.asset
-                  const Divider(height: 30.0, thickness: 2, indent: 0, endIndent: 0, color: Colors.white), // Divider
+                  Divider(height: 30.0, thickness: 2, indent: 0, endIndent: 0, color: dividerColor), // Divider
                   Center(
                     child: Text(
                       titleString,
-                      style: TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold), // TextStyle
+                      style: TextStyle(color: textColor, fontSize: 20.0, fontWeight: FontWeight.bold), // TextStyle
                     ), // Text
                   ), // Center
-                  const Divider(height: 30.0, thickness: 2, indent: 0, endIndent: 0, color: Colors.white), // Divider
+                  Divider(height: 30.0, thickness: 2, indent: 0, endIndent: 0, color: dividerColor), // Divider
                   Text(
                     'Genre',
-                    style: TextStyle(color: Colors.white, fontSize: 16.0, fontWeight: FontWeight.bold), // TextStyle
+                    style: TextStyle(color: textColor, fontSize: 16.0, fontWeight: FontWeight.bold), // TextStyle
                   ), // Text
                   Center(
-                    child: Text(genre, style: TextStyle(color: Colors.white, fontSize: 16.0)), // Text
+                    child: Text(genre, style: TextStyle(color: textColor, fontSize: 16.0)), // Text
                   ), // Center
-                  const Divider(height: 30.0, thickness: 2, indent: 0, endIndent: 0, color: Colors.white), // Divider
+                  Divider(height: 30.0, thickness: 2, indent: 0, endIndent: 0, color: dividerColor), // Divider
                   Center(
                     child: Text(
                       'Broadcasting Stations',
-                      style: TextStyle(color: Colors.white, fontSize: 16.0, fontWeight: FontWeight.bold), // TextStyle
+                      style: TextStyle(color: textColor, fontSize: 16.0, fontWeight: FontWeight.bold), // TextStyle
                     ), // Text
                   ), // Center
-                  Text('${broadcastingStations}', style: TextStyle(color: Colors.white, fontSize: 16.0)), // Text
+                  Text('${broadcastingStations}', style: TextStyle(color: textColor, fontSize: 16.0)), // Text
                   Center(
                     child: Text(
                       '\nStreaming Platform',
-                      style: TextStyle(color: Colors.white, fontSize: 16.0, fontWeight: FontWeight.bold), // TextStyle
+                      style: TextStyle(color: textColor, fontSize: 16.0, fontWeight: FontWeight.bold), // TextStyle
                     ), // Text
                   ), // Center
-                  Text('${streamingPlatform}', style: TextStyle(color: Colors.white, fontSize: 16.0)), // Text
-                  const Divider(height: 30.0, thickness: 2, indent: 0, endIndent: 0, color: Colors.white), // Divider
-                  Text(descriptionString, style: TextStyle(color: Colors.white, fontSize: 16.0)), // Text
-                  const Divider(height: 15.0, thickness: 2, indent: 0, endIndent: 0, color: Colors.white), // Divider
+                  Text('${streamingPlatform}', style: TextStyle(color: textColor, fontSize: 16.0)), // Text
+                  Divider(height: 30.0, thickness: 2, indent: 0, endIndent: 0, color: dividerColor), // Divider
+                  Text(descriptionString, style: TextStyle(color: textColor, fontSize: 16.0)), // Text
+                  Divider(height: 15.0, thickness: 2, indent: 0, endIndent: 0, color: dividerColor), // Divider
                   ListTile(
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
@@ -103,7 +108,7 @@ class _DetailWidgetState extends State<DetailWidget> {
                             },
                             child: Padding(
                               padding: EdgeInsets.only(top: 0.0, right: 10.0),
-                              child: Icon(Icons.share_outlined, color: Colors.white, size: 35.0), // Icon
+                              child: Icon(Icons.share_outlined, color: iconColor, size: 35.0), // Icon
                             ), // Padding
                           ), // OverlayPortal
                         ), // GestureDetector
@@ -114,7 +119,7 @@ class _DetailWidgetState extends State<DetailWidget> {
                           icon: Icon(
                             Icons.bookmark_border_outlined,
                             size: 35,
-                            color: current.isMyAnime ? Colors.yellow : Colors.white,
+                            color: current.isMyAnime ? Colors.yellow : iconColor,
                           ), // Icon
                         ), // IconButton
                         IconButton(
@@ -124,7 +129,7 @@ class _DetailWidgetState extends State<DetailWidget> {
                           icon: Icon(
                             Icons.star_border_outlined,
                             size: 35,
-                            color: current.isFavorite ? Colors.yellow : Colors.white,
+                            color: current.isFavorite ? Colors.yellow : iconColor,
                           ), // Icon
                         ), // IconButton
                       ], // children
