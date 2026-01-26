@@ -3,8 +3,8 @@
 // Check in to version control
 
 import 'package:hive_ce/hive.dart';
-import 'package:flutter_application_one/models/broadcastAttribute.dart';
-import 'package:flutter_application_one/models/notificationData.dart';
+import 'package:flutter_application_one/models/broadcast_attribute.dart';
+import 'package:flutter_application_one/models/notification_data.dart';
 
 extension HiveRegistrar on HiveInterface {
   void registerAdapters() {

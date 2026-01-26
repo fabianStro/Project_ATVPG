@@ -1,10 +1,8 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-// Service imports
-import 'package:flutter_application_one/models/broadcastAttribute.dart';
-// Provider package
 import 'package:hive_ce/hive.dart';
+import 'package:flutter_application_one/models/broadcast_attribute.dart';
 
 class AnimeMovieProvider extends ChangeNotifier {
   static const String _boxName = 'animeBox';

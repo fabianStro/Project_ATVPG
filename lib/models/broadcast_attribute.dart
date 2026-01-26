@@ -2,7 +2,7 @@
 
 import 'package:hive_ce/hive.dart';
 // Generated adapter part
-part 'broadcastAttribute.g.dart';
+part 'broadcast_attribute.g.dart';
 
 @HiveType(typeId: 0)
 class BroadcastAttribute {

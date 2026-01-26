@@ -1,6 +1,6 @@
 import 'package:hive_ce/hive.dart';
 
-part 'notificationData.g.dart';
+part 'notification_data.g.dart';
 
 @HiveType(typeId: 1)
 class NotificationData {

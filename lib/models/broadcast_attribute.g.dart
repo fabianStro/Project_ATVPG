@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'broadcastAttribute.dart';
+part of 'broadcast_attribute.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator

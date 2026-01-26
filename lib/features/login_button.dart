@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 // Provider package
 import 'package:provider/provider.dart';
 // Service imports
-import 'package:flutter_application_one/services/auth_Service.dart';
-import 'package:flutter_application_one/services/movieProvider_Service.dart';
+import 'package:flutter_application_one/services/auth_service.dart';
+import 'package:flutter_application_one/services/movieProvider_service.dart';
 
 class LoginButton extends StatelessWidget {
   final ValueNotifier<bool> isValid;

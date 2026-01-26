@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive_ce/hive.dart';
 import 'package:toggle_switch/toggle_switch.dart';
-
-import '../models/notificationData.dart';
+import 'package:flutter/services.dart';
+import '../models/notification_data.dart';
 
 class NotificationWidget extends StatefulWidget {
   const NotificationWidget({super.key});
@@ -22,19 +22,15 @@ class _NotificationWidgetState extends State<NotificationWidget> {
   }
 
   void loadNotificationLabels() {
-    final minLabelBox = Hive.box<NotificationData>('notificationBox');
-    final reminderSoundBox = Hive.box<NotificationData>('notificationBox');
-    final notificationMethodBox = Hive.box<NotificationData>('notificationBox');
+    final box = Hive.box<NotificationData>('notificationBox');
 
-    if (minLabelBox.isNotEmpty) {
-      final minLabelData = minLabelBox.getAt(0)!;
-      final reminderSoundData = reminderSoundBox.getAt(0)!;
-      final notificationMethodData = notificationMethodBox.getAt(0)!;
+    if (box.isNotEmpty) {
+      final data = box.getAt(0)!;
 
       setState(() {
-        minLabel = minLabelData.minBefore;
-        reminderSoundLabel = reminderSoundData.notificationSound;
-        notificationMethodLabel = notificationMethodData.notificationMethod;
+        minLabel = data.minBefore;
+        reminderSoundLabel = data.notificationSound;
+        notificationMethodLabel = data.notificationMethod;
       });
     }
   }
@@ -71,18 +67,6 @@ class _NotificationWidgetState extends State<NotificationWidget> {
   // Functions to save/update data in Hive
   // ############################################################################
 
-  /* void saveNotificationSettings() {
-    final box = Hive.box<NotificationData>('notificationBox');
-
-    final notificationSetting = NotificationData(
-      minBefore: _minBeforeController.text,
-      notificationSound: _reminderSoundController.text,
-      notificationMethod: _notificationMethodController.text,
-    );
-
-    box.add(notificationSetting);
-  } */
-
   void updateNotificationSettings() {
     final box = Hive.box<NotificationData>('notificationBox');
 
@@ -110,13 +94,13 @@ class _NotificationWidgetState extends State<NotificationWidget> {
           shape: Border(
             bottom: BorderSide(color: isLight ? Colors.black : Colors.white, width: 2.0),
             top: BorderSide(color: isLight ? Colors.black : Colors.white, width: 2.0),
-          ),
+          ), // Border
           centerTitle: true,
           title: const Text(
             'Notification',
             style: TextStyle(fontSize: 50.0, letterSpacing: 2.2, fontFamily: 'Audiowide'),
-          ),
-        ),
+          ), // Text
+        ), // AppBar
 
         body: SingleChildScrollView(
           child: Padding(
@@ -132,15 +116,15 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                   centerText: true,
                   customWidths: [100.0, 100.0],
                   cornerRadius: 20.0,
-                  borderColor: [Colors.white],
+                  borderColor: [isLight ? Colors.black : Colors.white],
                   borderWidth: 1.0,
-                  dividerColor: Colors.white,
+                  dividerColor: isLight ? Colors.black : Colors.white,
                   activeBgColors: [
                     [Colors.green],
                     [Colors.red],
                   ],
-                  inactiveBgColor: Colors.black,
-                  inactiveFgColor: Colors.white,
+                  inactiveBgColor: isLight ? Colors.white : Colors.black,
+                  inactiveFgColor: isLight ? Colors.black : Colors.white,
                   totalSwitches: 2,
                   labels: ['Enabled', 'Disabled'],
                   fontSize: 18.0,
@@ -151,7 +135,11 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                   },
                 ), // ToggleSwitch
                 SizedBox(height: 30.0),
-                if (!activeNotification) Text('Reminder Time', style: TextStyle(fontSize: 20.0, fontFamily: 'Arial')),
+                if (!activeNotification)
+                  Text(
+                    'Reminder Time',
+                    style: TextStyle(fontSize: 20.0, fontFamily: 'Arial', color: isLight ? Colors.black : Colors.white),
+                  ), // Text
                 SizedBox(height: 10.0),
                 if (!activeNotification)
                   SizedBox(
@@ -159,14 +147,19 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                     width: 200.0,
                     child: TextFormField(
                       controller: _minBeforeController,
-                      obscureText: false,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(3)],
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(10.0),
+                        contentPadding: const EdgeInsets.all(10.0),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
                         labelText: minLabel.isNotEmpty ? minLabel : 'Minutes Before',
-                        labelStyle: TextStyle(fontSize: 18.0, color: Colors.white, fontFamily: 'Arial'),
+                        labelStyle: TextStyle(
+                          fontSize: 18.0,
+                          color: isLight ? Colors.black : Colors.white,
+                          fontFamily: 'Arial',
+                        ), // TextStyle
                         filled: true,
-                        fillColor: Colors.black,
+                        fillColor: isLight ? Colors.white : Colors.black,
                       ), // InputDecoration
                     ), // TextFormField
                   ), // SizedBox
@@ -179,22 +172,30 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                     label: reminderSoundLabel.isNotEmpty
                         ? Text(
                             reminderSoundLabel,
-                            style: TextStyle(fontSize: 18.0, color: Colors.white, fontFamily: 'Arial'),
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              color: isLight ? Colors.black : Colors.white,
+                              fontFamily: 'Arial',
+                            ), // TextStyle
                           ) // Text
                         : Text(
                             'Select Sound',
-                            style: TextStyle(fontSize: 18.0, color: Colors.white, fontFamily: 'Arial'),
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              color: isLight ? Colors.black : Colors.white,
+                              fontFamily: 'Arial',
+                            ), // TextStyle
                           ), // Text
                     width: 210.0,
                     menuStyle: MenuStyle(
-                      backgroundColor: WidgetStatePropertyAll(Colors.black),
+                      backgroundColor: WidgetStatePropertyAll(isLight ? Colors.white : Colors.black),
                       shape: WidgetStatePropertyAll(
                         RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)), // RoundedRectangleBorder
                       ), // WidgetStatePropertyAll
                     ), // MenuStyle
                     inputDecorationTheme: InputDecorationTheme(
                       filled: true,
-                      fillColor: Colors.black,
+                      fillColor: isLight ? Colors.white : Colors.black,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                         borderSide: BorderSide(color: Colors.grey),
@@ -220,22 +221,30 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                     label: notificationMethodLabel.isNotEmpty
                         ? Text(
                             notificationMethodLabel,
-                            style: TextStyle(fontSize: 18.0, color: Colors.white, fontFamily: 'Arial'),
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              color: isLight ? Colors.black : Colors.white,
+                              fontFamily: 'Arial',
+                            ), // TextStyle
                           ) // Text
                         : Text(
                             'Select Method',
-                            style: TextStyle(fontSize: 18.0, color: Colors.white, fontFamily: 'Arial'),
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              color: isLight ? Colors.black : Colors.white,
+                              fontFamily: 'Arial',
+                            ), // TextStyle
                           ), // Text
                     width: 210.0,
                     menuStyle: MenuStyle(
-                      backgroundColor: WidgetStatePropertyAll(Colors.black),
+                      backgroundColor: WidgetStatePropertyAll(isLight ? Colors.white : Colors.black),
                       shape: WidgetStatePropertyAll(
                         RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)), // RoundedRectangleBorder
                       ), // WidgetStatePropertyAll
                     ), // MenuStyle
                     inputDecorationTheme: InputDecorationTheme(
                       filled: true,
-                      fillColor: Colors.black,
+                      fillColor: isLight ? Colors.white : Colors.black,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                         borderSide: BorderSide(color: Colors.grey),

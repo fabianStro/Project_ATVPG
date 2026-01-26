@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 // Generated adapter imports
 import 'package:flutter_application_one/hive_registrar.g.dart';
 import 'package:flutter_application_one/login.dart';
-import 'package:flutter_application_one/homeScreen.dart';
-import 'package:flutter_application_one/models/notificationData.dart';
+import 'package:flutter_application_one/home_screen.dart';
+import 'package:flutter_application_one/models/notification_data.dart';
 import 'package:flutter_application_one/screens/notification.dart';
-import 'package:flutter_application_one/screens/passwordForgot.dart';
+import 'package:flutter_application_one/screens/password_forgot.dart';
 import 'package:flutter_application_one/screens/registry.dart';
 import 'package:flutter_application_one/screens/share.dart';
 import 'package:flutter_application_one/screens/detail.dart';
 import 'package:flutter_application_one/screens/profile.dart';
 // Service imports
-import 'package:flutter_application_one/services/movieProvider_Service.dart';
-import 'package:flutter_application_one/services/theme_Service.dart';
-import 'package:flutter_application_one/services/auth_Service.dart';
+import 'package:flutter_application_one/services/movieProvider_service.dart';
+import 'package:flutter_application_one/services/theme_service.dart';
+import 'package:flutter_application_one/services/auth_service.dart';
 // Provider package
 import 'package:provider/provider.dart';
 // Supabase package
