@@ -10,7 +10,7 @@ class AnimeMovieProvider extends ChangeNotifier {
   static const String _boxName = 'animeBox';
 
   bool _isInitialized = false;
-  late final Box<BroadcastAttribute> _broadcastBox;
+  late Box<BroadcastAttribute> _broadcastBox;
 
   final List<BroadcastAttribute> _seedData = [
     BroadcastAttribute(
@@ -227,8 +227,26 @@ class AnimeMovieProvider extends ChangeNotifier {
 
   List<BroadcastAttribute> broadcastData = [];
 
+  Future<void> resetDatabase() async {
+    _isInitialized = false;
+    broadcastData = [];
+
+    if (Hive.isBoxOpen(_boxName)) {
+      await Hive.box<BroadcastAttribute>(_boxName).close();
+    }
+
+    await Hive.deleteBoxFromDisk(_boxName);
+    await Hive.openBox<BroadcastAttribute>(_boxName);
+
+    await ensureInitialized();
+  }
+
   Future<void> ensureInitialized() async {
     if (_isInitialized) return;
+
+    if (!Hive.isBoxOpen(_boxName)) {
+      await Hive.openBox<BroadcastAttribute>(_boxName);
+    }
 
     _broadcastBox = Hive.box<BroadcastAttribute>(_boxName);
 

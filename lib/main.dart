@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_one/hive_registrar.g.dart';
 import 'package:flutter_application_one/login.dart';
 import 'package:flutter_application_one/homeScreen.dart';
-import 'package:flutter_application_one/models/broadcastAttribute.dart';
 import 'package:flutter_application_one/models/notificationData.dart';
 import 'package:flutter_application_one/screens/notification.dart';
 import 'package:flutter_application_one/screens/passwordForgot.dart';
@@ -31,7 +30,6 @@ Future<void> main() async {
   //Hive.registerAdapter(notificationDataAdapter());
 
   // Open Hive boxes
-  await Hive.openBox<BroadcastAttribute>('animeBox');
   await Hive.openBox<NotificationData>('notificationBox');
   // ##########################################################################
 
