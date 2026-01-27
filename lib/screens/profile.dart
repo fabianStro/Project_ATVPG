@@ -46,7 +46,12 @@ class _ProfileWidgetState extends State<ProfileWidget> {
               padding: EdgeInsets.only(top: 30.0),
               child: Center(
                 child: ClipOval(
-                  child: Image.asset('assets/images/profile2.png', width: 180, height: 180, fit: BoxFit.cover),
+                  child: Image.asset(
+                    'assets/images/FabianStrottmann_Pic.png',
+                    width: 180,
+                    height: 180,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),

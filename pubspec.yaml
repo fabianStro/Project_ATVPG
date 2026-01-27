@@ -48,6 +48,7 @@ flutter:
       - asset: assets/fonts/ArialCEMTBlack.ttf
   
   assets:
+      ####### Broadcast Images
       - assets/images/broadcastImages/Highschool_dxd_logo.png
       - assets/images/broadcastImages/Highschool_dxd_born_logo.png
       - assets/images/broadcastImages/Highschool_dxd_new_logo.png
@@ -59,23 +60,28 @@ flutter:
       - assets/images/broadcastImages/KonoSuba_logo.png
       - assets/images/broadcastImages/CallOfTheNight_logo.png
       - assets/images/broadcastImages/Shinchou_Yuusha_logo.png
-      - assets/images/broadcastImages/JujutsuKaisen.png
-      - assets/images/broadcastImages/HellsParadise.png
-      - assets/images/broadcastImages/DragonBall.png
-      - assets/images/broadcastImages/DragonBallZ.png
-      - assets/images/broadcastImages/DragonBallZKai.png
-      - assets/images/broadcastImages/DragonBallGT.png
-      - assets/images/broadcastImages/DragonBallSuper.png
-      - assets/images/broadcastImages/DragonBallDaima.png
-      - assets/images/broadcastImages/MonsterMaedchen.png 
-      - assets/images/profile2.png
+      - assets/images/broadcastImages/JujutsuKaisen_logo.png
+      - assets/images/broadcastImages/HellsParadise_logo.png
+      - assets/images/broadcastImages/DragonBall_logo.png
+      - assets/images/broadcastImages/DragonBallZ_logo.png
+      - assets/images/broadcastImages/DragonBallZKai_logo.png
+      - assets/images/broadcastImages/DragonBallGT_logo.png
+      - assets/images/broadcastImages/DragonBallSuper_logo.png
+      - assets/images/broadcastImages/DragonBallDaima_logo.png
+      - assets/images/broadcastImages/MonsterMaedchen_logo.png
+      - assets/images/broadcastImages/TheVisionOfEscaflowne_logo.png
+      ####### Profile Images
+      - assets/images/The_GrimReaper_Pic.jpg
+      - assets/images/FabianStrottmann_Pic.png
+      ####### Share Icons
       - assets/images/shareIcons/facebook.png
       - assets/images/shareIcons/instagram.png
       - assets/images/shareIcons/telegram.png
       - assets/images/shareIcons/tiktok.png
       - assets/images/shareIcons/x-icon.png
-      # - assets/images/shareIcons/twitter.png
-      # - assets/images/shareIcons/whatsapp.png
+      - assets/images/shareIcons/whatsapp.png
+      #- assets/images/shareIcons/twitter.png
+      ####### Sounds (uncomment to use)
       - assets/sounds/bFrog.mp3
       # - assets/sounds/blob.mp3
       # - assets/sounds/swoosh.mp3

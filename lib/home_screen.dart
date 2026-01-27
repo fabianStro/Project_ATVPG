@@ -69,7 +69,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                     shape: BoxShape.circle,
                     border: Border.all(color: Colors.white, width: 1.0),
                     image: DecorationImage(
-                      image: AssetImage('assets/images/profile2.png'),
+                      image: AssetImage('assets/images/FabianStrottmann_Pic.png'),
                       fit: BoxFit.contain,
                     ), // DecorationImage
                   ), // BoxDecoration
