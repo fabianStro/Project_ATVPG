@@ -25,8 +25,8 @@ class _SearchFunctionState extends State<SearchFunction> {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: 110,
-      width: 380,
+      top: 110.0,
+      width: 380.0,
       left: 15.0,
       child: Container(
         decoration: BoxDecoration(
@@ -34,7 +34,7 @@ class _SearchFunctionState extends State<SearchFunction> {
           color: Colors.black,
           border: Border.all(color: Colors.white),
         ), // BoxDecoration
-        height: 50,
+        height: 50.0,
         child: TextFormField(
           controller: _clearController,
           onChanged: (value) {
