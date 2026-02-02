@@ -143,7 +143,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
           ), // AppBar
           body: TabBarView(
             children: [
-              AllAnime(searchQuery: searchQuery),
+              //AllAnime(searchQuery: searchQuery),
               MyAnime(searchQuery: searchQuery),
               FavoriteAnime(searchQuery: searchQuery),
             ],
