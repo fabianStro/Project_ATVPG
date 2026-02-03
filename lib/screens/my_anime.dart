@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 // Provider package
 import 'package:provider/provider.dart';
 // Service imports
-import '../services/movieProvider_Service.dart';
+import '../services/movieProvider_service.dart';
 
 // #########################################################################################
 // MyChannel Widget

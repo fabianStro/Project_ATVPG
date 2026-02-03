@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 // Service imports
-import 'package:flutter_application_one/services/movieProvider_Service.dart';
+import 'package:flutter_application_one/services/movieProvider_service.dart';
 // Provider package
 import 'package:provider/provider.dart';
 
