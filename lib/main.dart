@@ -68,8 +68,8 @@ Future<void> main() async {
               '/forgot': (context) => PasswordForgotWidget(),
             }, // routes
           ); // MaterialApp
-        },
+        }, // builder
       ), // Consumer
     ), // MultiProvider
-  );
-}
+  ); // runApp
+} // main

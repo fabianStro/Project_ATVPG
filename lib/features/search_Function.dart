@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, camel_case_types
+/* // ignore_for_file: file_names, camel_case_types
 
 import 'package:flutter/material.dart';
 // Service imports
@@ -55,6 +55,74 @@ class _SearchFunctionState extends State<SearchFunction> {
             contentPadding: EdgeInsets.symmetric(vertical: 15.0),
           ), // InputDecoration
           style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.normal, color: Colors.white),
+        ), // TextFormField
+      ), // Container
+    ); // Positioned
+  }
+}
+ */
+// ignore_for_file: file_names, camel_case_types
+
+import 'package:flutter/material.dart';
+// Service imports
+import 'package:flutter_application_one/services/movieProvider_service.dart';
+// Provider package
+import 'package:provider/provider.dart';
+
+class SearchFunction extends StatefulWidget {
+  const SearchFunction({super.key, required this.searchQuery});
+
+  final ValueNotifier<String> searchQuery;
+
+  @override
+  State<SearchFunction> createState() => _SearchFunctionState();
+}
+
+class _SearchFunctionState extends State<SearchFunction> {
+  // ############################ Controller ############################
+  final TextEditingController _clearController = TextEditingController();
+
+  @override
+  void dispose() {
+    _clearController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: 110.0,
+      left: 15.0,
+      width: 380.0,
+      child: Container(
+        height: 50.0,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30.0),
+          color: Colors.black,
+          border: Border.all(color: Colors.white),
+        ), // BoxDecoration
+        child: TextFormField(
+          controller: _clearController,
+          onChanged: (value) {
+            // Update Provider's filter list
+            context.read<AnimeMovieProvider>().filterList(value);
+          },
+          decoration: InputDecoration(
+            hintText: 'Search anime...',
+            hintStyle: const TextStyle(color: Colors.white, fontSize: 18.0),
+            prefixIcon: const Icon(Icons.search, color: Colors.white),
+            suffixIcon: GestureDetector(
+              onTap: () {
+                // Clear input and reset filtered list
+                _clearController.clear();
+                context.read<AnimeMovieProvider>().filterList('');
+              },
+              child: const Icon(Icons.clear, color: Colors.white),
+            ), // GestureDetector
+            border: InputBorder.none,
+            contentPadding: const EdgeInsets.symmetric(vertical: 15.0),
+          ), // InputDecoration
+          style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.normal, color: Colors.white), // TextStyle
         ), // TextFormField
       ), // Container
     ); // Positioned

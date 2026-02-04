@@ -149,7 +149,7 @@ class _PasswordForgotWidgetState extends State<PasswordForgotWidget> {
             bottom: BorderSide(color: Colors.white, width: 2),
           ), // Border
           title: const Text(
-            'Password Forgot',
+            'Pwd Forgot',
             style: TextStyle(fontSize: 40, letterSpacing: 4, fontFamily: 'Audiowide'),
           ), // Text
         ), // AppBar

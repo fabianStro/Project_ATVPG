@@ -152,8 +152,8 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
       ), // SafeArea
     ); // DefaultTabController
   }
-}
- */
+} */
+
 // ignore_for_file: file_names, camel_case_types
 
 import 'package:flutter/material.dart';
@@ -237,17 +237,13 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
             // ############################ TabBar ############################
             bottom: TabBar(
               unselectedLabelColor: Colors.grey,
-              unselectedLabelStyle: const TextStyle(fontStyle: FontStyle.italic, fontSize: 13),
+              unselectedLabelStyle: TextStyle(fontStyle: FontStyle.italic, fontSize: 13.0), // TextStyle
               labelColor: Colors.white,
-              labelStyle: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Audiowide',
-              ), // TextStyle
-              indicatorPadding: const EdgeInsets.symmetric(horizontal: 0),
+              labelStyle: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: 'Audiowide'), // TextStyle
+              indicatorPadding: EdgeInsets.only(left: -15.0, right: -15.0),
               indicator: BoxDecoration(
                 color: Colors.black,
-                borderRadius: const BorderRadius.only(
+                borderRadius: BorderRadius.only(
                   topRight: Radius.circular(10),
                   topLeft: Radius.circular(10),
                 ), // BorderRadius.only
@@ -257,9 +253,9 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                   top: BorderSide(color: Colors.white),
                 ), // Border
               ), // BoxDecoration
-              tabs: const [
+              tabs: [
                 Tab(text: 'All Anime', icon: Icon(Icons.list_alt_outlined)),
-                Tab(text: 'My Anime', icon: Icon(Icons.bookmark_border_outlined)),
+                Tab(text: 'My Anime', icon: Icon(Icons.bookmark_border_outlined)), // Tab
                 Tab(text: 'Fav Anime', icon: Icon(Icons.star_border_outlined)),
               ],
             ), // TabBar

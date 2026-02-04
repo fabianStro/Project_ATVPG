@@ -43,26 +43,6 @@ class LoginButton extends StatelessWidget {
                       await animeProvider.resetDatabase();
 
                       if (!context.mounted) return;
-                      /* 
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Container(
-                              width: double.infinity,
-                              alignment: Alignment.center,
-                              child: const Text(
-                                'Login successful !',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Arial',
-                                ), // TextStyle
-                              ), // Text
-                            ), // Container
-                            duration: Duration(seconds: 2),
-                          ), // SnackBar
-                        ); 
-                      */
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: const Text(
@@ -77,7 +57,15 @@ class LoginButton extends StatelessWidget {
                       Navigator.pushNamed(context, '/start');
                     } catch (e) {
                       if (!context.mounted) return;
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login failed: $e')));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: const Text(
+                            'Login failed!\nIncorrect username or password.',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontFamily: 'Arial'),
+                          ),
+                        ),
+                      );
                     }
                   }
                 : null,
@@ -91,8 +79,8 @@ class LoginButton extends StatelessWidget {
               ), // TextStyle
             ), // Text
           ); // OutlinedButton
-        },
+        }, // builder
       ), // ValueListenableBuilder
     ); // SizedBox
-  }
-}
+  } // build
+} // LoginButton
