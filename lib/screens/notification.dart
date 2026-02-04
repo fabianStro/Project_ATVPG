@@ -272,13 +272,32 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                             onPressed: () {
                               updateNotificationSettings();
                               // saveNotificationSettings();
+                              /*             
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Container(
+                                      width: double.infinity,
+                                      alignment: Alignment.center,
+                                      child: const Text(
+                                        'Settings successfully updated !',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'Arial',
+                                        ), // TextStyle
+                                      ), // Text
+                                    ), // Container
+                                    duration: Duration(seconds: 2),
+                                  ), // SnackBar
+                                ); 
+                              */
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
-                                  content: Container(
+                                  content: SizedBox(
                                     width: double.infinity,
-                                    alignment: Alignment.center,
-                                    child: const Text(
-                                      'Settings successfully updated !',
+                                    child: Text(
+                                      'Settings successfully updated!',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         color: Colors.black,
@@ -286,8 +305,9 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                         fontFamily: 'Arial',
                                       ), // TextStyle
                                     ), // Text
-                                  ), // Container
+                                  ), // SizedBox
                                   duration: Duration(seconds: 2),
+                                  backgroundColor: Colors.white,
                                 ), // SnackBar
                               );
                             },

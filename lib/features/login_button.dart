@@ -43,22 +43,35 @@ class LoginButton extends StatelessWidget {
                       await animeProvider.resetDatabase();
 
                       if (!context.mounted) return;
+                      /* 
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Container(
+                              width: double.infinity,
+                              alignment: Alignment.center,
+                              child: const Text(
+                                'Login successful !',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Arial',
+                                ), // TextStyle
+                              ), // Text
+                            ), // Container
+                            duration: Duration(seconds: 2),
+                          ), // SnackBar
+                        ); 
+                      */
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: Container(
-                            width: double.infinity,
-                            alignment: Alignment.center,
-                            child: const Text(
-                              'Login successful !',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Arial',
-                              ), // TextStyle
-                            ), // Text
-                          ), // Container
+                          content: const Text(
+                            'Login successful!',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontFamily: 'Arial'),
+                          ), // Text
                           duration: Duration(seconds: 2),
+                          backgroundColor: Colors.white,
                         ), // SnackBar
                       );
                       Navigator.pushNamed(context, '/start');

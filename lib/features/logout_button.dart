@@ -16,18 +16,31 @@ class Logout_Button extends StatelessWidget {
       onPressed: () async {
         await Supabase.instance.client.auth.signOut();
         if (context.mounted) {
+          /*  
+          ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Container(
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  child: const Text(
+                    'Logout successful !',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontFamily: 'Arial'),
+                  ), // Text
+                ), // Container
+                duration: Duration(seconds: 2),
+              ), // SnackBar
+            ); 
+          */
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Container(
-                width: double.infinity,
-                alignment: Alignment.center,
-                child: const Text(
-                  'Logout successful !',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontFamily: 'Arial'),
-                ), // Text
-              ), // Container
+              content: const Text(
+                'Logout successful!',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontFamily: 'Arial'),
+              ), // Text
               duration: Duration(seconds: 2),
+              backgroundColor: Colors.white,
             ), // SnackBar
           );
           Navigator.pushNamed(context, '/home');
