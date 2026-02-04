@@ -186,9 +186,9 @@ class _LoginWidgetState extends State<LoginWidget> {
           shape: const Border(
             top: BorderSide(color: Colors.white, width: 2),
             bottom: BorderSide(color: Colors.white, width: 2),
-          ),
+          ), // Border
           title: const Text('ATVPG', style: TextStyle(fontSize: 50, letterSpacing: 2.2, fontFamily: 'Audiowide')),
-        ),
+        ), // AppBar
         body: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 60),
           child: Column(
@@ -204,8 +204,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                   labelText: 'E-Mail',
                   contentPadding: const EdgeInsets.only(top: 16, left: 10),
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(25)),
-                ),
-              ),
+                ), // InputDecoration
+              ), // TextFormField
               const SizedBox(height: 20),
               TextFormField(
                 controller: _passwordController,
@@ -216,8 +216,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                   labelText: 'Password',
                   contentPadding: const EdgeInsets.only(top: 16, left: 10),
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(25)),
-                ),
-              ),
+                ), // InputDecoration
+              ), // TextFormField
               const SizedBox(height: 25),
               LoginButton(isValid: isValid, emailController: _emailController, passwordController: _passwordController),
               const SizedBox(height: 15),
@@ -228,11 +228,11 @@ class _LoginWidgetState extends State<LoginWidget> {
               _linkText(context, 'Registration', '/registry'),
               const SizedBox(height: 85),
               const Text('2025/26 © ATVPG All Rights Reserved', style: TextStyle(color: Colors.grey)),
-            ],
-          ),
-        ),
-      ),
-    );
+            ], // children
+          ), // Column
+        ), // SingleChildScrollView
+      ), // Scaffold
+    ); // SafeArea
   }
 
   Widget _linkText(BuildContext context, String text, String route) {
@@ -245,8 +245,8 @@ class _LoginWidgetState extends State<LoginWidget> {
           fontSize: 17,
           fontFamily: 'Arial',
           decoration: TextDecoration.underline,
-        ),
-      ),
-    );
+        ), // TextStyle
+      ), // Text
+    ); // GestureDetector
   }
 }

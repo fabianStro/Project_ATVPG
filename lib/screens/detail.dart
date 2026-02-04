@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_string_interpolations, unnecessary_brace_in_string_interps
+/* // ignore_for_file: unnecessary_string_interpolations, unnecessary_brace_in_string_interps
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_one/services/movieProvider_service.dart';
@@ -137,6 +137,123 @@ class _DetailWidgetState extends State<DetailWidget> {
               ), // Column
             ), // Padding
           ), // Center
+        ), // SingleChildScrollView
+      ), // Scaffold
+    ); // SafeArea
+  }
+}
+ */
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:flutter_application_one/models/broadcast_attribute.dart';
+import 'package:flutter_application_one/services/movieProvider_service.dart';
+import 'package:flutter_application_one/screens/share.dart';
+
+class DetailWidget extends StatefulWidget {
+  const DetailWidget({super.key});
+
+  @override
+  State<DetailWidget> createState() => _DetailWidgetState();
+}
+
+class _DetailWidgetState extends State<DetailWidget> {
+  final _shareOverlayController = OverlayPortalController();
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final color = theme.brightness == Brightness.light ? Colors.black : Colors.white;
+
+    final passed = ModalRoute.of(context)!.settings.arguments as BroadcastAttribute;
+
+    final provider = context.watch<AnimeMovieProvider>();
+    final current = provider.broadcastData.firstWhere((element) => element.title == passed.title, orElse: () => passed);
+
+    const broadcastingStations = 'Pro7 Maxx, Pro7 Fun, RTL II, Animax';
+    const streamingPlatforms = 'Crunchyroll, Netflix, Amazon Prime Video';
+
+    Text heading(String text) => Text(
+      text,
+      style: TextStyle(color: color, fontSize: 16, fontWeight: FontWeight.bold),
+      textAlign: TextAlign.center,
+    ); // Text
+
+    Text body(String text) => Text(
+      text,
+      style: TextStyle(color: color, fontSize: 16),
+      textAlign: TextAlign.center,
+    ); // Text
+
+    Divider divider([double height = 30]) => Divider(height: height, thickness: 2, color: color);
+
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(),
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            children: [
+              Image.asset(current.imagePath, width: 200, height: 180, fit: BoxFit.cover),
+              divider(),
+              Text(
+                current.title,
+                style: TextStyle(color: color, fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ), // Text
+              divider(),
+              heading('Genre'),
+              body(current.genre),
+              divider(),
+              heading('Broadcasting Stations'),
+              body(broadcastingStations),
+              const SizedBox(height: 8),
+              heading('Streaming Platforms'),
+              body(streamingPlatforms),
+              divider(),
+              body(current.description),
+              divider(15),
+              ListTile(
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    OverlayPortal(
+                      controller: _shareOverlayController,
+                      overlayChildBuilder: (_) => Positioned(
+                        top: 110,
+                        width: 390,
+                        child: Container(
+                          height: 400,
+                          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(30)),
+                          child: ShareWidget(title: current.title, picture: current.imagePath),
+                        ), // Container
+                      ), // OverlayPortal
+                      child: IconButton(
+                        icon: Icon(Icons.share_outlined, size: 35, color: color),
+                        onPressed: _shareOverlayController.toggle,
+                      ), // IconButton
+                    ), // OverlayPortal
+                    IconButton(
+                      icon: Icon(
+                        Icons.bookmark_border_outlined,
+                        size: 35,
+                        color: current.isMyAnime ? Colors.yellow : color,
+                      ), //
+                      onPressed: () => context.read<AnimeMovieProvider>().toggleMyAnime(current.title),
+                    ), // IconButton
+                    IconButton(
+                      icon: Icon(
+                        Icons.star_border_outlined,
+                        size: 35,
+                        color: current.isFavorite ? Colors.yellow : color,
+                      ), // Icon
+                      onPressed: () => context.read<AnimeMovieProvider>().toggleFavorite(current.title),
+                    ), // IconButton
+                  ], // children
+                ), // Row
+              ), // ListTile
+            ], // children
+          ), // Column
         ), // SingleChildScrollView
       ), // Scaffold
     ); // SafeArea
