@@ -16,10 +16,10 @@ import 'package:flutter_application_one/services/theme_service.dart';
 import 'package:flutter_application_one/services/auth_service.dart';
 // Provider package
 import 'package:provider/provider.dart';
-// Supabase package
-import 'package:supabase_flutter/supabase_flutter.dart';
 // Hive packages
 import 'package:hive_ce_flutter/hive_flutter.dart';
+// Supabase package
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +27,6 @@ Future<void> main() async {
   // ################################ Hive ################################
   await Hive.initFlutter();
   Hive.registerAdapters();
-  //Hive.registerAdapter(notificationDataAdapter());
 
   // Open Hive boxes
   await Hive.openBox<NotificationData>('notificationBox');
@@ -44,9 +43,9 @@ Future<void> main() async {
     // ################################ Provider ################################
     MultiProvider(
       providers: [
-        Provider<AuthService>(create: (_) => AuthService()),
-        ChangeNotifierProvider<AnimeMovieProvider>(create: (_) => AnimeMovieProvider()), // ChangeNotifierProvider
-        ChangeNotifierProvider<ThemeService>(create: (_) => ThemeService()),
+        Provider<AuthService>(create: (_) => AuthService()), // AuthService provider
+        ChangeNotifierProvider<AnimeMovieProvider>(create: (_) => AnimeMovieProvider()), // AnimeMovieProvider provider
+        ChangeNotifierProvider<ThemeService>(create: (_) => ThemeService()), // ThemeService provider
       ],
       // ########################################################################
       child: Consumer<ThemeService>(

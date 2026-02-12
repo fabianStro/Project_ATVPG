@@ -255,7 +255,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
               ), // BoxDecoration
               tabs: [
                 Tab(text: 'All Anime', icon: Icon(Icons.list_alt_outlined)),
-                Tab(text: 'My Anime', icon: Icon(Icons.bookmark_border_outlined)), // Tab
+                Tab(text: 'My Anime', icon: Icon(Icons.bookmark_border_outlined)),
                 Tab(text: 'Fav Anime', icon: Icon(Icons.star_border_outlined)),
               ],
             ), // TabBar
@@ -267,7 +267,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                 child: OverlayPortal(
                   controller: _overlaySearchController,
                   overlayChildBuilder: (_) => SearchFunction(searchQuery: searchQuery),
-                  child: Padding(padding: const EdgeInsets.only(top: 0), child: searchIcon), // Padding
+                  child: Padding(padding: const EdgeInsets.only(top: 0), child: searchIcon),
                 ), // OverlayPortal
               ), // GestureDetector
               // ############################ Notification Button ############################

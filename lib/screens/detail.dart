@@ -248,6 +248,18 @@ class _DetailWidgetState extends State<DetailWidget> {
                         color: current.isFavorite ? Colors.yellow : color,
                       ), // Icon
                       onPressed: () => context.read<AnimeMovieProvider>().toggleFavorite(current.title),
+                      /*
+                        () =>
+
+                        Das ist eine anonyme Funktion (Lambda-Funktion).
+                        Sie bedeutet: „Führe diesen Code aus, wenn gedrückt wird.“
+
+                        Kurzform von:
+
+                        onPressed: () {
+                          // Code hier
+                        }
+                      */
                     ), // IconButton
                   ], // children
                 ), // Row
